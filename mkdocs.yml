@@ -1,0 +1,28 @@
+site_name: OpenLayers Training
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: blue
+nav:
+  - Overview: index.md
+  - Modules:
+    - Module 1 - Fundamentals: module-1.md
+    - Module 2 - GIS Data & Services: module-2.md
+    - Module 3 - GeoServer & OpenLayers: module-3.md
+    - Module 4 - PostGIS & OpenLayers: module-4.md
+    - Module 5 - Vector Styling & Interaction: module-5.md
+    - Module 6 - CesiumJS Integration: module-6.md
+    - Module 7 - MBTiles & Wrap-up: module-7.md
+    - Module 8 - Integrated Exercise: module-8.md
+  - Instructor Guide: instructor-guide.md
+plugins:
+  - search
+  - excalidraw
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
