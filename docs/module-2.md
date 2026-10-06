@@ -9,7 +9,9 @@ In Web GIS, spatial datasets are rarely hardcoded into client applications. Inst
 ## 1. Introduction to Web GIS Data
 
 ### 1.1 How OpenLayers Gets GIS Data
+
 Unlike desktop GIS software (such as QGIS or ArcGIS Pro) that has direct, uninhibited access to local filesystems and multi-gigabyte files, Web GIS applications operate within the strict sandbox of a web browser:
+
 - **Client (Browser):** OpenLayers requests only the precise data slices required for the active viewport extent and zoom level.
 - **Server / Service Tier:** Map servers (GeoServer, MapServer) or cloud tile servers process spatial queries, reproject geometries, or render map images on demand.
 
@@ -33,6 +35,7 @@ Browser (OpenLayers)               Map Server / Tile CDN            Database Tie
 | **Memory Budget** | Scalable enterprise RAM / disk storage | Restricted to browser tab memory (typically < 1.5 GB) |
 
 ### 1.3 Data Delivery Formats: Vector, Raster, and Tiled
+
 - **Vector Data:** Raw geometry coordinates (Points, LineStrings, Polygons) and associated attribute dictionaries. Rendered dynamically in the browser, allowing client-side styling, hover effects, and geometry modification.
 - **Raster Data:** Continuous grid of pixel values (satellite imagery, aerial orthophotos, elevation models, heatmaps). Each pixel represents a color or a physical measurement.
 - **Tiled Data:** Pre-cut, spatially indexed square image or vector segments arranged in a quadtree pyramid (`{z}/{x}/{y}`). Enables fast spatial retrieval and global caching.
@@ -44,11 +47,13 @@ Browser (OpenLayers)               Map Server / Tile CDN            Database Tie
 Vector data represents geographical features using discrete coordinate pairs.
 
 ### 2.1 The GeoJSON Specification (RFC 7946)
+
 **GeoJSON** is an open standard format based on JSON for encoding geographic data structures. Under RFC 7946:
-1. **Coordinate Reference System:** GeoJSON coordinates are strictly defined in geographic coordinates: **WGS 84 (`EPSG:4326`)** in decimal degrees.
-2. **Axis Ordering:** Coordinates are strictly ordered as **`[Longitude, Latitude, Elevation]`** (`[X, Y, Z]`).
-3. **Polygon Winding Order (Right-Hand Rule):** Exterior boundary rings must follow a **counter-clockwise** direction; interior rings (holes) must follow a **clockwise** direction.
-4. **Coordinate Precision:** Six decimal places (`0.000001°`) provides ~0.1 meter accuracy on the ground. Storing 15 decimal places bloats JSON file sizes without providing real-world value.
+
+- **Coordinate Reference System:** GeoJSON coordinates are strictly defined in geographic coordinates: **WGS 84 (`EPSG:4326`)** in decimal degrees.
+- **Axis Ordering:** Coordinates are strictly ordered as **`[Longitude, Latitude, Elevation]`** (`[X, Y, Z]`).
+- **Polygon Winding Order (Right-Hand Rule):** Exterior boundary rings must follow a **counter-clockwise** direction; interior rings (holes) must follow a **clockwise** direction.
+- **Coordinate Precision:** Six decimal places (`0.000001°`) provides ~0.1 meter accuracy on the ground. Storing 15 decimal places bloats JSON file sizes without providing real-world value.
 
 ```json
 {
@@ -132,6 +137,7 @@ map.on('click', (event) => {
 ```
 
 ### 2.5 Limitations of GeoJSON
+
 - **Text-Based Inefficiency:** JSON is an uncompressed ASCII text format. A dataset with 50,000 polygons can easily exceed 40 MB in raw file size.
 - **Parsing Overhead:** The browser must parse the entire string via `JSON.parse()`, allocate thousands of JavaScript objects, and convert each coordinate pair into internal geometry instances.
 - **Full Dataset Transfer:** The client must download the entire GeoJSON file even if the user only views a tiny corner of the map.
@@ -155,16 +161,20 @@ Continuous Raster Surface (Pixels) vs. Discrete Vector Features (Coordinates)
 ```
 
 ### 3.1 What is a GeoTIFF?
+
 A **GeoTIFF** is a standard TIFF (Tagged Image File Format) image file enriched with spatial metadata tags embedded directly within its header:
+
 - **ModelTiepointTag:** Maps raster pixel coordinates `(pixel, line)` to real-world ground coordinates `(easting, northing)`.
 - **ModelPixelScaleTag:** Defines the ground distance represented by a single pixel (spatial resolution, e.g. 0.5 meters/pixel).
 - **GeoKeyDirectoryTag:** Encodes the projection, datum, and coordinate system (e.g. `EPSG:32643`).
 
 ### 3.2 Cloud-Optimized GeoTIFFs (COG)
+
 A traditional GeoTIFF requires downloading the entire multi-gigabyte file before reading any pixels. A **Cloud-Optimized GeoTIFF (COG)** is structured specifically for streaming:
-1. **Internal Tiling:** Pixels are organized into internal $256 \times 256$ or $512 \times 512$ tile blocks rather than full-width horizontal strips.
-2. **Internal Overviews (Pyramids):** Downsampled versions of the image are pre-computed and stored inside the file header.
-3. **HTTP Range Requests:** OpenLayers requests only the specific byte offsets required for the current view extent directly from object storage (S3/GCS/CDN) using standard HTTP `Range: bytes=start-end` headers.
+
+- **Internal Tiling:** Pixels are organized into internal $256 \times 256$ or $512 \times 512$ tile blocks rather than full-width horizontal strips.
+- **Internal Overviews (Pyramids):** Downsampled versions of the image are pre-computed and stored inside the file header.
+- **HTTP Range Requests:** OpenLayers requests only the specific byte offsets required for the current view extent directly from object storage (S3/GCS/CDN) using standard HTTP `Range: bytes=start-end` headers.
 
 ### 3.3 Loading COGs with WebGL in OpenLayers
 OpenLayers features a dedicated hardware-accelerated WebGL tile pipeline (`ol/layer/WebGLTile` + `ol/source/GeoTIFF`):
@@ -193,12 +203,16 @@ map.addLayer(cogLayer);
 Web maps frequently combine datasets produced under different Coordinate Reference Systems (e.g., an aerial orthoimagery raster in UTM Zone 43N displayed over an OpenStreetMap base map in Web Mercator).
 
 ### 4.1 How Client-Side Reprojection Works
+
 When a raster or vector source has a different projection than the map `View`, OpenLayers performs **client-side reprojection**:
+
 - **Vector Reprojection:** OpenLayers converts each vertex coordinate mathematically on the fly before drawing paths onto the canvas.
 - **Raster Reprojection:** OpenLayers computes an internal bounding grid, creates a triangular mesh, and samples pixel values from the source projection into the target view projection using bilinear interpolation.
 
 ### 4.2 Universal Transverse Mercator (UTM)
+
 **UTM** is a global projected coordinate system that divides the Earth into 60 longitudinal zones, each $6^\circ$ wide:
+
 - Uses the Transverse Mercator conformal projection.
 - Coordinates are expressed in linear **meters** (Eastings and Northings).
 - Distortions are minimal (< 0.1%) within each zone, making UTM the standard for high-accuracy surveying, engineering, and national mapping.
@@ -301,7 +315,9 @@ Instead of rendering custom images on demand for arbitrary extents, tile service
 - **Progressive Loading:** As a user pans, only newly revealed grid tiles are fetched over the network; existing tiles remain visible on screen.
 
 ### 6.2 The Slippy Map `{z}/{x}/{y}` Coordinate Scheme
+
 Tiles are addressed by three integers:
+
 - **`z` (Zoom level):** Pyramid depth ($0$ = whole world in one tile; $18$ = building level).
 - **`x` (Column index):** Horizontal index from West to East ($0$ to $2^z - 1$).
 - **`y` (Row index):** Vertical index from North to South ($0$ to $2^z - 1$).
@@ -316,8 +332,11 @@ Zoom z:  4^z tiles
 ```
 
 #### The Slippy Map Math:
+
 Given a longitude $\lambda$ and latitude $\phi$ in degrees, the tile coordinates at zoom $z$ are:
+
 $$x = \left\lfloor \frac{\lambda + 180}{360} \cdot 2^z \right\rfloor$$
+
 $$y = \left\lfloor \left(1 - \frac{\ln(\tan(\phi \cdot \frac{\pi}{180}) + \sec(\phi \cdot \frac{\pi}{180}))}{\pi}\right) \cdot 2^{z-1} \right\rfloor$$
 
 ```javascript
@@ -338,10 +357,12 @@ const osmBaseLayer = new TileLayer({
 ## 7. Web Map Tile Service (WMTS)
 
 ### 7.1 XYZ vs. WMTS
+
 - **XYZ:** An informal, de facto convention popularized by Google Maps. Relies entirely on a URL string pattern (`{z}/{x}/{y}.png`). Fast and universally supported, but lacks formal metadata definitions.
 - **WMTS (Web Map Tile Service):** The official **OGC standard** (OGC 07-057r7) for serving pre-rendered tile pyramids. Includes a formal XML metadata document (`GetCapabilities`) defining explicit coordinate reference systems, bounding boxes, matrix dimensions, and scale denominators.
 
 ### 7.2 Core WMTS Concepts
+
 - **`TileMatrixSet`:** Defines the coordinate reference system and scale levels.
 - **Standardized Scale Denominator:** WMTS standardizes screen display pixel size at exactly **$0.28\text{ mm} \times 0.28\text{ mm}$** ($1 / 0.00028 \approx 3,571.43\text{ pixels/meter}$). This allows precise cartographic scale calculation across different client devices.
 
@@ -357,9 +378,10 @@ Vector Tiles:  [ Binary Geometries & Attributes ] ──▶ Styled Dynamically b
 ```
 
 ### 8.1 The Mapbox Vector Tile (MVT) Standard
-1. **Binary Encoding:** Vector tiles are encoded using **Google Protocol Buffers (Protobuf)** (`.mvt` or `.pbf`). Binary encoding reduces payload sizes by 80% compared to equivalent GeoJSON files.
-2. **Local Coordinate Quantization:** Geometries within each tile are transformed from global coordinates into local integer coordinates on a fixed grid (typically $4096 \times 4096$ units). This eliminates floating-point coordinate bloat.
-3. **Feature Slicing & Simplification:** Polygons and lines extending across tile boundaries are pre-clipped at tile edges. Low zoom levels feature automatically simplified geometries, preventing browser overdraw.
+
+- **Binary Encoding:** Vector tiles are encoded using **Google Protocol Buffers (Protobuf)** (`.mvt` or `.pbf`). Binary encoding reduces payload sizes by 80% compared to equivalent GeoJSON files.
+- **Local Coordinate Quantization:** Geometries within each tile are transformed from global coordinates into local integer coordinates on a fixed grid (typically $4096 \times 4096$ units). This eliminates floating-point coordinate bloat.
+- **Feature Slicing & Simplification:** Polygons and lines extending across tile boundaries are pre-clipped at tile edges. Low zoom levels feature automatically simplified geometries, preventing browser overdraw.
 
 ### 8.2 Rendering Vector Tiles in OpenLayers
 OpenLayers uses `ol/layer/VectorTile` and `ol/source/VectorTile` with `ol/format/MVT`:

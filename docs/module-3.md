@@ -28,9 +28,10 @@ Presentation Tier:         Web Browser Viewport
 ```
 
 ### 1.3 The OpenLayers + GeoServer Workflow
-1. **Storage Tier:** Spatial datasets reside in an enterprise relational database (PostGIS) or flat files (Shapefile, GeoPackage, GeoTIFF).
-2. **Publishing Tier:** GeoServer connects to the data store, verifies coordinate reference systems, computes spatial bounding boxes, applies cartographic styling rules (SLD), and exposes standard OGC endpoints.
-3. **Client Tier:** OpenLayers requests rendered map images (WMS) or raw vector features (WFS) dynamically as the user navigates.
+
+- **Storage Tier:** Spatial datasets reside in an enterprise relational database (PostGIS) or flat files (Shapefile, GeoPackage, GeoTIFF).
+- **Publishing Tier:** GeoServer connects to the data store, verifies coordinate reference systems, computes spatial bounding boxes, applies cartographic styling rules (SLD), and exposes standard OGC endpoints.
+- **Client Tier:** OpenLayers requests rendered map images (WMS) or raw vector features (WFS) dynamically as the user navigates.
 
 ---
 
@@ -46,6 +47,7 @@ Workspace (Logical container & XML namespace)
 ```
 
 ### 2.1 The Components Explained:
+
 - **Workspace:** A logical container and XML namespace grouping related stores and layers together (e.g., `training`, `city_planning`). It prevents layer naming collisions across different departments or projects.
 - **Store:** The physical connection configuration to a data source (e.g., PostGIS database connection parameters, path to a directory of Shapefiles, or a GeoTIFF file).
 - **Resource / Layer:** An individual spatial table or file published from a store with a verified Coordinate Reference System, bounding box, and assigned style.
@@ -74,12 +76,14 @@ Data Source → Store → Layer → OGC Service
 ```
 
 ### 3.1 Vector Data Sources
+
 - **PostGIS:** The enterprise standard. Connects to PostgreSQL spatial tables with live spatial querying, spatial indexing (`GiST`), multi-user editing, and ACID transaction safety.
 - **Directory of Shapefiles:** Connects to a folder containing `.shp`, `.shx`, `.dbf`, and `.prj` files. Great for rapid local testing.
 - **GeoPackage (GPKG):** A modern, single-file SQLite database containing multiple vector and raster layers according to OGC standards.
 - **GeoJSON:** Flat JSON files containing vector feature collections.
 
 ### 3.2 Raster Data Sources
+
 - **GeoTIFF:** Single georeferenced raster file (satellite imagery, aerial orthophotos, elevation models).
 - **ImageMosaic:** Connects to a catalog of multiple adjacent raster tiles, merging them into a seamless continuous layer with spatial indexing and time-series dimensions.
 
@@ -96,21 +100,22 @@ Publishing spatial data in GeoServer follows an 8-step workflow:
 ```
 
 ### 4.1 Step-by-Step Publishing Workflow
-1. **Create Workspace:** Define a name (e.g., `training`) and a unique Namespace URI (e.g., `http://localhost/training`).
-2. **Add Data Store:** Select your store type (PostGIS, Directory of Shapefiles, or GeoTIFF) and provide connection parameters.
-3. **Select Data Source:** GeoServer reads the store and lists available tables or files. Click **Publish** next to the desired dataset.
-4. **Configure Coordinate Reference Systems (CRS):**
-   - **Native CRS:** The coordinate system detected directly within the dataset header (e.g., `EPSG:4326` or `EPSG:32643`).
-   - **Declared CRS:** What GeoServer publishes to clients.
-   - **SRS Handling Policies:**
-     - *Force Declared:* Overrides the native CRS if it is missing or misidentified.
-     - *Reproject native to declared:* Uses GeoTools to reproject coordinates on ingest.
-5. **Compute Bounding Boxes:**
-   - Click **Compute from data** to calculate the **Native Bounding Box**.
-   - Click **Compute from native bounds** to calculate the **Lat/Lon Bounding Box** in WGS 84 degrees.
-   - *If bounding boxes are missing or set to zero, OpenLayers will not be able to display the layer.*
-6. **Assign Style:** In the **Publishing** tab, assign a Default Style (SLD).
-7. **Save and Preview:** Click **Save**. Navigate to **Layer Preview** in the GeoServer sidebar and select **OpenLayers** to confirm rendering.
+
+- **Create Workspace:** Define a name (e.g., `training`) and a unique Namespace URI (e.g., `http://localhost/training`).
+- **Add Data Store:** Select your store type (PostGIS, Directory of Shapefiles, or GeoTIFF) and provide connection parameters.
+- **Select Data Source:** GeoServer reads the store and lists available tables or files. Click **Publish** next to the desired dataset.
+- **Configure Coordinate Reference Systems (CRS):**
+  - **Native CRS:** The coordinate system detected directly within the dataset header (e.g., `EPSG:4326` or `EPSG:32643`).
+  - **Declared CRS:** What GeoServer publishes to clients.
+  - **SRS Handling Policies:**
+    - *Force Declared:* Overrides the native CRS if it is missing or misidentified.
+    - *Reproject native to declared:* Uses GeoTools to reproject coordinates on ingest.
+- **Compute Bounding Boxes:**
+  - Click **Compute from data** to calculate the **Native Bounding Box**.
+  - Click **Compute from native bounds** to calculate the **Lat/Lon Bounding Box** in WGS 84 degrees.
+  - *If bounding boxes are missing or set to zero, OpenLayers will not be able to display the layer.*
+- **Assign Style:** In the **Publishing** tab, assign a Default Style (SLD).
+- **Save and Preview:** Click **Save**. Navigate to **Layer Preview** in the GeoServer sidebar and select **OpenLayers** to confirm rendering.
 
 ---
 
@@ -128,6 +133,7 @@ Append `REQUEST=GetCapabilities` to your service URL:
 - **WFS:** `http://localhost:8080/geoserver/wfs?service=WFS&version=2.0.0&request=GetCapabilities`
 
 ### 5.2 Key Information to Inspect:
+
 - **Layer Names:** Look for `<Layer><Name>training:roads</Name></Layer>`. The string inside `<Name>` is the exact identifier required by OpenLayers.
 - **Supported CRS:** Verify that your target projection (e.g., `EPSG:3857`, `EPSG:4326`) is listed under `<CRS>`.
 - **Supported Formats:** Check `<Format>` tags for available image types (`image/png`, `image/jpeg`) or vector formats (`application/json`).
@@ -140,6 +146,7 @@ Append `REQUEST=GetCapabilities` to your service URL:
 **WMS (Web Map Service)** renders map images on the server and streams them to OpenLayers as raster pictures.
 
 ### 6.1 `ImageWMS` vs. `TileWMS`
+
 - **`ImageWMS` (Single Image):** Requests a single image covering the whole map canvas for the current extent.
   - *Best for:* Thematic maps and layers with dense text labels (prevents labels being chopped at tile boundaries).
 - **`TileWMS` (Tiled Images):** Requests WMS imagery in a grid of 256x256 pixel tiles.
@@ -187,7 +194,9 @@ map.addLayer(wmsLayer);
 - **Zero Client Overhead:** The server handles all label placement, complex line dashes, and polygon hatching without consuming browser CPU.
 
 ### 7.2 SLD Structure & Symbolizers
+
 An SLD document consists of:
+
 `NamedLayer` $\rightarrow$ `UserStyle` $\rightarrow$ `FeatureTypeStyle` $\rightarrow$ `Rule` $\rightarrow$ `Symbolizer`
 
 - `PointSymbolizer`: Circles, squares, SVG icons.
@@ -458,6 +467,7 @@ flowchart TD
 ```
 
 ### Common HTTP Status Codes & Solutions:
+
 - **`404 Not Found`:** The GeoServer URL path or `LAYERS: 'workspace:layer'` is misspelled.
 - **`400 Bad Request`:** Invalid parameters. GeoServer returns an XML `ServiceExceptionReport` explaining the exact syntax error.
 - **`401 / 403 Forbidden`:** Workspace security rules are active. Check **Data Security** in GeoServer admin settings.

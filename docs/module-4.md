@@ -7,6 +7,7 @@ Welcome to Module 4! In this module, we examine the data engine behind enterpris
 ## 1. PostGIS & Web GIS Architecture
 
 ### 1.1 PostgreSQL vs. PostGIS
+
 - **PostgreSQL:** An enterprise-grade, open-source Object-Relational Database Management System (ORDBMS) known for SQL standard compliance, ACID transactions, complex concurrency, and extensibility.
 - **PostGIS:** The spatial extender that transforms PostgreSQL into a full-featured spatial database. PostGIS follows the **OGC Simple Features for SQL (SFS)** specification, adding:
   - Native spatial data types (`geometry`, `geography`, `raster`).
@@ -29,9 +30,9 @@ PostGIS Database (Storage & Spatial SQL)
         Browser Canvas (User Viewport)
 ```
 
-1. **Storage & Processing Tier (PostGIS):** Stores raw coordinate vectors, enforces topological constraints, runs complex spatial joins, and filters millions of rows with spatial indexes.
-2. **Middleware & Service Tier (GeoServer):** Connects to PostGIS via connection pooling, translates spatial tables into standard OGC protocols (WMS, WFS, WMTS), and applies server-side symbology (SLD).
-3. **Client Tier (OpenLayers):** Requests rendered map images (WMS) or vector geometries (WFS), managing zoom, pan, layer toggles, and user interactions.
+- **Storage & Processing Tier (PostGIS):** Stores raw coordinate vectors, enforces topological constraints, runs complex spatial joins, and filters millions of rows with spatial indexes.
+- **Middleware & Service Tier (GeoServer):** Connects to PostGIS via connection pooling, translates spatial tables into standard OGC protocols (WMS, WFS, WMTS), and applies server-side symbology (SLD).
+- **Client Tier (OpenLayers):** Requests rendered map images (WMS) or vector geometries (WFS), managing zoom, pan, layer toggles, and user interactions.
 
 ### 1.3 Client-Side vs. Server-Side Spatial Processing
 
@@ -106,15 +107,17 @@ CREATE TABLE parcels (
 An **SRID (Spatial Reference System Identifier)** is an integer identifier that points to a specific coordinate reference system defined in the standard EPSG registry (stored in the PostGIS `spatial_ref_sys` metadata table).
 
 Common SRIDs encountered in Web GIS:
+
 - **`EPSG:4326` (WGS 84):** Geographic coordinate system expressed in angular degrees (Longitude: -180 to +180, Latitude: -90 to +90). Used by GPS satellites and GeoJSON files.
 - **`EPSG:3857` (Web Mercator):** Projected coordinate system expressed in planar meters. Used by Google Maps, OpenStreetMap, and OpenLayers by default.
 - **Projected Local Grids (e.g., UTM Zones):** Conformal map projections (such as `EPSG:32643` for UTM Zone 43N) designed for meter-accurate distance and area measurements within a specific geographic zone.
 
 ### 3.2 Why SRID Matters in PostGIS
-1. **Spatial Queries Require Matching SRIDs:** PostGIS will reject queries that compare geometries with different SRIDs (e.g., intersecting an `EPSG:4326` layer with an `EPSG:3857` layer throws an error).
-2. **Measurement Units Depend on SRID:**
-   - Running `ST_Area(geom)` on an `EPSG:4326` polygon calculates area in **square degrees** (unusable for real-world metrics).
-   - Running `ST_Area(geom)` on an `EPSG:3857` or UTM polygon calculates area in **square meters**.
+
+- **Spatial Queries Require Matching SRIDs:** PostGIS will reject queries that compare geometries with different SRIDs (e.g., intersecting an `EPSG:4326` layer with an `EPSG:3857` layer throws an error).
+- **Measurement Units Depend on SRID:**
+  - Running `ST_Area(geom)` on an `EPSG:4326` polygon calculates area in **square degrees** (unusable for real-world metrics).
+  - Running `ST_Area(geom)` on an `EPSG:3857` or UTM polygon calculates area in **square meters**.
 
 ### 3.3 Checking the SRID of a Table
 ```sql
@@ -127,6 +130,7 @@ LIMIT 5;
 ```
 
 ### 3.4 Coordinate Transformation (`ST_Transform`) vs. `ST_SetSRID`
+
 - **`ST_Transform(geom, target_srid)`:** Mathematically reprojects coordinates from the source CRS to the target CRS using Proj4 parameters.
   ```sql
   -- Convert WGS 84 longitude/latitude degrees into Web Mercator planar meters:
@@ -320,6 +324,7 @@ PostGIS Database (Tables & Views)
 You are not restricted to publishing raw database tables. In GeoServer, an **SQL View** allows you to publish any valid PostGIS SQL query as an independent, dynamic map layer.
 
 ### 9.1 Why Use SQL Views?
+
 - **Server-Side Filtering:** Filter features on the database tier before GeoServer draws them.
 - **Dynamic Calculated Columns:** Compute areas, lengths, or statistical categories on the fly.
 - **Spatial Joins:** Publish combined data from multiple tables without creating database materialized views.
@@ -387,11 +392,11 @@ flowchart LR
 
 When integrating PostGIS with Web GIS clients, keep these enterprise best practices in mind:
 
-1. **Always Index Geometry Columns:** Every spatial table queried by GeoServer must have a GiST index on its geometry column (`CREATE INDEX ... USING GIST(geom)`).
-2. **Filter at the Database Level:** Never transfer all database rows to GeoServer or OpenLayers. Filter using SQL Views, PostGIS `WHERE` conditions, or GeoServer `CQL_FILTER`.
-3. **Use Viewport Bounding Box Strategies:** When using WFS, always use `ol/loadingstrategy.bbox` so OpenLayers only requests features inside the current view extent.
-4. **Run Regular Database Maintenance:** Execute `VACUUM ANALYZE table_name;` periodically so PostgreSQL's query planner maintains accurate distribution statistics for optimal spatial query plans.
-5. **Select Appropriate Precision:** At low zoom levels covering whole countries or continents, use `ST_Simplify(geom, tolerance)` or generalized tables to avoid sending millions of unneeded vertices across the network.
+- **Always Index Geometry Columns:** Every spatial table queried by GeoServer must have a GiST index on its geometry column (`CREATE INDEX ... USING GIST(geom)`).
+- **Filter at the Database Level:** Never transfer all database rows to GeoServer or OpenLayers. Filter using SQL Views, PostGIS `WHERE` conditions, or GeoServer `CQL_FILTER`.
+- **Use Viewport Bounding Box Strategies:** When using WFS, always use `ol/loadingstrategy.bbox` so OpenLayers only requests features inside the current view extent.
+- **Run Regular Database Maintenance:** Execute `VACUUM ANALYZE table_name;` periodically so PostgreSQL's query planner maintains accurate distribution statistics for optimal spatial query plans.
+- **Select Appropriate Precision:** At low zoom levels covering whole countries or continents, use `ST_Simplify(geom, tolerance)` or generalized tables to avoid sending millions of unneeded vertices across the network.
 
 ---
 

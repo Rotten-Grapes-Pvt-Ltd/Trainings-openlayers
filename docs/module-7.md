@@ -34,6 +34,7 @@ Field Device (Tablet / Laptop)
 ```
 
 ### 1.2 Common Offline Use Cases
+
 - **Field Data Collection:** Environmental surveys, forestry inventories, and agricultural soil sampling in remote wilderness areas.
 - **Disaster Response & Emergency Management:** Search-and-rescue teams operating after earthquakes or hurricanes where telecommunications infrastructure is destroyed.
 - **Maritime & Aviation:** Ships and aircraft operating outside terrestrial cellular networks where satellite bandwidth is cost-prohibitive.
@@ -49,29 +50,32 @@ Field Device (Tablet / Laptop)
 Instead of copying millions of individual image files across a filesystem (which causes file-system thrashing and slow transfer speeds), MBTiles stores the entire tile pyramid inside a single **SQLite 3 database** file (`.mbtiles`).
 
 ### 2.2 Tile Grid & Coordinate Pyramid
+
 MBTiles structures data according to standard `{z}/{x}/{y}` slippy map tile coordinates:
+
 - **`z` (Zoom level):** Pyramid level ($0$ = whole world in one tile; $18$ = building level).
 - **`x` (Column):** Horizontal tile index from West to East.
 - **`y` (Row):** Vertical tile index.
 
 > **Note on TMS vs. XYZ Coordinate Conventions:** Standard web XYZ tiles count $y=0$ from the **North** (top-down). MBTiles follows the OSGeo **TMS (Tile Map Service)** specification, which counts $y=0$ from the **South** (bottom-up). Converting between them is straightforward:
+>
 > $$\text{tile\_row}_{\text{TMS}} = (2^z - 1) - \text{tile\_row}_{\text{XYZ}}$$
 
 ### 2.3 Internal Structure of an `.mbtiles` File
+
 Inside the SQLite file, MBTiles utilizes two primary tables:
 
-1. **`metadata` Table:** Stores key-value configuration pairs:
-   - `name`: Human-readable dataset title.
-   - `format`: `png`, `jpg`, `webp`, or `pbf`.
-   - `bounds`: Bounding box coordinates (`minLon, minLat, maxLon, maxLat`).
-   - `minzoom` & `maxzoom`: Supported zoom range.
-   - `json`: Vector layer schema definitions (for vector tiles).
-
-2. **`tiles` Table:** Stores the raw tile binaries:
-   - `zoom_level` (INTEGER)
-   - `tile_column` (INTEGER)
-   - `tile_row` (INTEGER)
-   - `tile_data` (BLOB): Binary PNG/JPEG image or gzipped MVT Protobuf.
+- **`metadata` Table:** Stores key-value configuration pairs:
+  - `name`: Human-readable dataset title.
+  - `format`: `png`, `jpg`, `webp`, or `pbf`.
+  - `bounds`: Bounding box coordinates (`minLon, minLat, maxLon, maxLat`).
+  - `minzoom` & `maxzoom`: Supported zoom range.
+  - `json`: Vector layer schema definitions (for vector tiles).
+- **`tiles` Table:** Stores the raw tile binaries:
+  - `zoom_level` (INTEGER)
+  - `tile_column` (INTEGER)
+  - `tile_row` (INTEGER)
+  - `tile_data` (BLOB): Binary PNG/JPEG image or gzipped MVT Protobuf.
 
 ---
 
@@ -110,6 +114,7 @@ Raw Spatial Data (PostGIS / Shapefile / GeoTIFF)
 ```
 
 ### 4.1 Common Tile Generation Tools
+
 - **Tippecanoe (Mapbox / Felt):** The industry standard for creating vector MBTiles from GeoJSON. Automatically simplifies line vertices, drops minor features at low zoom levels, and balances tile density to prevent browser overdraw.
 - **GDAL (`gdal_translate` & `gdaladdo`):** Powerful command-line utility for converting georeferenced raster imagery (GeoTIFFs, ECW) into raster MBTiles.
 - **QGIS:** Features a built-in processing tool: **Generate XYZ tiles (MBTiles)**. Exports any configured QGIS map canvas into an MBTiles file.
@@ -147,10 +152,11 @@ MBTiles (.mbtiles file)
 ```
 
 ### 5.2 Common Integration Approaches
-1. **Lightweight Local Tile Server:** A background binary (such as `mbtiles-server`, TileServer GL, or a small Python/Go daemon) runs locally, reads the SQLite file, and serves standard REST endpoints (`http://localhost:8080/tiles/{z}/{x}/{y}.png`).
-2. **Packaged Desktop Application (Electron):** Node.js runs with native OS filesystem access, using `better-sqlite3` to read tile blobs from the `.mbtiles` file and serving them to the OpenLayers frontend via custom protocols (`app://tiles/{z}/{x}/{y}`) or IPC channels.
-3. **Packaged Mobile Application (Capacitor / Cordova):** Native mobile plugins query the SQLite database stored in device flash memory and stream base64 or blob URLs to OpenLayers inside a Web View.
-4. **WebAssembly SQLite (`sql.js`):** Loads small MBTiles files into browser memory using WebAssembly. Suitable only for small datasets (< 100 MB) due to browser RAM limits.
+
+- **Lightweight Local Tile Server:** A background binary (such as `mbtiles-server`, TileServer GL, or a small Python/Go daemon) runs locally, reads the SQLite file, and serves standard REST endpoints (`http://localhost:8080/tiles/{z}/{x}/{y}.png`).
+- **Packaged Desktop Application (Electron):** Node.js runs with native OS filesystem access, using `better-sqlite3` to read tile blobs from the `.mbtiles` file and serving them to the OpenLayers frontend via custom protocols (`app://tiles/{z}/{x}/{y}`) or IPC channels.
+- **Packaged Mobile Application (Capacitor / Cordova):** Native mobile plugins query the SQLite database stored in device flash memory and stream base64 or blob URLs to OpenLayers inside a Web View.
+- **WebAssembly SQLite (`sql.js`):** Loads small MBTiles files into browser memory using WebAssembly. Suitable only for small datasets (< 100 MB) due to browser RAM limits.
 
 ---
 
@@ -172,6 +178,7 @@ Designing a robust offline Web GIS requires coordinating storage, service worker
 ```
 
 ### 6.1 Storage Tiers in the Browser
+
 - **Service Workers & Cache API:** Intercepts outgoing HTTP requests. When online, requests are cached; when offline, previously viewed tiles are served directly from the browser cache.
 - **IndexedDB:** In-browser NoSQL database. Ideal for storing user-digitized survey features, GPS tracks, and attribute edits before synchronizing with the central server.
 - **Local SQLite / Native Filesystem:** Used in packaged desktop/mobile wrappers to store gigabytes of base maps and aerial imagery.
@@ -193,7 +200,9 @@ Single PMTiles File (Hosted on S3 / CDN / Static Server)
 ```
 
 ### 7.1 What is PMTiles?
+
 **PMTiles** (developed by Protomaps) is a single-file tile archive format based on standard **HTTP Range Requests**:
+
 - **Serverless Tile Delivery:** PMTiles files can be hosted on standard object storage (Amazon S3, Cloudflare R2, Google Cloud Storage, or a basic Nginx static server). **No GeoServer, Node.js server, or database daemon is required.**
 - **HTTP Range Requests:** The browser's PMTiles client library reads the archive's internal directory header and issues HTTP requests fetching only the specific byte offsets for the desired tile:
   ```text
@@ -223,10 +232,10 @@ Single PMTiles File (Hosted on S3 / CDN / Static Server)
 
 While offline mapping provides essential resilience, systems engineers must plan for significant trade-offs:
 
-1. **Storage Limits:** A multi-zoom vector or raster tile package can quickly exceed mobile device flash memory limits.
-2. **Stale Data:** Without live connections, field users operate on static snapshots. Infrastructure changes or new survey edits made by other teams are not visible until synchronization.
-3. **Two-Way Synchronization Complexity:** When field users digitize or edit features offline, reconciling those edits with the central PostGIS database upon reconnecting requires conflict resolution rules (e.g., *last-write-wins* vs. *manual review*).
-4. **Search & Geocoding Constraints:** Address geocoding and road routing engines typically rely on massive database indexes. Providing offline routing requires embedded routing engines (e.g., Valhalla or OSRM) bundled locally.
+- **Storage Limits:** A multi-zoom vector or raster tile package can quickly exceed mobile device flash memory limits.
+- **Stale Data:** Without live connections, field users operate on static snapshots. Infrastructure changes or new survey edits made by other teams are not visible until synchronization.
+- **Two-Way Synchronization Complexity:** When field users digitize or edit features offline, reconciling those edits with the central PostGIS database upon reconnecting requires conflict resolution rules (e.g., *last-write-wins* vs. *manual review*).
+- **Search & Geocoding Constraints:** Address geocoding and road routing engines typically rely on massive database indexes. Providing offline routing requires embedded routing engines (e.g., Valhalla or OSRM) bundled locally.
 
 ---
 

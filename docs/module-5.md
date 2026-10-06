@@ -31,16 +31,21 @@ In Module 3, we explored server-side WMS styling via GeoServer SLD, where the se
 | **Data Payload** | Map image pixels | Raw coordinates and attributes (GeoJSON/WFS) |
 
 ### 1.2 Client-Side Styling in OpenLayers
+
 In OpenLayers, vector layers use the `setStyle()` method to apply visual symbology. Styling can be assigned at two distinct scopes:
+
 - **`VectorLayer`**: `vectorLayer.setStyle(...)` sets the default appearance for all features on the layer.
 - **Individual `Feature`**: `feature.setStyle(...)` overrides the layer style for a specific feature instance (ideal for selection flags, hover highlights, or custom status indicators).
 
 ### 1.3 Static vs. Dynamic Styling
+
 - **Static Styling:** A fixed `Style` object applied uniformly to every feature across all zoom levels.
 - **Dynamic Styling:** A JavaScript **Style Function** that inspects each feature's attributes (`feature.get('type')`) or the map's current zoom resolution to return tailored styles dynamically.
 
 ### 1.4 Geometry Targets
+
 Styles apply across the three core vector geometry categories:
+
 - **Point / MultiPoint:** Styled with circular vector symbols (`Circle`) or external bitmap/SVG graphics (`Icon`).
 - **LineString / MultiLineString:** Styled with strokes (`Stroke`).
 - **Polygon / MultiPolygon:** Styled with interior fills (`Fill`) and outer boundary strokes (`Stroke`).
@@ -67,6 +72,7 @@ Polygon Feature
 ```
 
 ### 2.1 Core Style Classes
+
 - **`Style`:** The root container that groups together fill, stroke, image, and text symbolizers.
 - **`Fill`:** Defines interior colors and transparencies for polygons, circles, and text backgrounds. Supports HEX, RGB, RGBA, and HSL strings.
 - **`Stroke`:** Defines boundary lines, road paths, and outlines with width, color, and dash patterns.
@@ -260,6 +266,7 @@ new Text({
 ```
 
 ### 5.1 Label Configuration
+
 - **`text`:** The string to display, typically retrieved from a feature attribute (`feature.get('name')`).
 - **`font`:** Standard CSS font string (e.g., `'bold 12px Inter, sans-serif'`).
 - **`fill`:** Font character color (`new Fill({ color: '#212121' })`).
@@ -329,7 +336,9 @@ const hospitalIconStyle = new Style({
 ```
 
 ### 6.2 Anchor Positioning
+
 The `anchor` property dictates which point of the icon image aligns with the feature's geographic coordinate:
+
 - **`[0.5, 0.5]` (Center):** Default. Best for circular badges, POI symbols, and airport markers.
 - **`[0.5, 1.0]` (Bottom-Center):** Standard for map pin markers so the needle tip points to the location.
 
@@ -373,6 +382,7 @@ select.on('select', (event) => {
 ```
 
 ### 7.1 Selection Features
+
 - **Selection Condition:** `condition: click` triggers on single clicks; `pointerMove` triggers on hover.
 - **Deselection:** Clicking anywhere on the empty map canvas automatically deselects features.
 - **Selected Array:** `event.selected` contains features just selected; `event.deselected` contains features whose selection was cleared.
@@ -523,12 +533,12 @@ feature.setStyle(...)
 
 When rendering vector layers in production, keep these performance principles in mind:
 
-1. **Reuse `Style` Objects:** Maintain a cached object dictionary (`styles[category]`) rather than constructing `new Style()` instances inside style functions.
-2. **Avoid Creating Complex Styles Unnecessarily:** Every extra stroke, text shadow, and nested fill increases canvas draw call time.
-3. **Don't Use Huge Numbers of Unique Icons:** Loading 200 distinct icon URLs triggers 200 separate asynchronous image downloads. Prefer SVG icons or standardized icon sheets.
-4. **Avoid Excessive Labels:** Restrict label rendering to close zoom levels using the `resolution` argument or enable `declutter: true`.
-5. **Be Careful with Thousands of Client-Side Features:** If your dataset exceeds 5,000 features, pure GeoJSON/WFS rendering can degrade browser frame rates.
-6. **Use Server-Side / Vector Tiles for Very Large Datasets:** As covered in Module 2, switch to **Vector Tiles (MVT)** or server-side **WMS** for datasets with tens of thousands of geometries.
+- **Reuse `Style` Objects:** Maintain a cached object dictionary (`styles[category]`) rather than constructing `new Style()` instances inside style functions.
+- **Avoid Creating Complex Styles Unnecessarily:** Every extra stroke, text shadow, and nested fill increases canvas draw call time.
+- **Don't Use Huge Numbers of Unique Icons:** Loading 200 distinct icon URLs triggers 200 separate asynchronous image downloads. Prefer SVG icons or standardized icon sheets.
+- **Avoid Excessive Labels:** Restrict label rendering to close zoom levels using the `resolution` argument or enable `declutter: true`.
+- **Be Careful with Thousands of Client-Side Features:** If your dataset exceeds 5,000 features, pure GeoJSON/WFS rendering can degrade browser frame rates.
+- **Use Server-Side / Vector Tiles for Very Large Datasets:** As covered in Module 2, switch to **Vector Tiles (MVT)** or server-side **WMS** for datasets with tens of thousands of geometries.
 
 ---
 

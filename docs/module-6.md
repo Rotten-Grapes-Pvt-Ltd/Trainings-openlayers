@@ -16,12 +16,14 @@ While 2D maps excel at planimetric measurements, thematic overlays, and spatial 
 ```
 
 ### 1.2 When 3D Provides Distinct Value
+
 - **Urban Planning & Architecture:** Sunlight shadow analysis, zoning heights, and line-of-sight viewshed calculations.
 - **Topographic & Environmental Analysis:** Flood risk inundation across valley terrain, landslide monitoring, and mountain watershed modeling.
 - **Infrastructure & Utilities:** Multi-level subterranean utilities, bridge spans, and transmission corridors.
 - **Aviation & Defense:** Flight paths, drone corridors, radar coverage domes, and situational awareness.
 
 ### 1.3 Typical 3D Datasets
+
 - **Digital Elevation Models (DEM/DTM):** Terrain surfaces defining the physical shape of the Earth.
 - **3D Buildings:** LOD (Level of Detail) volumetric building envelopes (CityGML, 3D Tiles).
 - **Drone Photogrammetry:** High-resolution 3D textured mesh models derived from aerial photography.
@@ -36,6 +38,7 @@ While 2D maps excel at planimetric measurements, thematic overlays, and spatial 
 **CesiumJS** is the leading open-source JavaScript library for rendering world-class 3D globes and maps directly in the web browser using WebGL without browser plugins.
 
 ### 2.1 Key CesiumJS Concepts
+
 - **WebGL Rendering Engine:** Hardware-accelerated graphics engine delivering 60 FPS performance across desktop and mobile browsers.
 - **Virtual Globe:** Renders the Earth as a realistic WGS 84 ellipsoid (`EPSG:4326`) in an Earth-Centered, Earth-Fixed (ECEF) Cartesian coordinate system rather than a flat 2D projection.
 - **`Viewer` & `Scene`:** The core rendering context. The `Scene` manages all 3D graphical objects, lights, shadows, cameras, and atmospheric scattering.
@@ -78,6 +81,7 @@ OpenLayers Map (Layers, Sources, View)
 ```
 
 ### 4.1 How It Works
+
 - **Reuse Existing Code:** You build your map using standard OpenLayers classes (`Map`, `TileLayer`, `VectorLayer`, `WMS`, `GeoJSON`).
 - **Automatic Translation:** `ol-cesium` reads the OpenLayers layer stack and view properties, automatically translating them into Cesium imagery providers, terrain drapes, and 3D primitives.
 - **Bidirectional Synchronization:** When you zoom or pan in 2D, the 3D camera moves. When you tilt, orbit, and rotate in 3D, the underlying 2D view extent stays synchronized.
@@ -150,6 +154,7 @@ OpenLayers 2D View           Cesium 3D Camera
 ```
 
 ### 6.1 Understanding Camera Orientation
+
 - **Position:** The 3D coordinate of the camera eye in space (Longitude, Latitude, Altitude in meters).
 - **Heading:** The horizontal compass heading in radians ($0 = \text{North}$, $\frac{\pi}{2} = \text{East}$, $\pi = \text{South}$, $\frac{3\pi}{2} = \text{West}$).
 - **Pitch:** The vertical tilt angle in radians ($-\frac{\pi}{2} = \text{looking straight down / nadir}$, $0 = \text{looking horizontal at horizon}$).
@@ -234,6 +239,7 @@ Photorealistic 3D Landscape
 ```
 
 ### Key Considerations:
+
 - **Layer Stacking Order:** Lower layers in the OpenLayers layer array render underneath higher layers in 3D.
 - **Layer Visibility:** Toggling `layer.setVisible(false)` in OpenLayers instantly hides the corresponding imagery in the 3D globe.
 - **Opacity:** Changes to `layer.setOpacity(0.5)` propagate automatically to Cesium's WebGL fragment shader.
@@ -277,6 +283,7 @@ Citywide 3D Buildings / Point Clouds (Gigabytes of data)
 ```
 
 ### 10.1 Key Benefits of 3D Tiles
+
 - **Hierarchical Level of Detail (HLOD):** Features far away render as simplified bounding boxes; features close to the camera stream full, high-polygon textures.
 - **Dynamic Streaming:** Only visible tiles within the camera's field of view (frustum) are fetched over the network.
 - **Heterogeneous Formats:** Supports batched 3D models (`.b3dm`), instanced models (`.i3dm`), point clouds (`.pnts`), and glTF models.
@@ -350,16 +357,18 @@ When toggling from 2D to 3D, `ol-cesium` automatically positions the 3D camera o
 ## 13. Debugging & Performance
 
 ### 13.1 Common Issues & Solutions
+
 - **Blank Screen / Cesium Assets Error:** Verify that `CESIUM_BASE_URL` is configured correctly so Cesium can locate its Web Workers and shaders.
 - **WebGL Context Lost:** Occurs when graphics hardware runs out of memory. Reduce texture resolutions or limit the number of active 3D Tilesets.
 - **Vectors Not Showing on Mountains:** Ensure vector geometries are configured with `clampToGround: true` so geometries adhere to 3D terrain slopes.
 - **CORS Issues on Terrain / Imagery:** Remote elevation and imagery servers must supply valid `Access-Control-Allow-Origin: *` HTTP headers.
 
 ### 13.2 3D Performance Principles
-1. **Stream Large Datasets via 3D Tiles:** Never load raw 200 MB GeoJSON files into browser memory; stream them using 3D Tiles or Vector Tiles.
-2. **Limit Active Billboards & Labels:** Drawing 10,000 text labels in 3D WebGL requires significant vertex calculation per frame.
-3. **Use Level of Detail (LOD):** Leverage simplified geometries at high camera altitudes.
-4. **Pause 3D Rendering When Idle:** `ol-cesium` optimizes frame rendering, but explicitly stopping unnecessary animations extends laptop battery life and reduces GPU load.
+
+- **Stream Large Datasets via 3D Tiles:** Never load raw 200 MB GeoJSON files into browser memory; stream them using 3D Tiles or Vector Tiles.
+- **Limit Active Billboards & Labels:** Drawing 10,000 text labels in 3D WebGL requires significant vertex calculation per frame.
+- **Use Level of Detail (LOD):** Leverage simplified geometries at high camera altitudes.
+- **Pause 3D Rendering When Idle:** `ol-cesium` optimizes frame rendering, but explicitly stopping unnecessary animations extends laptop battery life and reduces GPU load.
 
 ---
 

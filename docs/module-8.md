@@ -45,7 +45,9 @@ OpenLayers Map Instance
 ```
 
 ### 1.2 Managing Layer Stacking (`zIndex`)
+
 In multi-layer applications, layer visibility conflicts occur when rasters hide vector points. Explicitly setting `zIndex` ensures deterministic rendering:
+
 - `zIndex: 0` $\rightarrow$ Base map (OSM / Satellite).
 - `zIndex: 1` $\rightarrow$ Polygon boundary overlays (WMS / Districts).
 - `zIndex: 2` $\rightarrow$ Interactive vector points & lines (WFS / Hospitals).
@@ -114,6 +116,7 @@ map.addLayer(districtsLayer);
 ```
 
 ### Key Considerations:
+
 - **`TRANSPARENT: true`:** Mandatory so lower base map roads and labels show through district boundaries.
 - **Inspect Network Traffic:** Open browser Developer Tools (`F12` $\rightarrow$ **Network**). Pan the map to verify outgoing `GetMap` requests with updated `BBOX` coordinates.
 
@@ -265,11 +268,12 @@ flowchart TD
 ```
 
 ### Top 5 Common Pitfalls:
-1. **Coordinate Misprojection:** Passing raw latitude/longitude degrees `[73.85, 18.52]` directly to `new View({ center: ... })` without calling `fromLonLat([73.85, 18.52])`. The map centers in the Atlantic Ocean off the coast of Africa.
-2. **Missing `ol.css`:** Forgetting `import 'ol/ol.css';` causes map controls, zoom buttons, and attribution text to appear as broken, stacked text in the corner of the screen.
-3. **CORS Violations:** Browsers blocking WFS GeoJSON requests from `http://localhost:5173` to `http://localhost:8080` because GeoServer CORS filter is commented out.
-4. **Z-Index Inversion:** Adding `hospitalLayer` before `districtsLayer` without explicit `zIndex` values, causing the opaque district polygons to cover the hospital markers.
-5. **WFS Version Parameter:** WFS 2.0 uses `typeNames` and `count`, whereas WFS 1.1 uses `typeName` and `maxFeatures`. Mixing these parameters can return empty XML.
+
+- **Coordinate Misprojection:** Passing raw latitude/longitude degrees `[73.85, 18.52]` directly to `new View({ center: ... })` without calling `fromLonLat([73.85, 18.52])`. The map centers in the Atlantic Ocean off the coast of Africa.
+- **Missing `ol.css`:** Forgetting `import 'ol/ol.css';` causes map controls, zoom buttons, and attribution text to appear as broken, stacked text in the corner of the screen.
+- **CORS Violations:** Browsers blocking WFS GeoJSON requests from `http://localhost:5173` to `http://localhost:8080` because GeoServer CORS filter is commented out.
+- **Z-Index Inversion:** Adding `hospitalLayer` before `districtsLayer` without explicit `zIndex` values, causing the opaque district polygons to cover the hospital markers.
+- **WFS Version Parameter:** WFS 2.0 uses `typeNames` and `count`, whereas WFS 1.1 uses `typeName` and `maxFeatures`. Mixing these parameters can return empty XML.
 
 ---
 

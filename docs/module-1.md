@@ -22,12 +22,14 @@ In enterprise Web GIS, mapping libraries generally fall into distinct architectu
 | **Best Used For** | **Enterprise GIS, complex portals, reprojection** | Lightweight consumer maps | Styled vector tile experiences |
 
 ### 1.3 Why Use OpenLayers?
+
 - **Complete Coordinate Independence:** Unlike libraries that enforce Web Mercator globally, OpenLayers natively reprojects raster tiles and vector geometries between arbitrary coordinate reference systems on the fly.
 - **Enterprise Protocol Native:** Direct support for OGC web services (WMS, WMTS, WFS), GeoTIFFs (via WebGL), and Mapbox Vector Tiles (MVT).
 - **Modern ES Module Architecture:** Tree-shakeable design ensures applications bundle only the classes they actually import, keeping production bundle sizes minimal.
 - **Extensible Interaction Model:** Sophisticated gesture, snapping, drawing, and modification pipelines built directly into the engine.
 
 ### 1.4 Common Web GIS Use Cases
+
 - **Municipal & Cadastral GIS:** Viewing property parcels, land records, zoning boundaries, and ownership deeds.
 - **Utility Networks:** Inspecting underground water pipelines, electric transmission grids, and fiber optic assets.
 - **Logistics & Fleet Tracking:** Real-time tracking of commercial vehicles, shipping containers, and transport routes.
@@ -51,12 +53,13 @@ graph TD
 ```
 
 ### The Six Core Components:
-1. **`Map` (`ol/Map`):** The central orchestrator. Binds to a specific HTML `<div>`, coordinates rendering passes, and manages layers, controls, and interactions.
-2. **`View` (`ol/View`):** The 2D "camera" looking down at the earth. Determines where the map is centered, the current zoom level, the resolution, and the active projection.
-3. **`Layer` (`ol/layer`):** Defines **how** geospatial data is visually composited onto the canvas (e.g., raster image tiles, vector paths, or WebGL textures).
-4. **`Source` (`ol/source`):** Defines **where and how** data is retrieved (e.g., requesting PNG tiles from OpenStreetMap, fetching WMS images from GeoServer, or parsing GeoJSON).
-5. **`Control` (`ol/control`):** Visible HTML DOM elements overlaid on the map canvas (zoom buttons, attribution badges, scale bars, fullscreen buttons).
-6. **`Interaction` (`ol/interaction`):** Invisible event listeners that intercept pointer, touch, and mouse gestures on the canvas (panning, pinch-to-zoom, click selection, vector drawing).
+
+- **`Map` (`ol/Map`):** The central orchestrator. Binds to a specific HTML `<div>`, coordinates rendering passes, and manages layers, controls, and interactions.
+- **`View` (`ol/View`):** The 2D "camera" looking down at the earth. Determines where the map is centered, the current zoom level, the resolution, and the active projection.
+- **`Layer` (`ol/layer`):** Defines **how** geospatial data is visually composited onto the canvas (e.g., raster image tiles, vector paths, or WebGL textures).
+- **`Source` (`ol/source`):** Defines **where and how** data is retrieved (e.g., requesting PNG tiles from OpenStreetMap, fetching WMS images from GeoServer, or parsing GeoJSON).
+- **`Control` (`ol/control`):** Visible HTML DOM elements overlaid on the map canvas (zoom buttons, attribution badges, scale bars, fullscreen buttons).
+- **`Interaction` (`ol/interaction`):** Invisible event listeners that intercept pointer, touch, and mouse gestures on the canvas (panning, pinch-to-zoom, click selection, vector drawing).
 
 ---
 
@@ -84,9 +87,11 @@ Map (The Orchestrator)               View (The Camera)
   - Multiple maps can share the exact same `View` instance, creating synchronized split-screen views.
 
 #### The Relationship Between Zoom and Resolution
+
 In OpenLayers, map scale is governed by **Resolution** (defined as ground meters per display pixel). 
 
 In the standard Web Mercator (`EPSG:3857`) projection at the equator:
+
 $$\text{Resolution} = \frac{2 \cdot \pi \cdot 6378137 \cdot \cos(\text{latitude})}{256 \cdot 2^{\text{zoom}}}$$
 
 - At **Zoom 0**, the entire circumference of the Earth (~40,075 km) is rendered in a single 256x256 pixel tile ($\approx 156,543\text{ meters/pixel}$).
@@ -120,10 +125,12 @@ Source (Data Acquisition) ──[Provides Data]──▶ Layer (Visual Represent
 - **`Layer` (`ol/layer`):** Responsible for rendering data received from a source onto the browser canvas. It governs presentation properties like `opacity`, `visible`, `zIndex`, `minResolution`, and `maxResolution`.
 
 #### Why Separate Layer and Source?
-1. **Reusability:** A single vector source loaded once into browser memory can be rendered across multiple distinct layers with different styling rules or resolution thresholds.
-2. **Decoupled Caching:** The source manages tile caching, retry policies, and worker threads without being destroyed if the layer's visibility is toggled off.
+
+- **Reusability:** A single vector source loaded once into browser memory can be rendered across multiple distinct layers with different styling rules or resolution thresholds.
+- **Decoupled Caching:** The source manages tile caching, retry policies, and worker threads without being destroyed if the layer's visibility is toggled off.
 
 #### Core Layer Hierarchy:
+
 - **`TileLayer` (`ol/layer/Tile`):** Renders pre-rendered raster imagery organized in regular square grid pyramids (e.g., OpenStreetMap, Google Maps, Bing, WMTS). Extremely fast and memory-efficient.
 - **`ImageLayer` (`ol/layer/Image`):** Renders a single, dynamic raster image generated on demand by a map server (e.g., GeoServer WMS) sized exactly to the current browser viewport.
 - **`VectorLayer` (`ol/layer/Vector`):** Renders client-side geometric primitives (points, lines, polygons) dynamically onto the HTML5 Canvas. Supports full attribute inspection, client-side styling, and vector interactions.
@@ -374,7 +381,9 @@ const customCoords = transform([73.8567, 18.5204], 'EPSG:4326', 'EPSG:3857');
 > If you pass raw coordinates `[73.8567, 18.5204]` directly into `new View({ center: ... })` without calling `fromLonLat()`, OpenLayers treats those numbers as **meters**. Your map will center 73 meters east of the Prime Meridian off the coast of West Africa (a location cartographers refer to as "Null Island").
 
 ### 6.3 The Axis Order Ambiguity
+
 In conversational English, people say *"Latitude, Longitude"*. In mathematics, computer graphics, and OpenLayers:
+
 - **Axis 1 ($X$) = Longitude** (East/West displacement)
 - **Axis 2 ($Y$) = Latitude** (North/South displacement)
 - **Always supply coordinates as `[Longitude, Latitude]` (`[X, Y]`)!**
@@ -530,6 +539,7 @@ map.addLayer(hospitalPointsLayer);
 ## 10. API Documentation & Troubleshooting
 
 ### 10.1 Navigating the API Documentation
+
 - **API Reference:** [https://openlayers.org/en/latest/apidoc/](https://openlayers.org/en/latest/apidoc/)
 - Import paths match class names: `ol/layer/Tile` $\rightarrow$ `import TileLayer from 'ol/layer/Tile.js'`.
 - Pay attention to the distinction between **Options** (passed to constructors), **Methods** (called on instances), and **Events** (listened to via `.on()`).
