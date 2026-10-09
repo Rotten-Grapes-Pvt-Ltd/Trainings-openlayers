@@ -1,0 +1,2262 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../module-2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Module 1 - Fundamentals - OpenLayers Training</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-1-openlayers-fundamentals-architecture" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OpenLayers Training" class="md-header__button md-logo" aria-label="OpenLayers Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OpenLayers Training
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module 1 - Fundamentals
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OpenLayers Training" class="md-nav__button md-logo" aria-label="OpenLayers Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    OpenLayers Training
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1 - Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1 - Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction to OpenLayers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to OpenLayers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-is-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 What is OpenLayers?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-openlayers-in-the-modern-web-gis-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 OpenLayers in the Modern Web GIS Ecosystem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-why-use-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Why Use OpenLayers?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-common-web-gis-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Common Web GIS Use Cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-core-architecture-map-view-layer-source-control-and-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Core Architecture: Map, View, Layer, Source, Control, and Interaction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The Core Architecture: Map, View, Layer, Source, Control, and Interaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-six-core-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Six Core Components:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-map-vs-view-layer-vs-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Map vs View &amp; Layer vs Source
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Map vs View &amp; Layer vs Source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-map-vs-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Map vs View
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Map vs View">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-relationship-between-zoom-and-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Relationship Between Zoom and Resolution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-layer-vs-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Layer vs Source
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Layer vs Source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-separate-layer-and-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Separate Layer and Source?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-layer-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Layer Hierarchy:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-environment-setup-integration-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Environment Setup &amp; Integration Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Environment Setup &amp; Integration Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-vanilla-js-browser-script-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Vanilla JS (Browser Script Tag)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-nodejs-toolchains-vite-webpack-rollup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Node.js Toolchains (Vite / Webpack / Rollup)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-react-nextjs-integration-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 React / Next.js Integration Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-setting-up-your-first-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Setting Up Your First Map
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-projections-coordinate-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Projections &amp; Coordinate Transformations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Projections &amp; Coordinate Transformations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-epsg4326-vs-epsg3857" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 EPSG:4326 vs. EPSG:3857
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 EPSG:4326 vs. EPSG:3857">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-does-the-web-use-web-mercator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Does the Web Use Web Mercator?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-transforming-coordinates-fromlonlat-and-tolonlat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Transforming Coordinates (fromLonLat and toLonLat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-the-axis-order-ambiguity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 The Axis Order Ambiguity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-custom-projections-proj4js" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Custom Projections (proj4js)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-advanced-view-navigation-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Advanced View Navigation &amp; Constraints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Advanced View Navigation &amp; Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-programmatic-camera-animation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Programmatic Camera Animation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-controls-and-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Controls and Interactions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Controls and Interactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-the-pointer-event-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 The Pointer Event Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-customizing-controls-and-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Customizing Controls and Interactions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-managing-layer-stacking-z-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Managing Layer Stacking (Z-Index)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-api-documentation-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. API Documentation &amp; Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. API Documentation &amp; Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-navigating-the-api-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Navigating the API Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-common-beginner-pitfalls-diagnostic-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Common Beginner Pitfalls &amp; Diagnostic Guide
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical activity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-implementation-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation (main.js):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2 - GIS Data & Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 3 - GeoServer & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 4 - PostGIS & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 5 - Vector Styling & Interaction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 6 - CesiumJS Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 7 - MBTiles & Wrap-up
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 8 - Integrated Exercise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instructor-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructor Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction to OpenLayers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to OpenLayers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-is-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 What is OpenLayers?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-openlayers-in-the-modern-web-gis-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 OpenLayers in the Modern Web GIS Ecosystem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-why-use-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Why Use OpenLayers?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-common-web-gis-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Common Web GIS Use Cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-core-architecture-map-view-layer-source-control-and-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Core Architecture: Map, View, Layer, Source, Control, and Interaction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The Core Architecture: Map, View, Layer, Source, Control, and Interaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-six-core-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Six Core Components:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-map-vs-view-layer-vs-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Map vs View &amp; Layer vs Source
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Map vs View &amp; Layer vs Source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-map-vs-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Map vs View
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Map vs View">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-relationship-between-zoom-and-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Relationship Between Zoom and Resolution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-layer-vs-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Layer vs Source
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Layer vs Source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-separate-layer-and-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Separate Layer and Source?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-layer-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Layer Hierarchy:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-environment-setup-integration-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Environment Setup &amp; Integration Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Environment Setup &amp; Integration Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-vanilla-js-browser-script-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Vanilla JS (Browser Script Tag)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-nodejs-toolchains-vite-webpack-rollup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Node.js Toolchains (Vite / Webpack / Rollup)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-react-nextjs-integration-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 React / Next.js Integration Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-setting-up-your-first-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Setting Up Your First Map
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-projections-coordinate-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Projections &amp; Coordinate Transformations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Projections &amp; Coordinate Transformations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-epsg4326-vs-epsg3857" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 EPSG:4326 vs. EPSG:3857
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 EPSG:4326 vs. EPSG:3857">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-does-the-web-use-web-mercator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Does the Web Use Web Mercator?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-transforming-coordinates-fromlonlat-and-tolonlat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Transforming Coordinates (fromLonLat and toLonLat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-the-axis-order-ambiguity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 The Axis Order Ambiguity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-custom-projections-proj4js" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Custom Projections (proj4js)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-advanced-view-navigation-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Advanced View Navigation &amp; Constraints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Advanced View Navigation &amp; Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-programmatic-camera-animation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Programmatic Camera Animation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-controls-and-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Controls and Interactions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Controls and Interactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-the-pointer-event-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 The Pointer Event Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-customizing-controls-and-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Customizing Controls and Interactions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-managing-layer-stacking-z-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Managing Layer Stacking (Z-Index)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-api-documentation-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. API Documentation &amp; Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. API Documentation &amp; Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-navigating-the-api-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Navigating the API Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-common-beginner-pitfalls-diagnostic-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Common Beginner Pitfalls &amp; Diagnostic Guide
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical activity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-implementation-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation (main.js):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="module-1-openlayers-fundamentals-architecture">Module 1 - OpenLayers Fundamentals &amp; Architecture</h1>
+<p>Welcome to <strong>Module 1</strong>! In this module, we establish the foundation for modern Web GIS engineering by exploring the core architecture of OpenLayers. You will master the relationships between the map container, the camera view, visual layers, data sources, user interactions, and coordinate reference systems.</p>
+<hr />
+<h2 id="1-introduction-to-openlayers">1. Introduction to OpenLayers</h2>
+<h3 id="11-what-is-openlayers">1.1 What is OpenLayers?</h3>
+<p><strong>OpenLayers</strong> is a high-performance, open-source JavaScript library for loading, displaying, and interacting with dynamic geospatial data in web browsers. Released under the permissive <strong>2-Clause BSD License</strong>, it allows developers to build rich, interactive GIS applications without proprietary licensing costs or vendor lock-in.</p>
+<h3 id="12-openlayers-in-the-modern-web-gis-ecosystem">1.2 OpenLayers in the Modern Web GIS Ecosystem</h3>
+<p>In enterprise Web GIS, mapping libraries generally fall into distinct architectural categories:</p>
+<table>
+<thead>
+<tr>
+<th>Feature / Library</th>
+<th>OpenLayers</th>
+<th>Leaflet</th>
+<th>Mapbox GL JS / MapLibre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Rendering</strong></td>
+<td>HTML5 Canvas &amp; WebGL</td>
+<td>HTML DOM &amp; Canvas</td>
+<td>WebGL Vector Tile Shaders</td>
+</tr>
+<tr>
+<td><strong>Projections Support</strong></td>
+<td><strong>Unmatched (any EPSG via Proj4js)</strong></td>
+<td>Basic (3857 / 4326 out of the box)</td>
+<td>Restricted (primarily 3857 / Mercator)</td>
+</tr>
+<tr>
+<td><strong>OGC Standards</strong></td>
+<td><strong>Native WMS, WFS, WMTS, OGC API</strong></td>
+<td>Plugin-dependent</td>
+<td>Vector Tiles / Raster Tiles</td>
+</tr>
+<tr>
+<td><strong>Data Format Support</strong></td>
+<td>GeoJSON, KML, GML, MVT, TopoJSON, GeoTIFF</td>
+<td>GeoJSON (plugins for others)</td>
+<td>GeoJSON, MVT</td>
+</tr>
+<tr>
+<td><strong>Architecture</strong></td>
+<td>Component-based, modular ES modules</td>
+<td>Lightweight, plugin-centric</td>
+<td>Style-spec driven</td>
+</tr>
+<tr>
+<td><strong>Best Used For</strong></td>
+<td><strong>Enterprise GIS, complex portals, reprojection</strong></td>
+<td>Lightweight consumer maps</td>
+<td>Styled vector tile experiences</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-why-use-openlayers">1.3 Why Use OpenLayers?</h3>
+<ul>
+<li><strong>Complete Coordinate Independence:</strong> Unlike libraries that enforce Web Mercator globally, OpenLayers natively reprojects raster tiles and vector geometries between arbitrary coordinate reference systems on the fly.</li>
+<li><strong>Enterprise Protocol Native:</strong> Direct support for OGC web services (WMS, WMTS, WFS), GeoTIFFs (via WebGL), and Mapbox Vector Tiles (MVT).</li>
+<li><strong>Modern ES Module Architecture:</strong> Tree-shakeable design ensures applications bundle only the classes they actually import, keeping production bundle sizes minimal.</li>
+<li><strong>Extensible Interaction Model:</strong> Sophisticated gesture, snapping, drawing, and modification pipelines built directly into the engine.</li>
+</ul>
+<h3 id="14-common-web-gis-use-cases">1.4 Common Web GIS Use Cases</h3>
+<ul>
+<li><strong>Municipal &amp; Cadastral GIS:</strong> Viewing property parcels, land records, zoning boundaries, and ownership deeds.</li>
+<li><strong>Utility Networks:</strong> Inspecting underground water pipelines, electric transmission grids, and fiber optic assets.</li>
+<li><strong>Logistics &amp; Fleet Tracking:</strong> Real-time tracking of commercial vehicles, shipping containers, and transport routes.</li>
+<li><strong>Environmental Dashboards:</strong> Overlaying dynamic satellite imagery, weather radar, flood risk inundation, and air quality metrics.</li>
+</ul>
+<hr />
+<h2 id="2-the-core-architecture-map-view-layer-source-control-and-interaction">2. The Core Architecture: Map, View, Layer, Source, Control, and Interaction</h2>
+<p>To build scalable applications, OpenLayers strictly separates the <strong>DOM container</strong>, the <strong>camera viewport</strong>, the <strong>rendering mechanism</strong>, the <strong>data retrieval pipeline</strong>, and the <strong>user input handlers</strong>.</p>
+<pre class="mermaid"><code>graph TD
+    Map[Map Container - Target DOM] --&gt; View[View - The Camera Viewport]
+    Map --&gt; Layer1[Tile Layer - Raster]
+    Map --&gt; Layer2[Vector Layer - Geometries]
+    Layer1 --&gt; Source1[OSM / WMS Source - Data Retrieval]
+    Layer2 --&gt; Source2[GeoJSON / WFS Source - Features]
+    Map --&gt; Control[Controls - DOM UI Elements]
+    Map --&gt; Interaction[Interactions - Canvas Gesture Listeners]</code></pre>
+<h3 id="the-six-core-components">The Six Core Components:</h3>
+<ul>
+<li><strong><code>Map</code> (<code>ol/Map</code>):</strong> The central orchestrator. Binds to a specific HTML <code>&lt;div&gt;</code>, coordinates rendering passes, and manages layers, controls, and interactions.</li>
+<li><strong><code>View</code> (<code>ol/View</code>):</strong> The 2D "camera" looking down at the earth. Determines where the map is centered, the current zoom level, the resolution, and the active projection.</li>
+<li><strong><code>Layer</code> (<code>ol/layer</code>):</strong> Defines <strong>how</strong> geospatial data is visually composited onto the canvas (e.g., raster image tiles, vector paths, or WebGL textures).</li>
+<li><strong><code>Source</code> (<code>ol/source</code>):</strong> Defines <strong>where and how</strong> data is retrieved (e.g., requesting PNG tiles from OpenStreetMap, fetching WMS images from GeoServer, or parsing GeoJSON).</li>
+<li><strong><code>Control</code> (<code>ol/control</code>):</strong> Visible HTML DOM elements overlaid on the map canvas (zoom buttons, attribution badges, scale bars, fullscreen buttons).</li>
+<li><strong><code>Interaction</code> (<code>ol/interaction</code>):</strong> Invisible event listeners that intercept pointer, touch, and mouse gestures on the canvas (panning, pinch-to-zoom, click selection, vector drawing).</li>
+</ul>
+<hr />
+<h2 id="3-map-vs-view-layer-vs-source">3. Map vs View &amp; Layer vs Source</h2>
+<p>Understanding the separation of responsibilities between these four foundational classes is the key to mastering OpenLayers.</p>
+<h3 id="31-map-vs-view">3.1 <code>Map</code> vs <code>View</code></h3>
+<div class="highlight"><pre><span></span><code>Map (The Orchestrator)               View (The Camera)
+ ├── DOM Element Target               ├── Center Coordinate [X, Y]
+ ├── Layer Array [L1, L2, L3]         ├── Zoom Level / Resolution
+ ├── Controls Collection              ├── Rotation (radians)
+ └── Interactions Collection          └── Projection (e.g., EPSG:3857)
+</code></pre></div>
+<ul>
+<li><strong>The <code>Map</code> (Container &amp; Orchestrator):</strong></li>
+<li>Binds directly to an HTML element via <code>target: 'map'</code>.</li>
+<li>Manages the rendering cycle and dispatches map-level DOM events (<code>pointermove</code>, <code>singleclick</code>, <code>movestart</code>, <code>moveend</code>).</li>
+<li><em>The Map itself has no concept of geographic coordinates or zoom levels; it delegates all spatial positioning to the View.</em></li>
+<li><strong>The <code>View</code> (The Camera):</strong></li>
+<li>Governs spatial extent, camera altitude (zoom/resolution), and rotation angle.</li>
+<li>Can be swapped dynamically at runtime (e.g., switching between different projections).</li>
+<li>Multiple maps can share the exact same <code>View</code> instance, creating synchronized split-screen views.</li>
+</ul>
+<h4 id="the-relationship-between-zoom-and-resolution">The Relationship Between Zoom and Resolution</h4>
+<p>In OpenLayers, map scale is governed by <strong>Resolution</strong> (defined as ground meters per display pixel). </p>
+<p>In the standard Web Mercator (<code>EPSG:3857</code>) projection at the equator:</p>
+<div class="arithmatex">\[\text{Resolution} = \frac{2 \cdot \pi \cdot 6378137 \cdot \cos(\text{latitude})}{256 \cdot 2^{\text{zoom}}}\]</div>
+<ul>
+<li>At <strong>Zoom 0</strong>, the entire circumference of the Earth (~40,075 km) is rendered in a single 256x256 pixel tile (<span class="arithmatex">\(\approx 156,543\text{ meters/pixel}\)</span>).</li>
+<li>With each increment in zoom level (<span class="arithmatex">\(z+1\)</span>), resolution is cut exactly in half, doubling map detail in both dimensions.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nb">Map</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Map.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/View.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">View</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">],</span><span class="w"> </span><span class="c1">// Center coordinate in Web Mercator meters</span>
+<span class="w">    </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w">         </span><span class="c1">// Initial zoom scale</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h3 id="32-layer-vs-source">3.2 <code>Layer</code> vs <code>Source</code></h3>
+<p>OpenLayers enforces a strict boundary between <strong>data retrieval</strong> and <strong>graphical rendering</strong>:</p>
+<div class="highlight"><pre><span></span><code>Source (Data Acquisition) ──[Provides Data]──▶ Layer (Visual Representation)
+(Network URLs, Parsers, Cache)                  (Canvas, Opacity, Z-Index, Blend Modes)
+</code></pre></div>
+<ul>
+<li><strong><code>Source</code> (<code>ol/source</code>):</strong> Responsible for fetching raw data from networks, memory, or disk. It knows tile grid coordinate math <code>[z, x, y]</code>, OGC parameter formatting, and file parsers (GeoJSON, KML, MVT). It has no knowledge of how pixels or lines are drawn.</li>
+<li><strong><code>Layer</code> (<code>ol/layer</code>):</strong> Responsible for rendering data received from a source onto the browser canvas. It governs presentation properties like <code>opacity</code>, <code>visible</code>, <code>zIndex</code>, <code>minResolution</code>, and <code>maxResolution</code>.</li>
+</ul>
+<h4 id="why-separate-layer-and-source">Why Separate Layer and Source?</h4>
+<ul>
+<li><strong>Reusability:</strong> A single vector source loaded once into browser memory can be rendered across multiple distinct layers with different styling rules or resolution thresholds.</li>
+<li><strong>Decoupled Caching:</strong> The source manages tile caching, retry policies, and worker threads without being destroyed if the layer's visibility is toggled off.</li>
+</ul>
+<h4 id="core-layer-hierarchy">Core Layer Hierarchy:</h4>
+<ul>
+<li><strong><code>TileLayer</code> (<code>ol/layer/Tile</code>):</strong> Renders pre-rendered raster imagery organized in regular square grid pyramids (e.g., OpenStreetMap, Google Maps, Bing, WMTS). Extremely fast and memory-efficient.</li>
+<li><strong><code>ImageLayer</code> (<code>ol/layer/Image</code>):</strong> Renders a single, dynamic raster image generated on demand by a map server (e.g., GeoServer WMS) sized exactly to the current browser viewport.</li>
+<li><strong><code>VectorLayer</code> (<code>ol/layer/Vector</code>):</strong> Renders client-side geometric primitives (points, lines, polygons) dynamically onto the HTML5 Canvas. Supports full attribute inspection, client-side styling, and vector interactions.</li>
+<li><strong><code>VectorTileLayer</code> (<code>ol/layer/VectorTile</code>):</strong> Renders tiled vector geometries (MVT/PBF). Combines the bandwidth efficiency of tile pyramids with the visual sharpness and client-side styling of vector data.</li>
+<li><strong><code>WebGLTileLayer</code> (<code>ol/layer/WebGLTile</code>):</strong> Hardware-accelerated tile renderer optimized for Cloud-Optimized GeoTIFFs (COG) and dynamic multi-band raster analysis.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">TileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Tile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OSM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/OSM.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorSource</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/Vector.js&#39;</span><span class="p">;</span>
+
+<span class="c1">// TileLayer: Raster imagery tiles</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">baseTileLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OSM</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span>
+<span class="p">});</span>
+
+<span class="c1">// VectorLayer: Client-side vector geometries</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">operationalVectorLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorSource</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="4-environment-setup-integration-methods">4. Environment Setup &amp; Integration Methods</h2>
+<p>OpenLayers is packaged as a standard ES module and integrates cleanly into modern frontend toolchains.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Best For</th>
+<th>Technical Characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Vite + npm</strong> <em>(Recommended)</em></td>
+<td>Modern web apps, production, training</td>
+<td>Full ES module import, tree-shaking, lightning-fast HMR</td>
+</tr>
+<tr>
+<td><strong>CDN / Vanilla JS</strong></td>
+<td>Quick prototypes, static HTML demos</td>
+<td>Single monolithic bundle via <code>&lt;script&gt;</code>, global <code>ol</code> namespace</td>
+</tr>
+<tr>
+<td><strong>React / Next.js</strong></td>
+<td>Component-driven single page apps</td>
+<td>Bound to a <code>useRef</code> container inside <code>useEffect</code> with cleanup</td>
+</tr>
+<tr>
+<td><strong>Vue / Angular</strong></td>
+<td>Enterprise frontend frameworks</td>
+<td>Bound to template reference within component lifecycle hooks</td>
+</tr>
+</tbody>
+</table>
+<h3 id="41-vanilla-js-browser-script-tag">4.1 Vanilla JS (Browser Script Tag)</h3>
+<p>For quick demonstrations without a build step, load OpenLayers via CDN using the global <code>ol</code> namespace:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 100%; height: 400px;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nx">Tile</span><span class="p">({</span><span class="w"> </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nx">OSM</span><span class="p">()</span><span class="w"> </span><span class="p">})],</span>
+<span class="w">        </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ol</span><span class="p">.</span><span class="nx">View</span><span class="p">({</span><span class="w"> </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">],</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">})</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="42-nodejs-toolchains-vite-webpack-rollup">4.2 Node.js Toolchains (Vite / Webpack / Rollup)</h3>
+<p>In modern development, install the <code>ol</code> package via npm to enable tree-shaking:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>ol
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// main.js</span>
+<span class="k">import</span><span class="w"> </span><span class="nb">Map</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Map.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/View.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">TileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Tile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OSM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/OSM.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;ol/ol.css&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// CRITICAL: Required for controls and overlays</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span><span class="w"> </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OSM</span><span class="p">()</span><span class="w"> </span><span class="p">})],</span>
+<span class="w">  </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">View</span><span class="p">({</span><span class="w"> </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">],</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="43-react-nextjs-integration-pattern">4.3 React / Next.js Integration Pattern</h3>
+<p>In React, bind the map to a DOM element using <code>useRef</code> inside <code>useEffect</code>, and dispose of it on unmount to prevent memory leaks:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useRef</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nb">Map</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Map.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/View.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">TileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Tile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OSM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/OSM.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;ol/ol.css&#39;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">MapComponent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mapElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mapRef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">mapElement</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Initialize map instance</span>
+<span class="w">    </span><span class="nx">mapRef</span><span class="p">.</span><span class="nx">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="nx">mapElement</span><span class="p">.</span><span class="nx">current</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span><span class="w"> </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OSM</span><span class="p">()</span><span class="w"> </span><span class="p">})],</span>
+<span class="w">      </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">View</span><span class="p">({</span><span class="w"> </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">],</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// Cleanup: detach target on component unmount</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">mapRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">mapRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">setTarget</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[]);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">mapElement</span><span class="p">}</span><span class="w"> </span><span class="na">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;100%&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;100vh&#39;</span><span class="w"> </span><span class="p">}}</span><span class="w"> </span><span class="p">/&gt;;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="5-setting-up-your-first-map">5. Setting Up Your First Map</h2>
+<p>A minimal OpenLayers application requires coordinated configuration across HTML, CSS, and JavaScript:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Terminal</label><label for="__tabbed_1_2">HTML (<code>index.html</code>)</label><label for="__tabbed_1_3">CSS (<code>style.css</code>)</label><label for="__tabbed_1_4">JavaScript (<code>main.js</code>)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Initialize project and install dependencies</span>
+npm<span class="w"> </span>init<span class="w"> </span>-y
+npm<span class="w"> </span>install<span class="w"> </span>ol
+npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>vite
+
+<span class="c1"># 2. Launch Vite development server</span>
+npx<span class="w"> </span>vite
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My First OpenLayers Map<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;./style.css&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="cm">&lt;!-- Map target container --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map-container&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- Application entry point --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./main.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c">/* Reset margins and ensure target container has dimensions */</span>
+<span class="nt">html</span><span class="o">,</span><span class="w"> </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">map-container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nb">Map</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Map.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/View.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">TileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Tile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OSM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/OSM.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;ol/ol.css&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Mandates styling for controls, scale lines, and popups</span>
+
+<span class="c1">// Initialize Map instance</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map-container&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Target HTML element ID</span>
+<span class="w">  </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OSM</span><span class="p">()</span><span class="w">      </span><span class="c1">// OpenStreetMap public tile server</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">View</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">],</span><span class="w">          </span><span class="c1">// Center coordinate (Web Mercator meters)</span>
+<span class="w">    </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w">                  </span><span class="c1">// Initial zoom scale</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="6-projections-coordinate-transformations">6. Projections &amp; Coordinate Transformations</h2>
+<p>Geodesy is the science of measuring the Earth's shape. Because the Earth is an irregular three-dimensional ellipsoid, representing it on a flat screen requires a mathematical projection.</p>
+<div class="highlight"><pre><span></span><code>3D Ellipsoid (WGS 84 / EPSG:4326) ──[Mathematical Projection]──▶ 2D Planar Canvas (EPSG:3857)
+(Angular units: Degrees Lon/Lat)                                   (Linear units: Meters X/Y)
+</code></pre></div>
+<h3 id="61-epsg4326-vs-epsg3857">6.1 EPSG:4326 vs. EPSG:3857</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>EPSG:4326 (WGS 84)</th>
+<th>EPSG:3857 (Web Mercator / Spherical Mercator)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CRS Classification</strong></td>
+<td><strong>Geographic 3D Datum</strong></td>
+<td><strong>Projected 2D Conformal Plane</strong></td>
+</tr>
+<tr>
+<td><strong>Unit of Measurement</strong></td>
+<td><strong>Degrees</strong> (angular)</td>
+<td><strong>Meters</strong> (linear)</td>
+</tr>
+<tr>
+<td><strong>Coordinate Order</strong></td>
+<td><code>[Longitude, Latitude]</code></td>
+<td><code>[X (Easting), Y (Northing)]</code></td>
+</tr>
+<tr>
+<td><strong>Coordinate Domain</strong></td>
+<td>Longitude: <span class="arithmatex">\([-180, +180]\)</span>, Latitude: <span class="arithmatex">\([-90, +90]\)</span></td>
+<td>X: <span class="arithmatex">\([-20037508, +20037508]\)</span>, Y: <span class="arithmatex">\([-20037508, +20037508]\)</span></td>
+</tr>
+<tr>
+<td><strong>Typical Data Source</strong></td>
+<td>GPS hardware, satellite telemetry, GeoJSON files</td>
+<td>Standard web tile servers (OSM, Google, Bing, Esri)</td>
+</tr>
+<tr>
+<td><strong>Distortion Nature</strong></td>
+<td>Area and angles distorted on flat 2D displays</td>
+<td><strong>Conformal</strong> (preserves local angles/shapes; distorts area at poles)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="why-does-the-web-use-web-mercator">Why Does the Web Use Web Mercator?</h4>
+<p>Web Mercator projects the Earth onto a square bounding box. This conformal property ensures that north is always straight up, local angles (such as road intersections) remain true right angles, and the entire globe can be divided into identical <span class="arithmatex">\(256 \times 256\)</span> pixel square tiles across binary pyramid zoom levels.</p>
+<p>However, Mercator distorts area significantly as distance from the equator increases: Greenland appears roughly equal in size to the continent of Africa on screen, despite Africa being 14 times larger in reality.</p>
+<h3 id="62-transforming-coordinates-fromlonlat-and-tolonlat">6.2 Transforming Coordinates (<code>fromLonLat</code> and <code>toLonLat</code>)</h3>
+<p>OpenLayers defaults internally to <code>EPSG:3857</code>. When working with human-readable coordinates (e.g. GPS locations), you must reproject:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">,</span><span class="w"> </span><span class="nx">toLonLat</span><span class="p">,</span><span class="w"> </span><span class="nx">transform</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/proj.js&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. Convert WGS 84 [Longitude, Latitude] degrees -&gt; Web Mercator [X, Y] meters:</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">puneCenter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.8567</span><span class="p">,</span><span class="w"> </span><span class="mf">18.5204</span><span class="p">]);</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">getView</span><span class="p">().</span><span class="nx">setCenter</span><span class="p">(</span><span class="nx">puneCenter</span><span class="p">);</span>
+
+<span class="c1">// 2. Convert Web Mercator [X, Y] meters -&gt; WGS 84 [Longitude, Latitude] degrees:</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">lonLatCoords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">toLonLat</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">getView</span><span class="p">().</span><span class="nx">getCenter</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Current Lon/Lat:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">lonLatCoords</span><span class="p">);</span>
+
+<span class="c1">// 3. Generic transformation between any two registered CRS:</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">customCoords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">transform</span><span class="p">([</span><span class="mf">73.8567</span><span class="p">,</span><span class="w"> </span><span class="mf">18.5204</span><span class="p">],</span><span class="w"> </span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;EPSG:3857&#39;</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p><strong>The "Null Island" Gotcha:</strong>
+If you pass raw coordinates <code>[73.8567, 18.5204]</code> directly into <code>new View({ center: ... })</code> without calling <code>fromLonLat()</code>, OpenLayers treats those numbers as <strong>meters</strong>. Your map will center 73 meters east of the Prime Meridian off the coast of West Africa (a location cartographers refer to as "Null Island").</p>
+</blockquote>
+<h3 id="63-the-axis-order-ambiguity">6.3 The Axis Order Ambiguity</h3>
+<p>In conversational English, people say <em>"Latitude, Longitude"</em>. In mathematics, computer graphics, and OpenLayers:</p>
+<ul>
+<li><strong>Axis 1 (<span class="arithmatex">\(X\)</span>) = Longitude</strong> (East/West displacement)</li>
+<li><strong>Axis 2 (<span class="arithmatex">\(Y\)</span>) = Latitude</strong> (North/South displacement)</li>
+<li><strong>Always supply coordinates as <code>[Longitude, Latitude]</code> (<code>[X, Y]</code>)!</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>Correct:   [73.8567, 18.5204]  →  [Lon, Lat]  →  Pune, India
+Incorrect: [18.5204, 73.8567]  →  [Lat, Lon]  →  Southern Indian Ocean near Antarctica
+</code></pre></div>
+<h3 id="64-custom-projections-proj4js">6.4 Custom Projections (<code>proj4js</code>)</h3>
+<p>OpenLayers natively packages mathematical definitions for <code>EPSG:4326</code> and <code>EPSG:3857</code>. For regional or national projections (such as British National Grid <code>EPSG:27700</code> or Indian UTM Zone 43N <code>EPSG:32643</code>), integrate the <code>proj4</code> library:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>proj4
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">proj4</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;proj4&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">register</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/proj/proj4.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">getProjection</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/proj.js&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. Define projection string (from https://epsg.io/32643)</span>
+<span class="nx">proj4</span><span class="p">.</span><span class="nx">defs</span><span class="p">(</span>
+<span class="w">  </span><span class="s1">&#39;EPSG:32643&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;+proj=utm +zone=43 +datum=WGS84 +units=m +no_defs&#39;</span>
+<span class="p">);</span>
+
+<span class="c1">// 2. Register definitions with OpenLayers</span>
+<span class="nx">register</span><span class="p">(</span><span class="nx">proj4</span><span class="p">);</span>
+
+<span class="c1">// 3. OpenLayers can now transform to/from EPSG:32643 automatically</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">utmProj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getProjection</span><span class="p">(</span><span class="s1">&#39;EPSG:32643&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="7-advanced-view-navigation-constraints">7. Advanced View Navigation &amp; Constraints</h2>
+<p>In enterprise applications, you must constrain camera movement to prevent users from panning into unpopulated coordinate space or zooming beyond available data resolutions.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/View.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/proj.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">View</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.8567</span><span class="p">,</span><span class="w"> </span><span class="mf">18.5204</span><span class="p">]),</span>
+<span class="w">  </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">minZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w">       </span><span class="c1">// Minimum allowable zoom (prevents zooming out to whole world)</span>
+<span class="w">  </span><span class="nx">maxZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">19</span><span class="p">,</span><span class="w">      </span><span class="c1">// Maximum allowable zoom (prevents over-zooming past tile limits)</span>
+<span class="w">  </span><span class="nx">rotation</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">      </span><span class="c1">// Camera rotation in radians</span>
+<span class="w">  </span><span class="nx">enableRotation</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">extent</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w">         </span><span class="c1">// Constrains panning to bounding box [minX, minY, maxX, maxY]</span>
+<span class="w">    </span><span class="mf">8210000</span><span class="p">,</span><span class="w"> </span><span class="mf">2090000</span><span class="p">,</span>
+<span class="w">    </span><span class="mf">8240000</span><span class="p">,</span><span class="w"> </span><span class="mf">2110000</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="71-programmatic-camera-animation">7.1 Programmatic Camera Animation</h3>
+<p>OpenLayers provides smooth, frame-synchronized camera transitions via <code>view.animate()</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">view</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">72.8777</span><span class="p">,</span><span class="w"> </span><span class="mf">19.0760</span><span class="p">]),</span><span class="w"> </span><span class="c1">// Mumbai</span>
+<span class="w">  </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">13</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">2000</span><span class="w"> </span><span class="c1">// Transition duration in milliseconds</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="8-controls-and-interactions">8. Controls and Interactions</h2>
+<p>User input in OpenLayers is split between DOM-level controls and canvas gesture listeners.</p>
+<div class="highlight"><pre><span></span><code>                               OpenLayers Map
+                                     │
+           ┌─────────────────────────┴─────────────────────────┐
+           ↓                                                   ↓
+Controls (UI Elements in DOM)                     Interactions (Canvas Gesture Logic)
+- Zoom (+ / - buttons)                            - DragPan (Mouse / Touch Panning)
+- Attribution (Data credits)                      - MouseWheelZoom (Scroll wheel zoom)
+- ScaleLine (Metric / Nautical bar)               - PinchZoom (Mobile multi-touch)
+- FullScreen (Fullscreen toggle)                  - Select / Draw / Modify
+</code></pre></div>
+<h3 id="81-the-pointer-event-lifecycle">8.1 The Pointer Event Lifecycle</h3>
+<p>When a user clicks or touches the map canvas, OpenLayers processes the event through a priority chain:</p>
+<p><div class="highlight"><pre><span></span><code>Browser Pointer Event ──▶ Map Viewport ──▶ Active Interactions (Priority Order) ──▶ Map Event Listeners
+</code></pre></div>
+If an interaction (such as <code>Draw</code> or <code>Select</code>) handles the event, it can stop propagation to prevent default canvas behaviors (like panning).</p>
+<h3 id="82-customizing-controls-and-interactions">8.2 Customizing Controls and Interactions</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nb">Map</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Map.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defaults</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">defaultControls</span><span class="p">,</span><span class="w"> </span><span class="nx">ScaleLine</span><span class="p">,</span><span class="w"> </span><span class="nx">FullScreen</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/control.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defaults</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">defaultInteractions</span><span class="p">,</span><span class="w"> </span><span class="nx">DragRotateAndZoom</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/interaction.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="cm">/* ... */</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="nx">view</span><span class="p">,</span>
+
+<span class="w">  </span><span class="c1">// Extend default controls (Zoom + Attribution) with ScaleLine and FullScreen</span>
+<span class="w">  </span><span class="nx">controls</span><span class="o">:</span><span class="w"> </span><span class="nx">defaultControls</span><span class="p">().</span><span class="nx">extend</span><span class="p">([</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">ScaleLine</span><span class="p">({</span><span class="w"> </span><span class="nx">units</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;metric&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">FullScreen</span><span class="p">()</span>
+<span class="w">  </span><span class="p">]),</span>
+
+<span class="w">  </span><span class="c1">// Extend default interactions with Shift+Drag rotation and zoom</span>
+<span class="w">  </span><span class="nx">interactions</span><span class="o">:</span><span class="w"> </span><span class="nx">defaultInteractions</span><span class="p">().</span><span class="nx">extend</span><span class="p">([</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">DragRotateAndZoom</span><span class="p">()</span>
+<span class="w">  </span><span class="p">])</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="9-managing-layer-stacking-z-index">9. Managing Layer Stacking (Z-Index)</h2>
+<p>When multiple raster and vector layers are added to a map, their visual stacking order is determined either by their index in the <code>layers</code> array or by explicit <code>zIndex</code> values.</p>
+<div class="highlight"><pre><span></span><code>Z-INDEX STACKING HIERARCHY:
+┌────────────────────────────────────────────────────────┐
+│ Top: Highlights &amp; Popups (zIndex: 20+)                 │
+├────────────────────────────────────────────────────────┤
+│ Middle: Interactive Vectors &amp; Points (zIndex: 10)      │
+├────────────────────────────────────────────────────────┤
+│ Lower-Middle: Boundaries &amp; Contours (zIndex: 1)        │
+├────────────────────────────────────────────────────────┤
+│ Bottom: Base Map Imagery (zIndex: 0)                   │
+└────────────────────────────────────────────────────────┘
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">baseOsmLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span><span class="w"> </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OSM</span><span class="p">(),</span><span class="w"> </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">districtBoundaryLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span><span class="w"> </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="nx">wmsSource</span><span class="p">,</span><span class="w"> </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">hospitalPointsLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="p">({</span><span class="w"> </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="nx">vectorSource</span><span class="p">,</span><span class="w"> </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="w"> </span><span class="p">});</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">baseOsmLayer</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">districtBoundaryLayer</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">hospitalPointsLayer</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Best Practice:</strong> Always assign explicit <code>zIndex</code> values to operational layers. Depending on insertion order creates subtle bugs where base tiles occlude vector points when layers load asynchronously over the network.</p>
+</blockquote>
+<hr />
+<h2 id="10-api-documentation-troubleshooting">10. API Documentation &amp; Troubleshooting</h2>
+<h3 id="101-navigating-the-api-documentation">10.1 Navigating the API Documentation</h3>
+<ul>
+<li><strong>API Reference:</strong> <a href="https://openlayers.org/en/latest/apidoc/">https://openlayers.org/en/latest/apidoc/</a></li>
+<li>Import paths match class names: <code>ol/layer/Tile</code> <span class="arithmatex">\(\rightarrow\)</span> <code>import TileLayer from 'ol/layer/Tile.js'</code>.</li>
+<li>Pay attention to the distinction between <strong>Options</strong> (passed to constructors), <strong>Methods</strong> (called on instances), and <strong>Events</strong> (listened to via <code>.on()</code>).</li>
+</ul>
+<h3 id="102-common-beginner-pitfalls-diagnostic-guide">10.2 Common Beginner Pitfalls &amp; Diagnostic Guide</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Root Cause</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Blank white screen; no errors</strong></td>
+<td>Container <code>&lt;div&gt;</code> has computed height of <code>0px</code></td>
+<td>Set <code>#map { height: 100vh; width: 100%; }</code> in CSS</td>
+</tr>
+<tr>
+<td><strong>Broken, stacked zoom buttons</strong></td>
+<td>Missing <code>ol.css</code> stylesheet</td>
+<td>Add <code>import 'ol/ol.css';</code> at the top of entry JS file</td>
+</tr>
+<tr>
+<td><strong>Map centers in the Atlantic Ocean</strong></td>
+<td>Coordinates passed as degrees without transformation</td>
+<td>Use <code>fromLonLat([lon, lat])</code> to convert to Web Mercator</td>
+</tr>
+<tr>
+<td><strong>Map inverted or coordinates in ocean</strong></td>
+<td>Coordinates supplied as <code>[Lat, Lon]</code></td>
+<td>Swap coordinates to <code>[Longitude, Latitude]</code> (<code>[X, Y]</code>)</td>
+</tr>
+<tr>
+<td><strong>Controls not responding</strong></td>
+<td>Custom CSS overlay element capturing pointer events</td>
+<td>Set <code>pointer-events: none;</code> on non-interactive overlay divs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="reference-resources">Reference resources</h3>
+<ul>
+<li><strong>OpenLayers Official Conceptual Guide:</strong> <a href="https://openlayers.org/doc/tutorials/concepts.html">https://openlayers.org/doc/tutorials/concepts.html</a></li>
+<li><strong>OpenLayers API Documentation:</strong> <a href="https://openlayers.org/en/latest/apidoc/">https://openlayers.org/en/latest/apidoc/</a></li>
+<li><strong>OpenLayers Official Examples Catalog:</strong> <a href="https://openlayers.org/en/latest/examples/">https://openlayers.org/en/latest/examples/</a></li>
+<li><strong>Coordinate Reference System Registry:</strong> <a href="https://epsg.io/">https://epsg.io/</a></li>
+</ul>
+<h3 id="practical-activity">Practical activity</h3>
+<p><strong>Your Task:</strong></p>
+<ol>
+<li><strong>Initialize Project:</strong> In your project directory, set up a minimal Vite project:
+   <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>-y
+npm<span class="w"> </span>install<span class="w"> </span>ol
+npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>vite
+</code></pre></div></li>
+<li><strong>HTML Structure:</strong> Create an <code>index.html</code> file containing a <code>&lt;div id="map"&gt;&lt;/div&gt;</code> container with full-viewport CSS (<code>height: 100vh; width: 100%</code>).</li>
+<li><strong>Initialize Map Instance:</strong> In <code>main.js</code>, import <code>Map</code>, <code>View</code>, <code>TileLayer</code>, and <code>OSM</code>.</li>
+<li><strong>Configure View &amp; CRS:</strong> Center the map over your city or region using <code>fromLonLat([lon, lat])</code> with an initial zoom level of <code>12</code>.</li>
+<li><strong>Add Constraints &amp; Controls:</strong></li>
+<li>Restrict zoom levels between <code>minZoom: 4</code> and <code>maxZoom: 18</code>.</li>
+<li>Add a metric <code>ScaleLine</code> control and a <code>FullScreen</code> control.</li>
+<li><strong>Verify in Browser:</strong> Run <code>npx vite</code>, open the application, pan and zoom across the map, and verify scale bar updates.</li>
+</ol>
+<hr />
+<h4 id="example-implementation-mainjs">Example Implementation (<code>main.js</code>):</h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nb">Map</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Map.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/View.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">TileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Tile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OSM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/OSM.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ScaleLine</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/control/ScaleLine.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">FullScreen</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/control/FullScreen.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">defaults</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">defaultControls</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/control/defaults.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/proj.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;ol/ol.css&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. Initialize OpenLayers Map</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OSM</span><span class="p">(),</span>
+<span class="w">      </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">View</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.8567</span><span class="p">,</span><span class="w"> </span><span class="mf">18.5204</span><span class="p">]),</span><span class="w"> </span><span class="c1">// Centered over Pune, India</span>
+<span class="w">    </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">minZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">maxZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">18</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">controls</span><span class="o">:</span><span class="w"> </span><span class="nx">defaultControls</span><span class="p">().</span><span class="nx">extend</span><span class="p">([</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">ScaleLine</span><span class="p">({</span><span class="w"> </span><span class="nx">units</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;metric&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">FullScreen</span><span class="p">()</span>
+<span class="w">  </span><span class="p">])</span>
+<span class="p">});</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

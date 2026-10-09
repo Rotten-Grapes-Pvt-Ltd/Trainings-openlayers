@@ -1,0 +1,1887 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../module-6/">
+      
+      
+        <link rel="next" href="../module-8/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Module 7 - MBTiles & Wrap-up - OpenLayers Training</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-7-mbtiles-offline-gis-wrap-up" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OpenLayers Training" class="md-header__button md-logo" aria-label="OpenLayers Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OpenLayers Training
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module 7 - MBTiles & Wrap-up
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OpenLayers Training" class="md-nav__button md-logo" aria-label="OpenLayers Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    OpenLayers Training
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1 - Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2 - GIS Data & Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 3 - GeoServer & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 4 - PostGIS & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 5 - Vector Styling & Interaction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 6 - CesiumJS Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 7 - MBTiles & Wrap-up
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 7 - MBTiles & Wrap-up
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-offline-web-gis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why Offline Web GIS?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Why Offline Web GIS?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-connected-vs-offline-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Connected vs. Offline Architectures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-offline-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common Offline Use Cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-are-mbtiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. What are MBTiles?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. What are MBTiles?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-the-mbtiles-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 The MBTiles Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-tile-grid-coordinate-pyramid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Tile Grid &amp; Coordinate Pyramid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-internal-structure-of-an-mbtiles-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Internal Structure of an .mbtiles File
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-raster-vs-vector-mbtiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Raster vs. Vector MBTiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-how-mbtiles-are-created" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. How MBTiles Are Created
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. How MBTiles Are Created">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-tile-generation-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common Tile Generation Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-file-size-zoom-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 File Size &amp; Zoom Considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-using-mbtiles-with-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Using MBTiles with OpenLayers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Using MBTiles with OpenLayers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-the-browser-security-sandbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 The Browser Security Sandbox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-common-integration-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Common Integration Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-offline-web-gis-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Offline Web GIS Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Offline Web GIS Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-storage-tiers-in-the-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Storage Tiers in the Browser
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pmtiles-modern-tile-archives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. PMTiles – Modern Tile Archives
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. PMTiles – Modern Tile Archives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-what-is-pmtiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 What is PMTiles?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-mbtiles-vs-pmtiles-vs-xyz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. MBTiles vs. PMTiles vs. XYZ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-offline-data-limitations-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Offline Data Limitations &amp; Challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-choosing-the-right-web-gis-delivery-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Choosing the Right Web GIS Delivery Method
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-complete-web-gis-architecture-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Complete Web GIS Architecture Review
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Complete Web GIS Architecture Review">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical activity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-1-high-traffic-municipal-web-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 1 — High-Traffic Municipal Web Portal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-2-wilderness-field-survey-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 2 — Wilderness Field Survey Application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-3-3d-urban-planning-shadow-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 3 — 3D Urban Planning &amp; Shadow Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hands-on-architecture-diagram-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hands-On Architecture Diagram Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-implementation-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation (main.js):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 8 - Integrated Exercise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instructor-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructor Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-offline-web-gis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why Offline Web GIS?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Why Offline Web GIS?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-connected-vs-offline-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Connected vs. Offline Architectures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-offline-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common Offline Use Cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-are-mbtiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. What are MBTiles?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. What are MBTiles?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-the-mbtiles-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 The MBTiles Concept
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-tile-grid-coordinate-pyramid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Tile Grid &amp; Coordinate Pyramid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-internal-structure-of-an-mbtiles-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Internal Structure of an .mbtiles File
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-raster-vs-vector-mbtiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Raster vs. Vector MBTiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-how-mbtiles-are-created" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. How MBTiles Are Created
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. How MBTiles Are Created">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-tile-generation-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common Tile Generation Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-file-size-zoom-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 File Size &amp; Zoom Considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-using-mbtiles-with-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Using MBTiles with OpenLayers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Using MBTiles with OpenLayers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-the-browser-security-sandbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 The Browser Security Sandbox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-common-integration-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Common Integration Approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-offline-web-gis-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Offline Web GIS Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Offline Web GIS Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-storage-tiers-in-the-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Storage Tiers in the Browser
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pmtiles-modern-tile-archives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. PMTiles – Modern Tile Archives
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. PMTiles – Modern Tile Archives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-what-is-pmtiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 What is PMTiles?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-mbtiles-vs-pmtiles-vs-xyz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. MBTiles vs. PMTiles vs. XYZ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-offline-data-limitations-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Offline Data Limitations &amp; Challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-choosing-the-right-web-gis-delivery-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Choosing the Right Web GIS Delivery Method
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-complete-web-gis-architecture-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Complete Web GIS Architecture Review
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Complete Web GIS Architecture Review">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical activity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-1-high-traffic-municipal-web-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 1 — High-Traffic Municipal Web Portal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-2-wilderness-field-survey-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 2 — Wilderness Field Survey Application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-3-3d-urban-planning-shadow-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario 3 — 3D Urban Planning &amp; Shadow Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hands-on-architecture-diagram-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hands-On Architecture Diagram Exercise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-implementation-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation (main.js):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="module-7-mbtiles-offline-gis-wrap-up">Module 7 - MBTiles, Offline GIS &amp; Wrap-up</h1>
+<p>Welcome to Module 7! Throughout this course, we have built web GIS applications that stream data across live networks from GeoServer, PostGIS, and tile servers. In this concluding module, we examine <strong>offline Web GIS architectures</strong>, tile archive containers (<strong>MBTiles</strong> and <strong>PMTiles</strong>), data distribution strategies, and review the end-to-end Web GIS technology stack.</p>
+<hr />
+<h2 id="1-why-offline-web-gis">1. Why Offline Web GIS?</h2>
+<h3 id="11-connected-vs-offline-architectures">1.1 Connected vs. Offline Architectures</h3>
+<p>Standard Web GIS applications assume continuous, high-bandwidth internet connectivity. Offline GIS is engineered for environments where network access is unreliable, intermittent, or completely absent:</p>
+<div class="highlight"><pre><span></span><code>Connected Web GIS Architecture
+
+Browser Client (OpenLayers)
+             ↓  (HTTP / Internet)
+  GeoServer / Cloud Tile Server
+             ↓  (Database Queries)
+    Enterprise PostGIS Database
+</code></pre></div>
+<p>versus:</p>
+<div class="highlight"><pre><span></span><code>Offline Web GIS Architecture
+
+Field Device (Tablet / Laptop)
+             ↓
+     Local File Storage / SQLite
+             ↓
+  Local Tile Reader / Service Worker
+             ↓
+    OpenLayers Engine (Browser Viewport)
+</code></pre></div>
+<h3 id="12-common-offline-use-cases">1.2 Common Offline Use Cases</h3>
+<ul>
+<li><strong>Field Data Collection:</strong> Environmental surveys, forestry inventories, and agricultural soil sampling in remote wilderness areas.</li>
+<li><strong>Disaster Response &amp; Emergency Management:</strong> Search-and-rescue teams operating after earthquakes or hurricanes where telecommunications infrastructure is destroyed.</li>
+<li><strong>Maritime &amp; Aviation:</strong> Ships and aircraft operating outside terrestrial cellular networks where satellite bandwidth is cost-prohibitive.</li>
+<li><strong>Defense &amp; High-Security Facilities:</strong> Air-gapped command centers and secure facilities where external internet connectivity is strictly prohibited.</li>
+</ul>
+<hr />
+<h2 id="2-what-are-mbtiles">2. What are MBTiles?</h2>
+<h3 id="21-the-mbtiles-concept">2.1 The MBTiles Concept</h3>
+<p><strong>MBTiles</strong> is an open specification created by Mapbox for packaging thousands or millions of map tiles into a single portable container. </p>
+<p>Instead of copying millions of individual image files across a filesystem (which causes file-system thrashing and slow transfer speeds), MBTiles stores the entire tile pyramid inside a single <strong>SQLite 3 database</strong> file (<code>.mbtiles</code>).</p>
+<h3 id="22-tile-grid-coordinate-pyramid">2.2 Tile Grid &amp; Coordinate Pyramid</h3>
+<p>MBTiles structures data according to standard <code>{z}/{x}/{y}</code> slippy map tile coordinates:</p>
+<ul>
+<li><strong><code>z</code> (Zoom level):</strong> Pyramid level (<span class="arithmatex">\(0\)</span> = whole world in one tile; <span class="arithmatex">\(18\)</span> = building level).</li>
+<li><strong><code>x</code> (Column):</strong> Horizontal tile index from West to East.</li>
+<li><strong><code>y</code> (Row):</strong> Vertical tile index.</li>
+</ul>
+<blockquote>
+<p><strong>Note on TMS vs. XYZ Coordinate Conventions:</strong> Standard web XYZ tiles count <span class="arithmatex">\(y=0\)</span> from the <strong>North</strong> (top-down). MBTiles follows the OSGeo <strong>TMS (Tile Map Service)</strong> specification, which counts <span class="arithmatex">\(y=0\)</span> from the <strong>South</strong> (bottom-up). Converting between them is straightforward:</p>
+<div class="arithmatex">\[\text{tile\_row}_{\text{TMS}} = (2^z - 1) - \text{tile\_row}_{\text{XYZ}}\]</div>
+</blockquote>
+<h3 id="23-internal-structure-of-an-mbtiles-file">2.3 Internal Structure of an <code>.mbtiles</code> File</h3>
+<p>Inside the SQLite file, MBTiles utilizes two primary tables:</p>
+<ul>
+<li><strong><code>metadata</code> Table:</strong> Stores key-value configuration pairs:</li>
+<li><code>name</code>: Human-readable dataset title.</li>
+<li><code>format</code>: <code>png</code>, <code>jpg</code>, <code>webp</code>, or <code>pbf</code>.</li>
+<li><code>bounds</code>: Bounding box coordinates (<code>minLon, minLat, maxLon, maxLat</code>).</li>
+<li><code>minzoom</code> &amp; <code>maxzoom</code>: Supported zoom range.</li>
+<li><code>json</code>: Vector layer schema definitions (for vector tiles).</li>
+<li><strong><code>tiles</code> Table:</strong> Stores the raw tile binaries:</li>
+<li><code>zoom_level</code> (INTEGER)</li>
+<li><code>tile_column</code> (INTEGER)</li>
+<li><code>tile_row</code> (INTEGER)</li>
+<li><code>tile_data</code> (BLOB): Binary PNG/JPEG image or gzipped MVT Protobuf.</li>
+</ul>
+<hr />
+<h2 id="3-raster-vs-vector-mbtiles">3. Raster vs. Vector MBTiles</h2>
+<p>MBTiles packages both pre-rendered raster imagery and raw vector tiles:</p>
+<table>
+<thead>
+<tr>
+<th>Architectural Aspect</th>
+<th>Raster MBTiles</th>
+<th>Vector MBTiles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Underlying Content</strong></td>
+<td>Bitmap images (<code>.png</code>, <code>.jpg</code>, <code>.webp</code>)</td>
+<td>Mapbox Vector Tiles (<code>.pbf</code> / MVT)</td>
+</tr>
+<tr>
+<td><strong>Styling Location</strong></td>
+<td>Pre-rendered on server before export</td>
+<td>Dynamic client-side styling in OpenLayers</td>
+</tr>
+<tr>
+<td><strong>Typical File Size</strong></td>
+<td>Large (often 1 GB – 50 GB+)</td>
+<td>Compact (typically 10%–20% of raster size)</td>
+</tr>
+<tr>
+<td><strong>Client Interactivity</strong></td>
+<td>None (pixels only)</td>
+<td>Full feature hover, click, and attributes</td>
+</tr>
+<tr>
+<td><strong>Visual Quality</strong></td>
+<td>Pixelated when zoomed past max zoom</td>
+<td>Sharp, resolution-independent vector rendering</td>
+</tr>
+<tr>
+<td><strong>OpenLayers Layer</strong></td>
+<td><code>ol/layer/Tile</code> with <code>ol/source/XYZ</code></td>
+<td><code>ol/layer/VectorTile</code> with <code>ol/source/VectorTile</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>Raster MBTiles:  [ Satellite / OSM Pixels ] ──▶ Displayed Directly on Canvas
+Vector MBTiles:  [ Raw Points, Lines, Polys ] ──▶ Styled Dynamically by OpenLayers in Browser
+</code></pre></div>
+<hr />
+<h2 id="4-how-mbtiles-are-created">4. How MBTiles Are Created</h2>
+<p>Creating MBTiles involves slicing GIS datasets into a multi-zoom tile pyramid and compressing them into an SQLite database:</p>
+<div class="highlight"><pre><span></span><code>Raw Spatial Data (PostGIS / Shapefile / GeoTIFF)
+                       ↓
+         Tile Generation Software
+                       ↓
+              .mbtiles Archive
+                       ↓
+           Offline Field Application
+</code></pre></div>
+<h3 id="41-common-tile-generation-tools">4.1 Common Tile Generation Tools</h3>
+<ul>
+<li><strong>Tippecanoe (Mapbox / Felt):</strong> The industry standard for creating vector MBTiles from GeoJSON. Automatically simplifies line vertices, drops minor features at low zoom levels, and balances tile density to prevent browser overdraw.</li>
+<li><strong>GDAL (<code>gdal_translate</code> &amp; <code>gdaladdo</code>):</strong> Powerful command-line utility for converting georeferenced raster imagery (GeoTIFFs, ECW) into raster MBTiles.</li>
+<li><strong>QGIS:</strong> Features a built-in processing tool: <strong>Generate XYZ tiles (MBTiles)</strong>. Exports any configured QGIS map canvas into an MBTiles file.</li>
+<li><strong>MapTiler Engine:</strong> Commercial desktop application offering a graphical workflow for generating high-performance raster and vector tile packages.</li>
+</ul>
+<h3 id="42-file-size-zoom-considerations">4.2 File Size &amp; Zoom Considerations</h3>
+<p>Because every zoom level quadruples the number of tiles (<span class="arithmatex">\(4^z\)</span>), export bounds and zoom levels must be selected deliberately:</p>
+<div class="highlight"><pre><span></span><code>Zoom Level 0: 1 tile
+Zoom Level 5: 1,024 tiles
+Zoom Level 10: 1,048,576 tiles
+Zoom Level 15: 1,073,741,824 tiles (Over 1 billion tiles!)
+</code></pre></div>
+<blockquote>
+<p><strong>Best Practice:</strong> Limit high zoom levels (e.g., zoom 16–18) strictly to target cities or areas of interest, using lower zoom levels (e.g., zoom 0–12) for regional context.</p>
+</blockquote>
+<hr />
+<h2 id="5-using-mbtiles-with-openlayers">5. Using MBTiles with OpenLayers</h2>
+<h3 id="51-the-browser-security-sandbox">5.1 The Browser Security Sandbox</h3>
+<p><strong>OpenLayers cannot directly open a <code>.mbtiles</code> file from a user's hard drive.</strong> Web browsers enforce strict security sandboxing that prevents client-side JavaScript from executing arbitrary SQLite file operations against local disk paths.</p>
+<p>To consume MBTiles in OpenLayers, an intermediate tile provider is required:</p>
+<div class="highlight"><pre><span></span><code>MBTiles (.mbtiles file)
+          ↓
+  Local Tile Reader / Service
+          ↓
+  HTTP Tile URL: http://localhost:8080/{z}/{x}/{y}.pbf
+          ↓
+  OpenLayers (XYZ / VectorTile Source)
+</code></pre></div>
+<h3 id="52-common-integration-approaches">5.2 Common Integration Approaches</h3>
+<ul>
+<li><strong>Lightweight Local Tile Server:</strong> A background binary (such as <code>mbtiles-server</code>, TileServer GL, or a small Python/Go daemon) runs locally, reads the SQLite file, and serves standard REST endpoints (<code>http://localhost:8080/tiles/{z}/{x}/{y}.png</code>).</li>
+<li><strong>Packaged Desktop Application (Electron):</strong> Node.js runs with native OS filesystem access, using <code>better-sqlite3</code> to read tile blobs from the <code>.mbtiles</code> file and serving them to the OpenLayers frontend via custom protocols (<code>app://tiles/{z}/{x}/{y}</code>) or IPC channels.</li>
+<li><strong>Packaged Mobile Application (Capacitor / Cordova):</strong> Native mobile plugins query the SQLite database stored in device flash memory and stream base64 or blob URLs to OpenLayers inside a Web View.</li>
+<li><strong>WebAssembly SQLite (<code>sql.js</code>):</strong> Loads small MBTiles files into browser memory using WebAssembly. Suitable only for small datasets (&lt; 100 MB) due to browser RAM limits.</li>
+</ul>
+<hr />
+<h2 id="6-offline-web-gis-architecture">6. Offline Web GIS Architecture</h2>
+<p>Designing a robust offline Web GIS requires coordinating storage, service workers, and local engines:</p>
+<div class="highlight"><pre><span></span><code>                      Offline Client Device
+                                │
+        ┌───────────────────────┼───────────────────────┐
+        ↓                       ↓                       ↓
+  Service Worker            IndexedDB              Local SQLite
+(Tile HTTP Cache)       (Survey Features)       (Pre-packaged MBTiles)
+        │                       │                       │
+        └───────────────────────┼───────────────────────┘
+                                ↓
+                        OpenLayers Engine
+</code></pre></div>
+<h3 id="61-storage-tiers-in-the-browser">6.1 Storage Tiers in the Browser</h3>
+<ul>
+<li><strong>Service Workers &amp; Cache API:</strong> Intercepts outgoing HTTP requests. When online, requests are cached; when offline, previously viewed tiles are served directly from the browser cache.</li>
+<li><strong>IndexedDB:</strong> In-browser NoSQL database. Ideal for storing user-digitized survey features, GPS tracks, and attribute edits before synchronizing with the central server.</li>
+<li><strong>Local SQLite / Native Filesystem:</strong> Used in packaged desktop/mobile wrappers to store gigabytes of base maps and aerial imagery.</li>
+</ul>
+<hr />
+<h2 id="7-pmtiles-modern-tile-archives">7. PMTiles – Modern Tile Archives</h2>
+<p>While MBTiles is the traditional standard, <strong>PMTiles</strong> is the modern cloud-native and serverless standard for web map tile distribution.</p>
+<div class="highlight"><pre><span></span><code>Single PMTiles File (Hosted on S3 / CDN / Static Server)
+                        ↓
+            HTTP Byte-Range Requests
+                        ↓
+    Browser (pmtiles JavaScript client library)
+                        ↓
+         OpenLayers (VectorTile / Tile Source)
+</code></pre></div>
+<h3 id="71-what-is-pmtiles">7.1 What is PMTiles?</h3>
+<p><strong>PMTiles</strong> (developed by Protomaps) is a single-file tile archive format based on standard <strong>HTTP Range Requests</strong>:</p>
+<ul>
+<li><strong>Serverless Tile Delivery:</strong> PMTiles files can be hosted on standard object storage (Amazon S3, Cloudflare R2, Google Cloud Storage, or a basic Nginx static server). <strong>No GeoServer, Node.js server, or database daemon is required.</strong></li>
+<li><strong>HTTP Range Requests:</strong> The browser's PMTiles client library reads the archive's internal directory header and issues HTTP requests fetching only the specific byte offsets for the desired tile:
+  <div class="highlight"><pre><span></span><code>GET /maps/city.pmtiles
+Range: bytes=1048576-1081344
+</code></pre></div></li>
+<li>The storage server returns only the requested 32 KB tile.</li>
+<li><strong>Works in Browsers:</strong> Because browsers natively support HTTP Range Requests, OpenLayers can read directly from a remote PMTiles archive over the web without server-side rendering pipelines.</li>
+</ul>
+<hr />
+<h2 id="8-mbtiles-vs-pmtiles-vs-xyz">8. MBTiles vs. PMTiles vs. XYZ</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>MBTiles</th>
+<th>PMTiles</th>
+<th>Traditional XYZ Tiles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Storage Format</strong></td>
+<td>SQLite database file</td>
+<td>Single archive file</td>
+<td>Millions of separate files in folders</td>
+</tr>
+<tr>
+<td><strong>File Portability</strong></td>
+<td>Single portable file</td>
+<td>Single portable file</td>
+<td>Poor (unzipping millions of files is slow)</td>
+</tr>
+<tr>
+<td><strong>Server Requirement</strong></td>
+<td>Requires tile server or SQLite reader</td>
+<td><strong>No server required</strong> (static S3/R2 storage)</td>
+<td>Requires standard web server</td>
+</tr>
+<tr>
+<td><strong>Browser Direct Access</strong></td>
+<td>Requires middleware/Electron</td>
+<td><strong>Direct via HTTP Range Requests</strong></td>
+<td>Direct via standard HTTP GET</td>
+</tr>
+<tr>
+<td><strong>Offline Desktop/Mobile</strong></td>
+<td>Excellent</td>
+<td>Excellent</td>
+<td>Moderate (cache management complex)</td>
+</tr>
+<tr>
+<td><strong>Dynamic Vector Styling</strong></td>
+<td>Yes (with Vector MBTiles)</td>
+<td>Yes (with Vector PMTiles)</td>
+<td>Yes (with MVT tiles)</td>
+</tr>
+<tr>
+<td><strong>Update Mechanism</strong></td>
+<td>Replace entire <code>.mbtiles</code> file</td>
+<td>Replace single <code>.pmtiles</code> file</td>
+<td>Overwrite individual tile files</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-offline-data-limitations-challenges">9. Offline Data Limitations &amp; Challenges</h2>
+<p>While offline mapping provides essential resilience, systems engineers must plan for significant trade-offs:</p>
+<ul>
+<li><strong>Storage Limits:</strong> A multi-zoom vector or raster tile package can quickly exceed mobile device flash memory limits.</li>
+<li><strong>Stale Data:</strong> Without live connections, field users operate on static snapshots. Infrastructure changes or new survey edits made by other teams are not visible until synchronization.</li>
+<li><strong>Two-Way Synchronization Complexity:</strong> When field users digitize or edit features offline, reconciling those edits with the central PostGIS database upon reconnecting requires conflict resolution rules (e.g., <em>last-write-wins</em> vs. <em>manual review</em>).</li>
+<li><strong>Search &amp; Geocoding Constraints:</strong> Address geocoding and road routing engines typically rely on massive database indexes. Providing offline routing requires embedded routing engines (e.g., Valhalla or OSRM) bundled locally.</li>
+</ul>
+<hr />
+<h2 id="10-choosing-the-right-web-gis-delivery-method">10. Choosing the Right Web GIS Delivery Method</h2>
+<p>Throughout this course, we have covered diverse spatial protocols and data structures. Use this decision matrix when designing real-world Web GIS systems:</p>
+<table>
+<thead>
+<tr>
+<th>Requirement / Scenario</th>
+<th>Recommended Solution</th>
+<th>Architecture Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small vector dataset (&lt; 5,000 features)</td>
+<td><strong>GeoJSON</strong></td>
+<td>Local file / API <span class="arithmatex">\(\rightarrow\)</span> <code>VectorSource</code></td>
+</tr>
+<tr>
+<td>Large vector dataset (&gt; 20,000 features)</td>
+<td><strong>Vector Tiles (MVT)</strong></td>
+<td>Tile Server <span class="arithmatex">\(\rightarrow\)</span> <code>VectorTileLayer</code></td>
+</tr>
+<tr>
+<td>Enterprise spatial database with live queries</td>
+<td><strong>PostGIS</strong></td>
+<td>PostgreSQL <span class="arithmatex">\(\rightarrow\)</span> Spatial SQL <span class="arithmatex">\(\rightarrow\)</span> GeoServer</td>
+</tr>
+<tr>
+<td>Centralized enterprise map publishing</td>
+<td><strong>GeoServer</strong></td>
+<td>PostGIS <span class="arithmatex">\(\rightarrow\)</span> GeoServer <span class="arithmatex">\(\rightarrow\)</span> WMS / WFS</td>
+</tr>
+<tr>
+<td>Server-rendered maps with dense labels</td>
+<td><strong>WMS (<code>ImageWMS</code>)</strong></td>
+<td>GeoServer SLD <span class="arithmatex">\(\rightarrow\)</span> OpenLayers ImageLayer</td>
+</tr>
+<tr>
+<td>Fast global base maps</td>
+<td><strong>XYZ / WMTS</strong></td>
+<td>Cached Tile Service <span class="arithmatex">\(\rightarrow\)</span> OpenLayers TileLayer</td>
+</tr>
+<tr>
+<td>In-browser raster analysis &amp; elevation</td>
+<td><strong>GeoTIFF + WebGL</strong></td>
+<td>Cloud-Optimized GeoTIFF <span class="arithmatex">\(\rightarrow\)</span> <code>WebGLTileLayer</code></td>
+</tr>
+<tr>
+<td>Interactive 3D terrain, buildings &amp; meshes</td>
+<td><strong>3D Tiles + CesiumJS</strong></td>
+<td>Cesium ion / 3D Tiles <span class="arithmatex">\(\rightarrow\)</span> <code>ol-cesium</code></td>
+</tr>
+<tr>
+<td>Serverless cloud-hosted tile archive</td>
+<td><strong>PMTiles</strong></td>
+<td>Cloud Storage (S3/R2) <span class="arithmatex">\(\rightarrow\)</span> HTTP Range Requests</td>
+</tr>
+<tr>
+<td>Fully offline field mapping</td>
+<td><strong>MBTiles / PMTiles</strong></td>
+<td>Local SQLite / Archive <span class="arithmatex">\(\rightarrow\)</span> OpenLayers</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-complete-web-gis-architecture-review">11. Complete Web GIS Architecture Review</h2>
+<p>The diagram below synthesizes the complete enterprise Web GIS ecosystem covered across Modules 1 through 7:</p>
+<div class="highlight"><pre><span></span><code>                          DATA STORAGE TIER
+                                  │
+          ┌───────────────────────┼───────────────────────┐
+          ↓                       ↓                       ↓
+   PostGIS Database           Flat Files            Raster Archives
+  (Spatial Tables)       (GeoJSON, Shapefiles)     (GeoTIFF, Elevation)
+          │                       │                       │
+          └───────────────────────┼───────────────────────┘
+                                  ↓
+                        MIDDLEWARE &amp; SERVICES
+                                  │
+             ┌────────────────────┴────────────────────┐
+             ↓                                         ↓
+         GeoServer                            Tile Storage / CDN
+     (WMS, WFS, WMTS)                        (XYZ, MVT, PMTiles)
+             │                                         │
+             └────────────────────┬────────────────────┘
+                                  ↓ (HTTP / Web Services)
+                        CLIENT APPLICATION TIER
+                                  │
+                    ┌─────────────┴─────────────┐
+                    ↓                           ↓
+             OpenLayers (2D)             CesiumJS (3D)
+         (Vector, Raster, Styling,        (Terrain, 3D Tiles,
+          Overlays, Interactions)          ol-cesium Bridge)
+                    │                           │
+                    └─────────────┬─────────────┘
+                                  ↓
+                             END USERS
+                     (Browser, Mobile, Desktop)
+
+OFFLINE WORKFLOW:
+PostGIS / Files ──▶ Tile Generator ──▶ MBTiles / PMTiles ──▶ Local OpenLayers
+</code></pre></div>
+<hr />
+<h3 id="reference-resources">Reference resources</h3>
+<ul>
+<li><strong>Mapbox MBTiles Specification:</strong> <a href="https://github.com/mapbox/mbtiles-spec">https://github.com/mapbox/mbtiles-spec</a></li>
+<li><strong>PMTiles Specification &amp; Documentation:</strong> <a href="https://docs.protomaps.com/pmtiles/">https://docs.protomaps.com/pmtiles/</a></li>
+<li><strong>Tippecanoe Tile Generation Tool:</strong> <a href="https://github.com/felt/tippecanoe">https://github.com/felt/tippecanoe</a></li>
+<li><strong>OpenLayers VectorTileLayer API:</strong> <a href="https://openlayers.org/en/latest/apidoc/module-ol_layer_VectorTile-VectorTileLayer.html">https://openlayers.org/en/latest/apidoc/module-ol_layer_VectorTile-VectorTileLayer.html</a></li>
+</ul>
+<h3 id="practical-activity">Practical activity</h3>
+<p><strong>Your Task:</strong></p>
+<p>Apply the architectural concepts from throughout the course to evaluate the following real-world system scenarios.</p>
+<h4 id="scenario-1-high-traffic-municipal-web-portal">Scenario 1 — High-Traffic Municipal Web Portal</h4>
+<p>A city government requires an interactive public web map displaying parcels, zoning classifications, roads, and building footprints. The portal will experience over 50,000 daily visitors.
+- <strong>Questions to Answer:</strong>
+  1. What data storage tier would you select?
+  2. Would you serve the road and parcel layers as raw GeoJSON, dynamic WFS, server-rendered WMS, or Vector Tiles? Why?
+  3. How would you prevent database overload during traffic spikes?</p>
+<h4 id="scenario-2-wilderness-field-survey-application">Scenario 2 — Wilderness Field Survey Application</h4>
+<p>An environmental agency conducts vegetation surveys in a remote national park with zero cellular coverage. Field technicians carry Android tablets running a Web GIS application to record rare plant locations.
+- <strong>Questions to Answer:</strong>
+  1. How should the base map imagery be packaged and stored on the tablets?
+  2. When a field technician digitizes a new plant location, where should the feature coordinates be saved on the device?
+  3. What workflow should occur when the technician returns to headquarters and reconnects to Wi-Fi?</p>
+<h4 id="scenario-3-3d-urban-planning-shadow-analysis">Scenario 3 — 3D Urban Planning &amp; Shadow Analysis</h4>
+<p>An architectural firm needs an interactive web viewer to evaluate the shadow impact of a proposed 40-story skyscraper on surrounding parks across different seasons.
+- <strong>Questions to Answer:</strong>
+  1. Which visualization engine should be selected (pure OpenLayers or CesiumJS via <code>ol-cesium</code>)?
+  2. In what format should the citywide 3D buildings and elevation data be streamed?
+  3. How does this architecture handle high frame rates for dense urban models?</p>
+<hr />
+<h4 id="hands-on-architecture-diagram-exercise">Hands-On Architecture Diagram Exercise</h4>
+<p>In your project notes, sketch or draft an architectural diagram for a Web GIS project of your choice, identifying:
+<div class="highlight"><pre><span></span><code>Data Source ──▶ Processing / Tile Generation ──▶ Web Service / Archive ──▶ OpenLayers / Cesium
+</code></pre></div></p>
+<hr />
+<h4 id="example-implementation-mainjs">Example Implementation (<code>main.js</code>):</h4>
+<p>The following production snippet demonstrates how OpenLayers integrates with local tile sources or cloud-native PMTiles using standard XYZ / VectorTile protocols:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nb">Map</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Map.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/View.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">TileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Tile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorTileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/VectorTile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OSM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/OSM.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">XYZ</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/XYZ.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorTileSource</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/VectorTile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">MVT</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/format/MVT.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/proj.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;ol/ol.css&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. Online Base Layer: OpenStreetMap</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">onlineBaseLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OSM</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">visible</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. Offline / Local Raster Tile Layer (Served via local tile reader / daemon)</span>
+<span class="c1">// Example endpoint exposed by a local mbtiles server:</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">localOfflineRasterLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">XYZ</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://localhost:8080/services/offline_basemap/tiles/{z}/{x}/{y}.png&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">maxZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">visible</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="c1">// Toggled when offline</span>
+<span class="p">});</span>
+
+<span class="c1">// 3. Offline Vector Tile Layer (High performance, client-styled)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">offlineVectorTileLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorTileLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorTileSource</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MVT</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://localhost:8080/services/city_vectors/tiles/{z}/{x}/{y}.pbf&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">maxZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">14</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">visible</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">});</span>
+
+<span class="c1">// 4. Initialize Map</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nx">onlineBaseLayer</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">localOfflineRasterLayer</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">offlineVectorTileLayer</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">View</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.8567</span><span class="p">,</span><span class="w"> </span><span class="mf">18.5204</span><span class="p">]),</span>
+<span class="w">    </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="c1">// 5. Connectivity Detection &amp; Layer Switcher</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;offline&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">&#39;Network connection lost! Switching to offline tile source.&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">onlineBaseLayer</span><span class="p">.</span><span class="nx">setVisible</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">localOfflineRasterLayer</span><span class="p">.</span><span class="nx">setVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">offlineVectorTileLayer</span><span class="p">.</span><span class="nx">setVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;online&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Network restored. Reverting to online services.&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">onlineBaseLayer</span><span class="p">.</span><span class="nx">setVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">localOfflineRasterLayer</span><span class="p">.</span><span class="nx">setVisible</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">offlineVectorTileLayer</span><span class="p">.</span><span class="nx">setVisible</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

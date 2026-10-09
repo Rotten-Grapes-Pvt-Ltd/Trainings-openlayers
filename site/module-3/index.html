@@ -1,0 +1,2490 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../module-2/">
+      
+      
+        <link rel="next" href="../module-4/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Module 3 - GeoServer & OpenLayers - OpenLayers Training</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-3-geoserver-openlayers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OpenLayers Training" class="md-header__button md-logo" aria-label="OpenLayers Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OpenLayers Training
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module 3 - GeoServer & OpenLayers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OpenLayers Training" class="md-nav__button md-logo" aria-label="OpenLayers Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    OpenLayers Training
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1 - Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2 - GIS Data & Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 3 - GeoServer & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 3 - GeoServer & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-geoserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction to GeoServer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to GeoServer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-is-geoserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 What is GeoServer?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-geoserver-in-the-web-gis-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 GeoServer in the Web GIS Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-the-openlayers-geoserver-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 The OpenLayers + GeoServer Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-geoserver-data-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. GeoServer Data Hierarchy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. GeoServer Data Hierarchy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-the-components-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 The Components Explained:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-understanding-layer-qualified-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Understanding Layer Qualified Names
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-connecting-data-sources-to-geoserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Connecting Data Sources to GeoServer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Connecting Data Sources to GeoServer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-vector-data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Vector Data Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-raster-data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Raster Data Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-publishing-a-layer-in-geoserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Publishing a Layer in GeoServer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Publishing a Layer in GeoServer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-step-by-step-publishing-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Step-by-Step Publishing Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-getcapabilities-service-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. GetCapabilities &amp; Service Metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. GetCapabilities &amp; Service Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-querying-getcapabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Querying GetCapabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-key-information-to-inspect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Key Information to Inspect:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-wms-with-geoserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. WMS with GeoServer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. WMS with GeoServer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-imagewms-vs-tilewms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 ImageWMS vs. TileWMS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-key-wms-request-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Key WMS Request Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-openlayers-wms-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 OpenLayers WMS Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-geoserver-styling-sld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. GeoServer Styling – SLD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. GeoServer Styling – SLD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-why-server-side-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Why Server-Side Styling?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-sld-structure-symbolizers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 SLD Structure &amp; Symbolizers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-classification-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Classification Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-wms-filtering-with-geoserver-cql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. WMS Filtering with GeoServer (CQL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. WMS Filtering with GeoServer (CQL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-common-cql-filter-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Common CQL Filter Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-applying-cql-filters-dynamically-in-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Applying CQL Filters Dynamically in OpenLayers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-wfs-working-with-real-vector-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. WFS – Working with Real Vector Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. WFS – Working with Real Vector Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-wfs-request-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 WFS Request Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-loading-geoserver-wfs-in-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Loading GeoServer WFS in OpenLayers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-wfs-filtering-feature-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. WFS Filtering &amp; Feature Requests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. WFS Filtering &amp; Feature Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-restricting-features-with-cql_filter-and-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Restricting Features with CQL_FILTER and Limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-bounding-box-strategy-bbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Bounding Box Strategy (bbox)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-wms-vs-wfs-when-to-use-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. WMS vs. WFS — When to Use What?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-openlayers-feature-interaction-with-geoserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. OpenLayers Feature Interaction with GeoServer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. OpenLayers Feature Interaction with GeoServer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-wms-feature-info-getfeatureinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 WMS Feature Info (GetFeatureInfo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-wfs-client-side-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 WFS Client-Side Interaction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-layer-groups-multiple-geoserver-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Layer Groups &amp; Multiple GeoServer Layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Layer Groups &amp; Multiple GeoServer Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-geoserver-layer-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 GeoServer Layer Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-client-side-openlayers-layer-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Client-Side OpenLayers Layer Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-debugging-geoserver-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Debugging GeoServer + OpenLayers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Debugging GeoServer + OpenLayers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-http-status-codes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common HTTP Status Codes &amp; Solutions:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical activity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#part-1-geoserver-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1 — GeoServer Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-2-openlayers-wms-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2 — OpenLayers WMS Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-3-apply-dynamic-cql-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3 — Apply Dynamic CQL Filter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-bonus-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional Bonus Challenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-implementation-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation (main.js):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 4 - PostGIS & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 5 - Vector Styling & Interaction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 6 - CesiumJS Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 7 - MBTiles & Wrap-up
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 8 - Integrated Exercise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instructor-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructor Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-geoserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction to GeoServer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to GeoServer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-is-geoserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 What is GeoServer?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-geoserver-in-the-web-gis-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 GeoServer in the Web GIS Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-the-openlayers-geoserver-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 The OpenLayers + GeoServer Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-geoserver-data-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. GeoServer Data Hierarchy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. GeoServer Data Hierarchy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-the-components-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 The Components Explained:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-understanding-layer-qualified-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Understanding Layer Qualified Names
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-connecting-data-sources-to-geoserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Connecting Data Sources to GeoServer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Connecting Data Sources to GeoServer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-vector-data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Vector Data Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-raster-data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Raster Data Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-publishing-a-layer-in-geoserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Publishing a Layer in GeoServer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Publishing a Layer in GeoServer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-step-by-step-publishing-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Step-by-Step Publishing Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-getcapabilities-service-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. GetCapabilities &amp; Service Metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. GetCapabilities &amp; Service Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-querying-getcapabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Querying GetCapabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-key-information-to-inspect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Key Information to Inspect:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-wms-with-geoserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. WMS with GeoServer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. WMS with GeoServer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-imagewms-vs-tilewms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 ImageWMS vs. TileWMS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-key-wms-request-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Key WMS Request Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-openlayers-wms-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 OpenLayers WMS Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-geoserver-styling-sld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. GeoServer Styling – SLD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. GeoServer Styling – SLD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-why-server-side-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Why Server-Side Styling?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-sld-structure-symbolizers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 SLD Structure &amp; Symbolizers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-classification-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Classification Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-wms-filtering-with-geoserver-cql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. WMS Filtering with GeoServer (CQL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. WMS Filtering with GeoServer (CQL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-common-cql-filter-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Common CQL Filter Patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-applying-cql-filters-dynamically-in-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Applying CQL Filters Dynamically in OpenLayers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-wfs-working-with-real-vector-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. WFS – Working with Real Vector Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. WFS – Working with Real Vector Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-wfs-request-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 WFS Request Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-loading-geoserver-wfs-in-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Loading GeoServer WFS in OpenLayers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-wfs-filtering-feature-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. WFS Filtering &amp; Feature Requests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. WFS Filtering &amp; Feature Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-restricting-features-with-cql_filter-and-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Restricting Features with CQL_FILTER and Limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-bounding-box-strategy-bbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Bounding Box Strategy (bbox)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-wms-vs-wfs-when-to-use-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. WMS vs. WFS — When to Use What?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-openlayers-feature-interaction-with-geoserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. OpenLayers Feature Interaction with GeoServer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. OpenLayers Feature Interaction with GeoServer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-wms-feature-info-getfeatureinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 WMS Feature Info (GetFeatureInfo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-wfs-client-side-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 WFS Client-Side Interaction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-layer-groups-multiple-geoserver-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Layer Groups &amp; Multiple GeoServer Layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Layer Groups &amp; Multiple GeoServer Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-geoserver-layer-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 GeoServer Layer Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-client-side-openlayers-layer-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Client-Side OpenLayers Layer Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-debugging-geoserver-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Debugging GeoServer + OpenLayers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Debugging GeoServer + OpenLayers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-http-status-codes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common HTTP Status Codes &amp; Solutions:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical activity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#part-1-geoserver-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1 — GeoServer Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-2-openlayers-wms-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2 — OpenLayers WMS Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-3-apply-dynamic-cql-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3 — Apply Dynamic CQL Filter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-bonus-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional Bonus Challenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-implementation-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation (main.js):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="module-3-geoserver-openlayers">Module 3 - GeoServer &amp; OpenLayers</h1>
+<p>Welcome to Module 3! In this module, we transition from simply consuming static files to understanding <strong>how GeoServer publishes, styles, and controls geospatial data</strong>, and how OpenLayers interacts with it across enterprise Web GIS architectures.</p>
+<hr />
+<h2 id="1-introduction-to-geoserver">1. Introduction to GeoServer</h2>
+<h3 id="11-what-is-geoserver">1.1 What is GeoServer?</h3>
+<p><strong>GeoServer</strong> is an open-source software server written in Java that allows users to share, process, and edit geospatial data. Developed to adhere strictly to Open Geospatial Consortium (OGC) standards, GeoServer is the industry standard for publishing maps and data from spatial databases to client mapping libraries like OpenLayers.</p>
+<p>Under the hood, GeoServer is built upon the <strong>GeoTools</strong> spatial library and runs inside a Java Servlet container (such as Apache Tomcat or Eclipse Jetty). It acts as an abstraction layer between enterprise storage and web clients.</p>
+<h3 id="12-geoserver-in-the-web-gis-architecture">1.2 GeoServer in the Web GIS Architecture</h3>
+<p>GeoServer sits in the middle tier between your raw spatial storage and client web applications:</p>
+<div class="highlight"><pre><span></span><code>               ENTERPRISE 3-TIER ARCHITECTURE
+Storage Tier:       PostGIS / Shapefiles / GeoPackage / GeoTIFF
+                                  ↓ (JDBC / File I/O)
+Middleware Tier:              GeoServer
+                    (GeoTools Engine, SLD Styler, WMS/WFS/WMTS)
+                                  ↓ (HTTP / OGC Web Services)
+Client Tier:                  OpenLayers
+                    (Canvas / WebGL Engine, Layer Management)
+                                  ↓
+Presentation Tier:         Web Browser Viewport
+</code></pre></div>
+<h3 id="13-the-openlayers-geoserver-workflow">1.3 The OpenLayers + GeoServer Workflow</h3>
+<ul>
+<li><strong>Storage Tier:</strong> Spatial datasets reside in an enterprise relational database (PostGIS) or flat files (Shapefile, GeoPackage, GeoTIFF).</li>
+<li><strong>Publishing Tier:</strong> GeoServer connects to the data store, verifies coordinate reference systems, computes spatial bounding boxes, applies cartographic styling rules (SLD), and exposes standard OGC endpoints.</li>
+<li><strong>Client Tier:</strong> OpenLayers requests rendered map images (WMS) or raw vector features (WFS) dynamically as the user navigates.</li>
+</ul>
+<hr />
+<h2 id="2-geoserver-data-hierarchy">2. GeoServer Data Hierarchy</h2>
+<p>To manage datasets across large organizations, GeoServer organizes data into a strict four-level administrative hierarchy:</p>
+<div class="highlight"><pre><span></span><code>Workspace (Logical container &amp; XML namespace)
+   └── Store (Physical connection to database or directory)
+        └── Layer / FeatureType (Individual spatial table or file)
+             └── Style (SLD cartographic symbology)
+</code></pre></div>
+<h3 id="21-the-components-explained">2.1 The Components Explained:</h3>
+<ul>
+<li><strong>Workspace:</strong> A logical container and XML namespace grouping related stores and layers together (e.g., <code>training</code>, <code>city_planning</code>). It prevents layer naming collisions across different departments or projects.</li>
+<li><strong>Store:</strong> The physical connection configuration to a data source (e.g., PostGIS database connection parameters, path to a directory of Shapefiles, or a GeoTIFF file).</li>
+<li><strong>Resource / Layer:</strong> An individual spatial table or file published from a store with a verified Coordinate Reference System, bounding box, and assigned style.</li>
+<li><strong>Layer Group:</strong> A combined service endpoint that packages multiple layers together in a fixed rendering order, allowing OpenLayers to request multiple thematic layers in a single HTTP request.</li>
+</ul>
+<h3 id="22-understanding-layer-qualified-names">2.2 Understanding Layer Qualified Names</h3>
+<p>In GeoServer, layers are referenced using the format:
+<div class="highlight"><pre><span></span><code>workspace:layer_name
+</code></pre></div>
+Examples:
+<div class="highlight"><pre><span></span><code>training:roads
+training:buildings
+training:parcels
+</code></pre></div></p>
+<hr />
+<h2 id="3-connecting-data-sources-to-geoserver">3. Connecting Data Sources to GeoServer</h2>
+<p>GeoServer supports diverse vector and raster data formats through specialized data store adapters:</p>
+<div class="highlight"><pre><span></span><code>Data Source → Store → Layer → OGC Service
+</code></pre></div>
+<h3 id="31-vector-data-sources">3.1 Vector Data Sources</h3>
+<ul>
+<li><strong>PostGIS:</strong> The enterprise standard. Connects to PostgreSQL spatial tables with live spatial querying, spatial indexing (<code>GiST</code>), multi-user editing, and ACID transaction safety.</li>
+<li><strong>Directory of Shapefiles:</strong> Connects to a folder containing <code>.shp</code>, <code>.shx</code>, <code>.dbf</code>, and <code>.prj</code> files. Great for rapid local testing.</li>
+<li><strong>GeoPackage (GPKG):</strong> A modern, single-file SQLite database containing multiple vector and raster layers according to OGC standards.</li>
+<li><strong>GeoJSON:</strong> Flat JSON files containing vector feature collections.</li>
+</ul>
+<h3 id="32-raster-data-sources">3.2 Raster Data Sources</h3>
+<ul>
+<li><strong>GeoTIFF:</strong> Single georeferenced raster file (satellite imagery, aerial orthophotos, elevation models).</li>
+<li><strong>ImageMosaic:</strong> Connects to a catalog of multiple adjacent raster tiles, merging them into a seamless continuous layer with spatial indexing and time-series dimensions.</li>
+</ul>
+<hr />
+<h2 id="4-publishing-a-layer-in-geoserver">4. Publishing a Layer in GeoServer</h2>
+<p>Publishing spatial data in GeoServer follows an 8-step workflow:</p>
+<div class="highlight"><pre><span></span><code>1. Create Workspace → 2. Add Store → 3. Select Source → 4. Publish Layer
+        ↓
+5. Verify CRS → 6. Calculate Bounding Boxes → 7. Configure Style → 8. Layer Preview
+</code></pre></div>
+<h3 id="41-step-by-step-publishing-workflow">4.1 Step-by-Step Publishing Workflow</h3>
+<ul>
+<li><strong>Create Workspace:</strong> Define a name (e.g., <code>training</code>) and a unique Namespace URI (e.g., <code>http://localhost/training</code>).</li>
+<li><strong>Add Data Store:</strong> Select your store type (PostGIS, Directory of Shapefiles, or GeoTIFF) and provide connection parameters.</li>
+<li><strong>Select Data Source:</strong> GeoServer reads the store and lists available tables or files. Click <strong>Publish</strong> next to the desired dataset.</li>
+<li><strong>Configure Coordinate Reference Systems (CRS):</strong></li>
+<li><strong>Native CRS:</strong> The coordinate system detected directly within the dataset header (e.g., <code>EPSG:4326</code> or <code>EPSG:32643</code>).</li>
+<li><strong>Declared CRS:</strong> What GeoServer publishes to clients.</li>
+<li><strong>SRS Handling Policies:</strong><ul>
+<li><em>Force Declared:</em> Overrides the native CRS if it is missing or misidentified.</li>
+<li><em>Reproject native to declared:</em> Uses GeoTools to reproject coordinates on ingest.</li>
+</ul>
+</li>
+<li><strong>Compute Bounding Boxes:</strong></li>
+<li>Click <strong>Compute from data</strong> to calculate the <strong>Native Bounding Box</strong>.</li>
+<li>Click <strong>Compute from native bounds</strong> to calculate the <strong>Lat/Lon Bounding Box</strong> in WGS 84 degrees.</li>
+<li><em>If bounding boxes are missing or set to zero, OpenLayers will not be able to display the layer.</em></li>
+<li><strong>Assign Style:</strong> In the <strong>Publishing</strong> tab, assign a Default Style (SLD).</li>
+<li><strong>Save and Preview:</strong> Click <strong>Save</strong>. Navigate to <strong>Layer Preview</strong> in the GeoServer sidebar and select <strong>OpenLayers</strong> to confirm rendering.</li>
+</ul>
+<hr />
+<h2 id="5-getcapabilities-service-metadata">5. GetCapabilities &amp; Service Metadata</h2>
+<p>Before writing client-side code, inspect GeoServer's <strong><code>GetCapabilities</code></strong> XML document to determine valid layer names, supported projections, bounding boxes, and available image formats.</p>
+<div class="highlight"><pre><span></span><code>Client ──HTTP GET: REQUEST=GetCapabilities──▶ GeoServer ──Returns XML Document──▶ Client
+</code></pre></div>
+<h3 id="51-querying-getcapabilities">5.1 Querying GetCapabilities</h3>
+<p>Append <code>REQUEST=GetCapabilities</code> to your service URL:
+- <strong>WMS:</strong> <code>http://localhost:8080/geoserver/wms?service=WMS&amp;version=1.3.0&amp;request=GetCapabilities</code>
+- <strong>WFS:</strong> <code>http://localhost:8080/geoserver/wfs?service=WFS&amp;version=2.0.0&amp;request=GetCapabilities</code></p>
+<h3 id="52-key-information-to-inspect">5.2 Key Information to Inspect:</h3>
+<ul>
+<li><strong>Layer Names:</strong> Look for <code>&lt;Layer&gt;&lt;Name&gt;training:roads&lt;/Name&gt;&lt;/Layer&gt;</code>. The string inside <code>&lt;Name&gt;</code> is the exact identifier required by OpenLayers.</li>
+<li><strong>Supported CRS:</strong> Verify that your target projection (e.g., <code>EPSG:3857</code>, <code>EPSG:4326</code>) is listed under <code>&lt;CRS&gt;</code>.</li>
+<li><strong>Supported Formats:</strong> Check <code>&lt;Format&gt;</code> tags for available image types (<code>image/png</code>, <code>image/jpeg</code>) or vector formats (<code>application/json</code>).</li>
+<li><strong>Bounding Boxes:</strong> <code>&lt;EX_GeographicBoundingBox&gt;</code> provides latitude/longitude limits used to set initial map view extents.</li>
+</ul>
+<hr />
+<h2 id="6-wms-with-geoserver">6. WMS with GeoServer</h2>
+<p><strong>WMS (Web Map Service)</strong> renders map images on the server and streams them to OpenLayers as raster pictures.</p>
+<h3 id="61-imagewms-vs-tilewms">6.1 <code>ImageWMS</code> vs. <code>TileWMS</code></h3>
+<ul>
+<li><strong><code>ImageWMS</code> (Single Image):</strong> Requests a single image covering the whole map canvas for the current extent.</li>
+<li><em>Best for:</em> Thematic maps and layers with dense text labels (prevents labels being chopped at tile boundaries).</li>
+<li><strong><code>TileWMS</code> (Tiled Images):</strong> Requests WMS imagery in a grid of 256x256 pixel tiles.</li>
+<li><em>Best for:</em> Base maps, high-traffic layers, and caching via GeoWebCache.</li>
+</ul>
+<h3 id="62-key-wms-request-parameters">6.2 Key WMS Request Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LAYERS</code></td>
+<td>Qualified name of the layer or layer group</td>
+<td><code>'training:roads'</code></td>
+</tr>
+<tr>
+<td><code>STYLES</code></td>
+<td>Named SLD style on GeoServer (empty uses default)</td>
+<td><code>''</code></td>
+</tr>
+<tr>
+<td><code>FORMAT</code></td>
+<td>Output image MIME format</td>
+<td><code>'image/png'</code></td>
+</tr>
+<tr>
+<td><code>TRANSPARENT</code></td>
+<td>Enables canvas transparency so lower layers show through</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>VERSION</code></td>
+<td>OGC WMS protocol version</td>
+<td><code>'1.3.0'</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-openlayers-wms-implementation">6.3 OpenLayers WMS Implementation</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">ImageLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Image.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ImageWMS</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/ImageWMS.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">wmsLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ImageLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ImageWMS</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://localhost:8080/geoserver/wms&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s1">&#39;LAYERS&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;training:roads&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;TRANSPARENT&#39;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;FORMAT&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;image/png&#39;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">serverType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;geoserver&#39;</span><span class="w"> </span><span class="c1">// Enables optimized error handling and vendor parameters</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">wmsLayer</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="7-geoserver-styling-sld">7. GeoServer Styling – SLD</h2>
+<p><strong>SLD (Styled Layer Descriptor)</strong> is an OGC XML-based styling language that instructs GeoServer how to draw vector features into map images.</p>
+<h3 id="71-why-server-side-styling">7.1 Why Server-Side Styling?</h3>
+<ul>
+<li><strong>Consistency:</strong> The exact same cartographic rules apply whether the layer is viewed in OpenLayers, QGIS, or an embedded dashboard.</li>
+<li><strong>Zero Client Overhead:</strong> The server handles all label placement, complex line dashes, and polygon hatching without consuming browser CPU.</li>
+</ul>
+<h3 id="72-sld-structure-symbolizers">7.2 SLD Structure &amp; Symbolizers</h3>
+<p>An SLD document consists of:</p>
+<p><code>NamedLayer</code> <span class="arithmatex">\(\rightarrow\)</span> <code>UserStyle</code> <span class="arithmatex">\(\rightarrow\)</span> <code>FeatureTypeStyle</code> <span class="arithmatex">\(\rightarrow\)</span> <code>Rule</code> <span class="arithmatex">\(\rightarrow\)</span> <code>Symbolizer</code></p>
+<ul>
+<li><code>PointSymbolizer</code>: Circles, squares, SVG icons.</li>
+<li><code>LineSymbolizer</code>: Color, width, dash array.</li>
+<li><code>PolygonSymbolizer</code>: Fill color, opacity, stroke outline.</li>
+<li><code>TextSymbolizer</code>: Label field, font family, halo, placement.</li>
+</ul>
+<h3 id="73-classification-example">7.3 Classification Example</h3>
+<p>Rules can filter features using attributes to create thematic maps:</p>
+<div class="highlight"><pre><span></span><code>Roads
+ ├── Rule 1: type = &#39;highway&#39; → Red line (width: 4px)
+ ├── Rule 2: type = &#39;primary&#39; → Orange line (width: 3px)
+ └── Rule 3: type = &#39;local&#39;   → Gray line (width: 1px)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;Rule&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Name&gt;</span>Highways<span class="nt">&lt;/Name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;ogc:Filter&gt;</span>
+<span class="w">    </span><span class="nt">&lt;ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ogc:PropertyName&gt;</span>type<span class="nt">&lt;/ogc:PropertyName&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ogc:Literal&gt;</span>highway<span class="nt">&lt;/ogc:Literal&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/ogc:PropertyIsEqualTo&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/ogc:Filter&gt;</span>
+<span class="w">  </span><span class="nt">&lt;LineSymbolizer&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Stroke&gt;</span>
+<span class="w">      </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke&quot;</span><span class="nt">&gt;</span>#D32F2F<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">      </span><span class="nt">&lt;CssParameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stroke-width&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/CssParameter&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/Stroke&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/LineSymbolizer&gt;</span>
+<span class="nt">&lt;/Rule&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="8-wms-filtering-with-geoserver-cql">8. WMS Filtering with GeoServer (CQL)</h2>
+<p>GeoServer supports <strong>CQL (Common Query Language)</strong> and <strong>ECQL (Extended CQL)</strong>, allowing OpenLayers to filter server-side data dynamically on the fly without modifying SLD files.</p>
+<div class="highlight"><pre><span></span><code>OpenLayers → CQL_FILTER parameter → GeoServer → Filtered Map Image
+</code></pre></div>
+<h3 id="81-common-cql-filter-patterns">8.1 Common CQL Filter Patterns</h3>
+<table>
+<thead>
+<tr>
+<th>Filter Type</th>
+<th>CQL Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>String Comparison</strong></td>
+<td><code>type = 'highway'</code></td>
+<td>Exact string match</td>
+</tr>
+<tr>
+<td><strong>Numeric Comparison</strong></td>
+<td><code>lanes &gt;= 4</code></td>
+<td>Greater than or equal</td>
+</tr>
+<tr>
+<td><strong>Range Filter</strong></td>
+<td><code>speed_limit BETWEEN 40 AND 80</code></td>
+<td>Value within range</td>
+</tr>
+<tr>
+<td><strong>Logical Combination</strong></td>
+<td><code>type = 'highway' AND lanes &gt;= 4</code></td>
+<td>Multiple conditions</td>
+</tr>
+<tr>
+<td><strong>String Pattern</strong></td>
+<td><code>name LIKE 'Main%'</code></td>
+<td>Wildcard matching</td>
+</tr>
+<tr>
+<td><strong>Spatial Bounding</strong></td>
+<td><code>BBOX(geom, 73.8, 18.5, 73.9, 18.6)</code></td>
+<td>Features within bounding box</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-applying-cql-filters-dynamically-in-openlayers">8.2 Applying CQL Filters Dynamically in OpenLayers</h3>
+<p>Use <code>source.updateParams()</code> to apply or clear filters at runtime:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1. Apply a filter: show only highways</span>
+<span class="nx">wmsLayer</span><span class="p">.</span><span class="nx">getSource</span><span class="p">().</span><span class="nx">updateParams</span><span class="p">({</span>
+<span class="w">  </span><span class="s1">&#39;CQL_FILTER&#39;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;type = &#39;highway&#39;&quot;</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. Clear the filter: show all features</span>
+<span class="nx">wmsLayer</span><span class="p">.</span><span class="nx">getSource</span><span class="p">().</span><span class="nx">updateParams</span><span class="p">({</span>
+<span class="w">  </span><span class="s1">&#39;CQL_FILTER&#39;</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="9-wfs-working-with-real-vector-features">9. WFS – Working with Real Vector Features</h2>
+<p>While WMS returns a flattened raster image, <strong>WFS (Web Feature Service)</strong> returns the actual vector geometries and attributes (typically as GeoJSON).</p>
+<div class="highlight"><pre><span></span><code>GeoServer WFS → GeoJSON → ol/source/Vector → ol/layer/Vector → Browser Canvas
+</code></pre></div>
+<h3 id="91-wfs-request-structure">9.1 WFS Request Structure</h3>
+<p>A standard WFS <code>GetFeature</code> request URL:
+<div class="highlight"><pre><span></span><code>http://localhost:8080/geoserver/wfs?
+  service=WFS&amp;
+  version=2.0.0&amp;
+  request=GetFeature&amp;
+  typeNames=training:buildings&amp;
+  outputFormat=application/json
+</code></pre></div></p>
+<h3 id="92-loading-geoserver-wfs-in-openlayers">9.2 Loading GeoServer WFS in OpenLayers</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">VectorSource</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/format/GeoJSON.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Style</span><span class="p">,</span><span class="w"> </span><span class="nx">Fill</span><span class="p">,</span><span class="w"> </span><span class="nx">Stroke</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/style.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">wfsLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorSource</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://localhost:8080/geoserver/wfs?service=WFS&amp;version=2.0.0&amp;request=GetFeature&amp;typeNames=training:buildings&amp;outputFormat=application/json&#39;</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;rgba(76, 175, 80, 0.4)&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#2E7D32&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">wfsLayer</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="10-wfs-filtering-feature-requests">10. WFS Filtering &amp; Feature Requests</h2>
+<p>Downloading an entire layer containing 100,000 features over WFS will freeze the browser. GeoServer allows optimizing WFS requests using server-side constraints.</p>
+<h3 id="101-restricting-features-with-cql_filter-and-limits">10.1 Restricting Features with <code>CQL_FILTER</code> and Limits</h3>
+<p>Append <code>cql_filter</code> and <code>count</code> (or <code>maxFeatures</code> in WFS 1.1) to your request URL:</p>
+<div class="highlight"><pre><span></span><code>http://localhost:8080/geoserver/wfs?
+  service=WFS&amp;
+  version=2.0.0&amp;
+  request=GetFeature&amp;
+  typeNames=training:buildings&amp;
+  outputFormat=application/json&amp;
+  cql_filter=status=&#39;commercial&#39;&amp;
+  count=500
+</code></pre></div>
+<h3 id="102-bounding-box-strategy-bbox">10.2 Bounding Box Strategy (<code>bbox</code>)</h3>
+<p>Instead of fetching all features upfront, configure OpenLayers to request only features within the user's current viewport extent using the <code>bbox</code> loading strategy:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">VectorSource</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/format/GeoJSON.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">bbox</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">bboxStrategy</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/loadingstrategy.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">dynamicWfsSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorSource</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">strategy</span><span class="o">:</span><span class="w"> </span><span class="nx">bboxStrategy</span><span class="p">,</span><span class="w"> </span><span class="c1">// Triggers loader whenever the map extent changes</span>
+<span class="w">  </span><span class="nx">loader</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">extent</span><span class="p">,</span><span class="w"> </span><span class="nx">resolution</span><span class="p">,</span><span class="w"> </span><span class="nx">projection</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">projCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">projection</span><span class="p">.</span><span class="nx">getCode</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`http://localhost:8080/geoserver/wfs?service=WFS&amp;version=2.0.0&amp;request=GetFeature&amp;typeNames=training:buildings&amp;outputFormat=application/json&amp;srsname=</span><span class="si">${</span><span class="nx">projCode</span><span class="si">}</span><span class="sb">&amp;bbox=</span><span class="si">${</span><span class="nx">extent</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="si">}</span><span class="sb">,</span><span class="si">${</span><span class="nx">projCode</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">dynamicWfsSource</span><span class="p">.</span><span class="nx">addFeatures</span><span class="p">(</span>
+<span class="w">          </span><span class="ow">new</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="p">().</span><span class="nx">readFeatures</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="11-wms-vs-wfs-when-to-use-what">11. WMS vs. WFS — When to Use What?</h2>
+<p>Use this decision table when choosing between WMS and WFS:</p>
+<table>
+<thead>
+<tr>
+<th>Requirement / Capability</th>
+<th style="text-align: center;">WMS (Web Map Service)</th>
+<th style="text-align: center;">WFS (Web Feature Service)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Output Type</strong></td>
+<td style="text-align: center;">Image picture (PNG, JPEG)</td>
+<td style="text-align: center;">Raw vector geometry (GeoJSON, GML)</td>
+</tr>
+<tr>
+<td><strong>Browser Workload</strong></td>
+<td style="text-align: center;">Very Low</td>
+<td style="text-align: center;">Higher (processes coordinates &amp; DOM paths)</td>
+</tr>
+<tr>
+<td><strong>Large Datasets (&gt; 50,000 features)</strong></td>
+<td style="text-align: center;"><strong>Best Choice</strong></td>
+<td style="text-align: center;">Unsuitable (high network &amp; memory usage)</td>
+</tr>
+<tr>
+<td><strong>Interactive Feature Popups</strong></td>
+<td style="text-align: center;">Via <code>GetFeatureInfo</code> server call</td>
+<td style="text-align: center;">Instant client-side inspection</td>
+</tr>
+<tr>
+<td><strong>Client-Side Hover / Dynamic Styling</strong></td>
+<td style="text-align: center;">❌ No</td>
+<td style="text-align: center;">✅ Yes</td>
+</tr>
+<tr>
+<td><strong>Feature Geometry Editing</strong></td>
+<td style="text-align: center;">❌ No</td>
+<td style="text-align: center;">✅ Yes (via WFS-T)</td>
+</tr>
+<tr>
+<td><strong>Network Payload Size</strong></td>
+<td style="text-align: center;">Constant (size of one screen image)</td>
+<td style="text-align: center;">Proportional to feature count</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Architecture Question:</strong> <em>Do I need to display visual map imagery (use WMS), or do I need to manipulate, style, or edit raw coordinates in the browser (use WFS)?</em></p>
+</blockquote>
+<hr />
+<h2 id="12-openlayers-feature-interaction-with-geoserver">12. OpenLayers Feature Interaction with GeoServer</h2>
+<h3 id="121-wms-feature-info-getfeatureinfo">12.1 WMS Feature Info (<code>GetFeatureInfo</code>)</h3>
+<p>Because WMS layers are flat raster images, OpenLayers cannot directly read vector properties from pixels. Instead, OpenLayers generates a <code>GetFeatureInfo</code> request asking GeoServer: <em>"What feature exists at this pixel coordinate?"</em></p>
+<div class="highlight"><pre><span></span><code>User clicks map → GetFeatureInfo request → GeoServer → Returns JSON attributes → Display Popup
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;singleclick&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">viewResolution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">.</span><span class="nx">getView</span><span class="p">().</span><span class="nx">getResolution</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">wmsSource</span><span class="p">.</span><span class="nx">getFeatureInfoUrl</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">event</span><span class="p">.</span><span class="nx">coordinate</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">viewResolution</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;EPSG:3857&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s1">&#39;INFO_FORMAT&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">url</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">features</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">features</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">          </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Feature Attributes:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">properties</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="122-wfs-client-side-interaction">12.2 WFS Client-Side Interaction</h3>
+<p>With WFS, features exist directly in the browser's memory, allowing instant attribute inspection:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">map</span><span class="p">.</span><span class="nx">forEachFeatureAtPixel</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">pixel</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">feature</span><span class="p">,</span><span class="w"> </span><span class="nx">layer</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">layer</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">wfsLayer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Building Name:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="13-layer-groups-multiple-geoserver-layers">13. Layer Groups &amp; Multiple GeoServer Layers</h2>
+<h3 id="131-geoserver-layer-groups">13.1 GeoServer Layer Groups</h3>
+<p>A <strong>Layer Group</strong> is a container that packages multiple layers into a single named WMS service. Instead of sending five separate HTTP requests for roads, rivers, buildings, and parcels, OpenLayers requests one composite image:</p>
+<div class="highlight"><pre><span></span><code>LAYERS: &#39;training:city_basemap&#39; // Renders roads + buildings + parcels combined
+</code></pre></div>
+<h3 id="132-client-side-openlayers-layer-groups">13.2 Client-Side OpenLayers Layer Groups</h3>
+<p>You can also organize multiple distinct layers on the client using <code>ol/layer/Group</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">LayerGroup</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Group.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">operationalLayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">LayerGroup</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">roadsLayer</span><span class="p">,</span><span class="w"> </span><span class="nx">buildingsLayer</span><span class="p">,</span><span class="w"> </span><span class="nx">parcelsLayer</span><span class="p">]</span>
+<span class="p">});</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">operationalLayers</span><span class="p">);</span>
+
+<span class="c1">// Toggle entire group visibility at once</span>
+<span class="c1">// operationalLayers.setVisible(false);</span>
+</code></pre></div>
+<hr />
+<h2 id="14-debugging-geoserver-openlayers">14. Debugging GeoServer + OpenLayers</h2>
+<p>When a layer fails to render, use the <strong>GeoServer Layer Preview + Browser Network Tab</strong> diagnostic workflow:</p>
+<pre class="mermaid"><code>flowchart TD
+    Issue[Layer Fails to Render] --&gt; Step1[Check GeoServer Layer Preview]
+    Step1 --&gt;|Fails in GeoServer| Fix1[Check Store, Native CRS, and SLD errors in GeoServer]
+    Step1 --&gt;|Works in GeoServer| Step2[Inspect Browser Network Tab F12]
+    Step2 --&gt;|HTTP 404| Fix2[Verify Service URL &amp; workspace:layer name]
+    Step2 --&gt;|HTTP 400| Fix3[Verify BBOX, CRS, and parameter spelling]
+    Step2 --&gt;|CORS Error| Fix4[Enable CORS filter in GeoServer web.xml]
+    Step2 --&gt;|HTTP 200 Blank Image| Fix5[Check Map View extent &amp; CQL filter logic]</code></pre>
+<h3 id="common-http-status-codes-solutions">Common HTTP Status Codes &amp; Solutions:</h3>
+<ul>
+<li><strong><code>404 Not Found</code>:</strong> The GeoServer URL path or <code>LAYERS: 'workspace:layer'</code> is misspelled.</li>
+<li><strong><code>400 Bad Request</code>:</strong> Invalid parameters. GeoServer returns an XML <code>ServiceExceptionReport</code> explaining the exact syntax error.</li>
+<li><strong><code>401 / 403 Forbidden</code>:</strong> Workspace security rules are active. Check <strong>Data Security</strong> in GeoServer admin settings.</li>
+<li><strong><code>CORS Error</code>:</strong> The browser blocked the response. Ensure GeoServer's <code>web.xml</code> has the CORS filter un-commented.</li>
+<li><strong>Blank Image with Status 200:</strong> Check if your map View is centered outside the layer's bounding box, or if a <code>CQL_FILTER</code> filtered out all features.</li>
+</ul>
+<hr />
+<h3 id="reference-resources">Reference resources</h3>
+<ul>
+<li><strong>GeoServer User Manual:</strong> <a href="https://docs.geoserver.org/">https://docs.geoserver.org/</a></li>
+<li><strong>OGC WMS Standard:</strong> <a href="https://www.ogc.org/standards/wms">https://www.ogc.org/standards/wms</a></li>
+<li><strong>OGC WFS Standard:</strong> <a href="https://www.ogc.org/standards/wfs">https://www.ogc.org/standards/wfs</a></li>
+<li><strong>OpenLayers <code>ImageWMS</code> API:</strong> <a href="https://openlayers.org/en/latest/apidoc/module-ol_source_ImageWMS-ImageWMS.html">https://openlayers.org/en/latest/apidoc/module-ol_source_ImageWMS-ImageWMS.html</a></li>
+</ul>
+<h3 id="practical-activity">Practical activity</h3>
+<p><strong>Your Task:</strong></p>
+<h4 id="part-1-geoserver-configuration">Part 1 — GeoServer Configuration</h4>
+<ol>
+<li><strong>Create Workspace:</strong> In your GeoServer admin console, create a new workspace named <code>training</code>.</li>
+<li><strong>Connect Data Store:</strong> Add a new Vector Data Store (PostGIS table or Directory of Shapefiles) pointing to your sample <code>roads</code> dataset.</li>
+<li><strong>Publish Layer:</strong> Publish the <code>roads</code> layer, verify that the Native CRS is valid, compute the Bounding Boxes, and assign a default line style.</li>
+<li><strong>Verify Preview:</strong> Open <strong>Layer Preview</strong> in the GeoServer sidebar and confirm that <code>training:roads</code> renders properly.</li>
+</ol>
+<h4 id="part-2-openlayers-wms-integration">Part 2 — OpenLayers WMS Integration</h4>
+<ol>
+<li><strong>Setup Map Project:</strong> Create an OpenLayers project with an OpenStreetMap base layer.</li>
+<li><strong>Add GeoServer WMS Layer:</strong> Instantiate an <code>ImageLayer</code> using <code>ImageWMS</code> pointing to your local GeoServer endpoint (<code>http://localhost:8080/geoserver/wms</code>) with <code>LAYERS: 'training:roads'</code>.</li>
+<li><strong>Configure Transparency:</strong> Set <code>TRANSPARENT: true</code> so the underlying OSM street map remains visible.</li>
+</ol>
+<h4 id="part-3-apply-dynamic-cql-filter">Part 3 — Apply Dynamic CQL Filter</h4>
+<ol>
+<li><strong>Filter WMS Layer:</strong> Add a <code>CQL_FILTER</code> parameter to display only highway roads:
+   <div class="highlight"><pre><span></span><code><span class="nx">wmsLayer</span><span class="p">.</span><span class="nx">getSource</span><span class="p">().</span><span class="nx">updateParams</span><span class="p">({</span>
+<span class="w">  </span><span class="s1">&#39;CQL_FILTER&#39;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;type = &#39;highway&#39;&quot;</span>
+<span class="p">});</span>
+</code></pre></div></li>
+<li><strong>Analyze Network:</strong> Open your browser's Developer Tools (<code>F12</code>), navigate to the <strong>Network</strong> tab, pan the map, and observe the <code>GetMap</code> request URL containing your updated <code>CQL_FILTER</code> parameter.</li>
+</ol>
+<h4 id="optional-bonus-challenge">Optional Bonus Challenge</h4>
+<p>Add the same <code>roads</code> layer as a GeoJSON <strong>WFS</strong> layer (<code>VectorLayer</code> + <code>VectorSource</code>), apply a custom client-side stroke style, and add a click handler using <code>forEachFeatureAtPixel</code> to display road names in an alert or popup.</p>
+<hr />
+<h4 id="example-implementation-mainjs">Example Implementation (<code>main.js</code>):</h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nb">Map</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Map.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/View.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">TileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Tile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ImageLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Image.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OSM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/OSM.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ImageWMS</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/ImageWMS.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/proj.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;ol/ol.css&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. Base Layer: OpenStreetMap</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">osmLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OSM</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. GeoServer WMS Layer: Published roads dataset</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">wmsSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ImageWMS</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://localhost:8080/geoserver/wms&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s1">&#39;LAYERS&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;training:roads&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;TRANSPARENT&#39;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;FORMAT&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;image/png&#39;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">serverType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;geoserver&#39;</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">roadsLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ImageLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="nx">wmsSource</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="p">});</span>
+
+<span class="c1">// 3. Initialize Map</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">osmLayer</span><span class="p">,</span><span class="w"> </span><span class="nx">roadsLayer</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">View</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.85</span><span class="p">,</span><span class="w"> </span><span class="mf">18.52</span><span class="p">]),</span><span class="w"> </span><span class="c1">// Adjust to your dataset coordinates</span>
+<span class="w">    </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="c1">// 4. Demonstration: Dynamic CQL Filtering</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">filterHighwaysButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;filter-btn&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">filterHighwaysButton</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">filterHighwaysButton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">wmsSource</span><span class="p">.</span><span class="nx">updateParams</span><span class="p">({</span>
+<span class="w">      </span><span class="s1">&#39;CQL_FILTER&#39;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;type = &#39;highway&#39;&quot;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// 5. WMS GetFeatureInfo on Map Click</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;singleclick&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">viewResolution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">.</span><span class="nx">getView</span><span class="p">().</span><span class="nx">getResolution</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">wmsSource</span><span class="p">.</span><span class="nx">getFeatureInfoUrl</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">event</span><span class="p">.</span><span class="nx">coordinate</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">viewResolution</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;EPSG:3857&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s1">&#39;INFO_FORMAT&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">url</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">features</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">features</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">features</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">properties</span><span class="p">;</span>
+<span class="w">          </span><span class="nx">alert</span><span class="p">(</span><span class="sb">`Road: </span><span class="si">${</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;Unnamed&#39;</span><span class="si">}</span><span class="sb"> (Type: </span><span class="si">${</span><span class="nx">props</span><span class="p">.</span><span class="nx">type</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;N/A&#39;</span><span class="si">}</span><span class="sb">)`</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">      </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;GetFeatureInfo error:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

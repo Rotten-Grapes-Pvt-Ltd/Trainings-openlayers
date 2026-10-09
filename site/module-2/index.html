@@ -1,0 +1,2302 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../module-1/">
+      
+      
+        <link rel="next" href="../module-3/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Module 2 - GIS Data & Services - OpenLayers Training</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-2-gis-data-web-services" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OpenLayers Training" class="md-header__button md-logo" aria-label="OpenLayers Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OpenLayers Training
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module 2 - GIS Data & Services
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OpenLayers Training" class="md-nav__button md-logo" aria-label="OpenLayers Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    OpenLayers Training
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1 - Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2 - GIS Data & Services
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2 - GIS Data & Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-web-gis-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction to Web GIS Data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to Web GIS Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-how-openlayers-gets-gis-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 How OpenLayers Gets GIS Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-client-vs-server-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Client vs. Server Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-data-delivery-formats-vector-raster-and-tiled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Data Delivery Formats: Vector, Raster, and Tiled
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vector-data-geojson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Vector Data &amp; GeoJSON
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Vector Data &amp; GeoJSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-the-geojson-specification-rfc-7946" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 The GeoJSON Specification (RFC 7946)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-loading-local-geojson-in-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Loading Local GeoJSON in OpenLayers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-styling-geojson-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Styling GeoJSON Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-reading-feature-properties-on-click" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Reading Feature Properties on Click
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-limitations-of-geojson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Limitations of GeoJSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-raster-data-geotiff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Raster Data &amp; GeoTIFF
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Raster Data &amp; GeoTIFF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-what-is-a-geotiff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 What is a GeoTIFF?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-cloud-optimized-geotiffs-cog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Cloud-Optimized GeoTIFFs (COG)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-loading-cogs-with-webgl-in-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Loading COGs with WebGL in OpenLayers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-reprojection-coordinate-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Reprojection &amp; Coordinate Transformations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Reprojection &amp; Coordinate Transformations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-how-client-side-reprojection-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 How Client-Side Reprojection Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-universal-transverse-mercator-utm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Universal Transverse Mercator (UTM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-registering-utm-projections-with-proj4js" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Registering UTM Projections with Proj4js
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-web-map-service-wms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Web Map Service (WMS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Web Map Service (WMS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-what-is-wms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 What is WMS?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-imagewms-vs-tilewms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 ImageWMS vs. TileWMS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-core-wms-request-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Core WMS Request Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-xyz-tiled-raster-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. XYZ &amp; Tiled Raster Services
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. XYZ &amp; Tiled Raster Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-why-tiled-maps-are-fast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Why Tiled Maps Are Fast
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-the-slippy-map-zxy-coordinate-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 The Slippy Map {z}/{x}/{y} Coordinate Scheme
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 The Slippy Map {z}/{x}/{y} Coordinate Scheme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-slippy-map-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Slippy Map Math:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-web-map-tile-service-wmts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Web Map Tile Service (WMTS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Web Map Tile Service (WMTS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-xyz-vs-wmts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 XYZ vs. WMTS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-core-wmts-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Core WMTS Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-vector-tiles-mvt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Vector Tiles (MVT)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Vector Tiles (MVT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-the-mapbox-vector-tile-mvt-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 The Mapbox Vector Tile (MVT) Standard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-rendering-vector-tiles-in-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Rendering Vector Tiles in OpenLayers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-inspecting-debugging-web-gis-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Inspecting &amp; Debugging Web GIS Requests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Inspecting &amp; Debugging Web GIS Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-http-status-codes-in-web-gis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common HTTP Status Codes in Web GIS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-choosing-the-right-data-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Choosing the Right Data Source
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Choosing the Right Data Source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical activity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-implementation-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation (main.js):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 3 - GeoServer & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 4 - PostGIS & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 5 - Vector Styling & Interaction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 6 - CesiumJS Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 7 - MBTiles & Wrap-up
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 8 - Integrated Exercise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instructor-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructor Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-web-gis-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction to Web GIS Data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to Web GIS Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-how-openlayers-gets-gis-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 How OpenLayers Gets GIS Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-client-vs-server-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Client vs. Server Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-data-delivery-formats-vector-raster-and-tiled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Data Delivery Formats: Vector, Raster, and Tiled
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vector-data-geojson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Vector Data &amp; GeoJSON
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Vector Data &amp; GeoJSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-the-geojson-specification-rfc-7946" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 The GeoJSON Specification (RFC 7946)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-loading-local-geojson-in-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Loading Local GeoJSON in OpenLayers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-styling-geojson-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Styling GeoJSON Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-reading-feature-properties-on-click" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Reading Feature Properties on Click
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-limitations-of-geojson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Limitations of GeoJSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-raster-data-geotiff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Raster Data &amp; GeoTIFF
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Raster Data &amp; GeoTIFF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-what-is-a-geotiff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 What is a GeoTIFF?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-cloud-optimized-geotiffs-cog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Cloud-Optimized GeoTIFFs (COG)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-loading-cogs-with-webgl-in-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Loading COGs with WebGL in OpenLayers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-reprojection-coordinate-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Reprojection &amp; Coordinate Transformations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Reprojection &amp; Coordinate Transformations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-how-client-side-reprojection-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 How Client-Side Reprojection Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-universal-transverse-mercator-utm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Universal Transverse Mercator (UTM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-registering-utm-projections-with-proj4js" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Registering UTM Projections with Proj4js
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-web-map-service-wms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Web Map Service (WMS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Web Map Service (WMS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-what-is-wms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 What is WMS?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-imagewms-vs-tilewms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 ImageWMS vs. TileWMS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-core-wms-request-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Core WMS Request Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-xyz-tiled-raster-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. XYZ &amp; Tiled Raster Services
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. XYZ &amp; Tiled Raster Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-why-tiled-maps-are-fast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Why Tiled Maps Are Fast
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-the-slippy-map-zxy-coordinate-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 The Slippy Map {z}/{x}/{y} Coordinate Scheme
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 The Slippy Map {z}/{x}/{y} Coordinate Scheme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-slippy-map-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Slippy Map Math:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-web-map-tile-service-wmts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Web Map Tile Service (WMTS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Web Map Tile Service (WMTS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-xyz-vs-wmts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 XYZ vs. WMTS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-core-wmts-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Core WMTS Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-vector-tiles-mvt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Vector Tiles (MVT)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Vector Tiles (MVT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-the-mapbox-vector-tile-mvt-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 The Mapbox Vector Tile (MVT) Standard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-rendering-vector-tiles-in-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Rendering Vector Tiles in OpenLayers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-inspecting-debugging-web-gis-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Inspecting &amp; Debugging Web GIS Requests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Inspecting &amp; Debugging Web GIS Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-http-status-codes-in-web-gis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common HTTP Status Codes in Web GIS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-choosing-the-right-data-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Choosing the Right Data Source
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Choosing the Right Data Source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical activity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-implementation-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation (main.js):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="module-2-gis-data-web-services">Module 2 - GIS Data &amp; Web Services</h1>
+<p>Welcome to Module 2! In this module, we explore how OpenLayers consumes, renders, and manages real-world geospatial data across web architectures. </p>
+<p>In Web GIS, spatial datasets are rarely hardcoded into client applications. Instead, OpenLayers requests data across a distributed pipeline—from local files like GeoJSON, raster sources like Cloud-Optimized GeoTIFFs, OGC web services like WMS and WMTS, to modern binary vector tile streams. Understanding these data formats, encoding schemes, and network protocols is essential for building scalable, high-performance mapping applications.</p>
+<hr />
+<h2 id="1-introduction-to-web-gis-data">1. Introduction to Web GIS Data</h2>
+<h3 id="11-how-openlayers-gets-gis-data">1.1 How OpenLayers Gets GIS Data</h3>
+<p>Unlike desktop GIS software (such as QGIS or ArcGIS Pro) that has direct, uninhibited access to local filesystems and multi-gigabyte files, Web GIS applications operate within the strict sandbox of a web browser:</p>
+<ul>
+<li><strong>Client (Browser):</strong> OpenLayers requests only the precise data slices required for the active viewport extent and zoom level.</li>
+<li><strong>Server / Service Tier:</strong> Map servers (GeoServer, MapServer) or cloud tile servers process spatial queries, reproject geometries, or render map images on demand.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>                  DISTRIBUTED WEB GIS ARCHITECTURE
+Browser (OpenLayers)               Map Server / Tile CDN            Database Tier
+ ┌────────────────┐               ┌────────────────────┐          ┌─────────────┐
+ │ Viewport       │ ──HTTP GET──▶ │ GeoServer / S3     │ ──SQL──▶ │ PostGIS     │
+ │ Canvas / WebGL │ ◀──PNG / PBF─ │ Dynamic / Cached   │ ◀─Geom── │ Spatial DB  │
+ └────────────────┘               └────────────────────┘          └─────────────┘
+</code></pre></div>
+<h3 id="12-client-vs-server-responsibilities">1.2 Client vs. Server Responsibilities</h3>
+<table>
+<thead>
+<tr>
+<th>Responsibility</th>
+<th>Server Tier (GeoServer, PostGIS, Tile CDN)</th>
+<th>Client Tier (OpenLayers in Browser)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data Storage</strong></td>
+<td>Stores gigabytes to terabytes of spatial data</td>
+<td>Holds only features and tiles for active viewport</td>
+</tr>
+<tr>
+<td><strong>Heavy Processing</strong></td>
+<td>Spatial SQL joins, topological clipping, raster reprojection</td>
+<td>Coordinate transformation, GeoJSON parsing, client styling</td>
+</tr>
+<tr>
+<td><strong>Rendering</strong></td>
+<td>Generates pre-rendered raster tiles or WMS images</td>
+<td>Draws vector geometries on HTML5 Canvas or WebGL</td>
+</tr>
+<tr>
+<td><strong>Interactivity</strong></td>
+<td>Responds to spatial protocol requests (<code>GetMap</code>, <code>GetFeature</code>)</td>
+<td>Instant click/hover detection, popups, layer toggling</td>
+</tr>
+<tr>
+<td><strong>Memory Budget</strong></td>
+<td>Scalable enterprise RAM / disk storage</td>
+<td>Restricted to browser tab memory (typically &lt; 1.5 GB)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-data-delivery-formats-vector-raster-and-tiled">1.3 Data Delivery Formats: Vector, Raster, and Tiled</h3>
+<ul>
+<li><strong>Vector Data:</strong> Raw geometry coordinates (Points, LineStrings, Polygons) and associated attribute dictionaries. Rendered dynamically in the browser, allowing client-side styling, hover effects, and geometry modification.</li>
+<li><strong>Raster Data:</strong> Continuous grid of pixel values (satellite imagery, aerial orthophotos, elevation models, heatmaps). Each pixel represents a color or a physical measurement.</li>
+<li><strong>Tiled Data:</strong> Pre-cut, spatially indexed square image or vector segments arranged in a quadtree pyramid (<code>{z}/{x}/{y}</code>). Enables fast spatial retrieval and global caching.</li>
+</ul>
+<hr />
+<h2 id="2-vector-data-geojson">2. Vector Data &amp; GeoJSON</h2>
+<p>Vector data represents geographical features using discrete coordinate pairs.</p>
+<h3 id="21-the-geojson-specification-rfc-7946">2.1 The GeoJSON Specification (RFC 7946)</h3>
+<p><strong>GeoJSON</strong> is an open standard format based on JSON for encoding geographic data structures. Under RFC 7946:</p>
+<ul>
+<li><strong>Coordinate Reference System:</strong> GeoJSON coordinates are strictly defined in geographic coordinates: <strong>WGS 84 (<code>EPSG:4326</code>)</strong> in decimal degrees.</li>
+<li><strong>Axis Ordering:</strong> Coordinates are strictly ordered as <strong><code>[Longitude, Latitude, Elevation]</code></strong> (<code>[X, Y, Z]</code>).</li>
+<li><strong>Polygon Winding Order (Right-Hand Rule):</strong> Exterior boundary rings must follow a <strong>counter-clockwise</strong> direction; interior rings (holes) must follow a <strong>clockwise</strong> direction.</li>
+<li><strong>Coordinate Precision:</strong> Six decimal places (<code>0.000001°</code>) provides ~0.1 meter accuracy on the ground. Storing 15 decimal places bloats JSON file sizes without providing real-world value.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;features&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;geometry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">[</span>
+<span class="w">            </span><span class="p">[</span><span class="mf">73.85</span><span class="p">,</span><span class="w"> </span><span class="mf">18.52</span><span class="p">],</span>
+<span class="w">            </span><span class="p">[</span><span class="mf">73.86</span><span class="p">,</span><span class="w"> </span><span class="mf">18.52</span><span class="p">],</span>
+<span class="w">            </span><span class="p">[</span><span class="mf">73.86</span><span class="p">,</span><span class="w"> </span><span class="mf">18.53</span><span class="p">],</span>
+<span class="w">            </span><span class="p">[</span><span class="mf">73.85</span><span class="p">,</span><span class="w"> </span><span class="mf">18.53</span><span class="p">],</span>
+<span class="w">            </span><span class="p">[</span><span class="mf">73.85</span><span class="p">,</span><span class="w"> </span><span class="mf">18.52</span><span class="p">]</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Central District&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;zoning&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Commercial&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tax_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.25</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="22-loading-local-geojson-in-openlayers">2.2 Loading Local GeoJSON in OpenLayers</h3>
+<p>In OpenLayers, vector datasets require a <code>VectorSource</code> connected to a <code>VectorLayer</code>. OpenLayers automatically reprojects GeoJSON coordinates from <code>EPSG:4326</code> to the map view's projection (<code>EPSG:3857</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">VectorSource</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/format/GeoJSON.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">vectorSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorSource</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;./data/parcels.geojson&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="p">()</span><span class="w"> </span><span class="c1">// Automatically reads WGS84 and transforms to View projection</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">vectorLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="nx">vectorSource</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span>
+<span class="p">});</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">vectorLayer</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="23-styling-geojson-features">2.3 Styling GeoJSON Features</h3>
+<p>OpenLayers enables client-side vector styling using <code>Style</code>, <code>Fill</code>, and <code>Stroke</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Style</span><span class="p">,</span><span class="w"> </span><span class="nx">Fill</span><span class="p">,</span><span class="w"> </span><span class="nx">Stroke</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/style.js&#39;</span><span class="p">;</span>
+
+<span class="nx">vectorLayer</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;rgba(33, 150, 243, 0.35)&#39;</span><span class="w"> </span><span class="c1">// Semi-transparent blue fill</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#1565C0&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">}));</span>
+</code></pre></div>
+<h3 id="24-reading-feature-properties-on-click">2.4 Reading Feature Properties on Click</h3>
+<p>Because vector coordinates exist directly in browser memory, feature inspection is instantaneous:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">map</span><span class="p">.</span><span class="nx">forEachFeatureAtPixel</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">pixel</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">feature</span><span class="p">,</span><span class="w"> </span><span class="nx">layer</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">layer</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">vectorLayer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Feature Name:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">));</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Zoning Category:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;zoning&#39;</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="25-limitations-of-geojson">2.5 Limitations of GeoJSON</h3>
+<ul>
+<li><strong>Text-Based Inefficiency:</strong> JSON is an uncompressed ASCII text format. A dataset with 50,000 polygons can easily exceed 40 MB in raw file size.</li>
+<li><strong>Parsing Overhead:</strong> The browser must parse the entire string via <code>JSON.parse()</code>, allocate thousands of JavaScript objects, and convert each coordinate pair into internal geometry instances.</li>
+<li><strong>Full Dataset Transfer:</strong> The client must download the entire GeoJSON file even if the user only views a tiny corner of the map.</li>
+<li><strong>Rule of Thumb:</strong> Use raw GeoJSON for datasets under <strong>5,000 features</strong>. For larger datasets, transition to <strong>Vector Tiles (MVT)</strong> or server-side <strong>WMS</strong>.</li>
+</ul>
+<hr />
+<h2 id="3-raster-data-geotiff">3. Raster Data &amp; GeoTIFF</h2>
+<p>Raster datasets represent continuous geographical surfaces as a regular grid of rectangular cells (pixels).</p>
+<div class="highlight"><pre><span></span><code>Continuous Raster Surface (Pixels) vs. Discrete Vector Features (Coordinates)
+┌───┬───┬───┬───┐          Polygon (X, Y Vertices)
+│240│242│245│250│             (X3, Y3) ────── (X2, Y2)
+├───┼───┼───┼───┤                │                │
+│238│240│243│248│                │                │
+├───┼───┼───┼───┤             (X0, Y0) ────── (X1, Y1)
+│235│237│240│244│
+└───┴───┴───┴───┘
+</code></pre></div>
+<h3 id="31-what-is-a-geotiff">3.1 What is a GeoTIFF?</h3>
+<p>A <strong>GeoTIFF</strong> is a standard TIFF (Tagged Image File Format) image file enriched with spatial metadata tags embedded directly within its header:</p>
+<ul>
+<li><strong>ModelTiepointTag:</strong> Maps raster pixel coordinates <code>(pixel, line)</code> to real-world ground coordinates <code>(easting, northing)</code>.</li>
+<li><strong>ModelPixelScaleTag:</strong> Defines the ground distance represented by a single pixel (spatial resolution, e.g. 0.5 meters/pixel).</li>
+<li><strong>GeoKeyDirectoryTag:</strong> Encodes the projection, datum, and coordinate system (e.g. <code>EPSG:32643</code>).</li>
+</ul>
+<h3 id="32-cloud-optimized-geotiffs-cog">3.2 Cloud-Optimized GeoTIFFs (COG)</h3>
+<p>A traditional GeoTIFF requires downloading the entire multi-gigabyte file before reading any pixels. A <strong>Cloud-Optimized GeoTIFF (COG)</strong> is structured specifically for streaming:</p>
+<ul>
+<li><strong>Internal Tiling:</strong> Pixels are organized into internal <span class="arithmatex">\(256 \times 256\)</span> or <span class="arithmatex">\(512 \times 512\)</span> tile blocks rather than full-width horizontal strips.</li>
+<li><strong>Internal Overviews (Pyramids):</strong> Downsampled versions of the image are pre-computed and stored inside the file header.</li>
+<li><strong>HTTP Range Requests:</strong> OpenLayers requests only the specific byte offsets required for the current view extent directly from object storage (S3/GCS/CDN) using standard HTTP <code>Range: bytes=start-end</code> headers.</li>
+</ul>
+<h3 id="33-loading-cogs-with-webgl-in-openlayers">3.3 Loading COGs with WebGL in OpenLayers</h3>
+<p>OpenLayers features a dedicated hardware-accelerated WebGL tile pipeline (<code>ol/layer/WebGLTile</code> + <code>ol/source/GeoTIFF</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">WebGLTileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/WebGLTile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">GeoTIFF</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/GeoTIFF.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">cogLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebGLTileLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GeoTIFF</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">sources</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://sentinel-cogs.s3.amazonaws.com/sentinel-s2-l2a-cogs/sample.tif&#39;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">cogLayer</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="4-reprojection-coordinate-transformations">4. Reprojection &amp; Coordinate Transformations</h2>
+<p>Web maps frequently combine datasets produced under different Coordinate Reference Systems (e.g., an aerial orthoimagery raster in UTM Zone 43N displayed over an OpenStreetMap base map in Web Mercator).</p>
+<h3 id="41-how-client-side-reprojection-works">4.1 How Client-Side Reprojection Works</h3>
+<p>When a raster or vector source has a different projection than the map <code>View</code>, OpenLayers performs <strong>client-side reprojection</strong>:</p>
+<ul>
+<li><strong>Vector Reprojection:</strong> OpenLayers converts each vertex coordinate mathematically on the fly before drawing paths onto the canvas.</li>
+<li><strong>Raster Reprojection:</strong> OpenLayers computes an internal bounding grid, creates a triangular mesh, and samples pixel values from the source projection into the target view projection using bilinear interpolation.</li>
+</ul>
+<h3 id="42-universal-transverse-mercator-utm">4.2 Universal Transverse Mercator (UTM)</h3>
+<p><strong>UTM</strong> is a global projected coordinate system that divides the Earth into 60 longitudinal zones, each <span class="arithmatex">\(6^\circ\)</span> wide:</p>
+<ul>
+<li>Uses the Transverse Mercator conformal projection.</li>
+<li>Coordinates are expressed in linear <strong>meters</strong> (Eastings and Northings).</li>
+<li>Distortions are minimal (&lt; 0.1%) within each zone, making UTM the standard for high-accuracy surveying, engineering, and national mapping.</li>
+</ul>
+<h3 id="43-registering-utm-projections-with-proj4js">4.3 Registering UTM Projections with Proj4js</h3>
+<p>OpenLayers natively understands <code>EPSG:4326</code> and <code>EPSG:3857</code>. For regional projections like Indian UTM Zone 43N (<code>EPSG:32643</code>), register the projection parameters using <code>proj4js</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">proj4</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;proj4&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">register</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/proj/proj4.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">getProjection</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/proj.js&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. Define projection parameters from epsg.io</span>
+<span class="nx">proj4</span><span class="p">.</span><span class="nx">defs</span><span class="p">(</span>
+<span class="w">  </span><span class="s1">&#39;EPSG:32643&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;+proj=utm +zone=43 +datum=WGS84 +units=m +no_defs&#39;</span>
+<span class="p">);</span>
+
+<span class="c1">// 2. Register definitions with OpenLayers</span>
+<span class="nx">register</span><span class="p">(</span><span class="nx">proj4</span><span class="p">);</span>
+
+<span class="c1">// 3. Obtain projection handle</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">utm43n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getProjection</span><span class="p">(</span><span class="s1">&#39;EPSG:32643&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="5-web-map-service-wms">5. Web Map Service (WMS)</h2>
+<p>When spatial layers contain millions of complex polygon vertices or massive raster mosaics, sending raw geometries to the browser is computationally impossible. <strong>WMS</strong> solves this by moving rendering entirely to the server.</p>
+<h3 id="51-what-is-wms">5.1 What is WMS?</h3>
+<p><strong>WMS (Web Map Service)</strong> is an OGC international standard where a spatial server (like GeoServer or MapServer) renders map graphics into a flattened raster image (PNG, JPEG) and streams it to the client.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Browser as OpenLayers Client
+    participant Server as GeoServer (WMS)
+
+    Browser-&gt;&gt;Server: HTTP GET /wms?REQUEST=GetMap&amp;LAYERS=city:roads&amp;BBOX=...&amp;WIDTH=800&amp;HEIGHT=600&amp;CRS=EPSG:3857&amp;FORMAT=image/png
+    Note over Server: Server executes spatial SQL in PostGIS,&lt;br/&gt;applies SLD cartographic rules,&lt;br/&gt;renders 2D raster image
+    Server--&gt;&gt;Browser: HTTP 200 OK (image/png binary stream)
+    Note over Browser: OpenLayers draws single image onto canvas</code></pre>
+<h3 id="52-imagewms-vs-tilewms">5.2 <code>ImageWMS</code> vs. <code>TileWMS</code></h3>
+<p>OpenLayers supports two distinct WMS architectures:</p>
+<table>
+<thead>
+<tr>
+<th>Architectural Feature</th>
+<th><code>ImageWMS</code> (Single Untiled Image)</th>
+<th><code>TileWMS</code> (Tiled Grid Images)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Request Mechanism</strong></td>
+<td>Single HTTP request sized to viewport</td>
+<td>Multiple parallel requests for 256x256 tiles</td>
+</tr>
+<tr>
+<td><strong>Label Quality</strong></td>
+<td><strong>Perfect</strong> (labels never chopped by tile edges)</td>
+<td>Labels may be duplicated or clipped at boundaries</td>
+</tr>
+<tr>
+<td><strong>Cacheability</strong></td>
+<td>Low (every pan/zoom generates a unique BBOX)</td>
+<td><strong>High</strong> (fixed tile grid cached by CDNs and GeoWebCache)</td>
+</tr>
+<tr>
+<td><strong>Pan Experience</strong></td>
+<td>Blank canvas until the new single image loads</td>
+<td>Progressive tile loading (adjacent tiles stay visible)</td>
+</tr>
+<tr>
+<td><strong>Best Used For</strong></td>
+<td>Thematic overlays, dense text labels, cadastre</td>
+<td>Base maps, high-traffic layers, regional mosaics</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-core-wms-request-parameters">5.3 Core WMS Request Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SERVICE</code></td>
+<td>Protocol identifier</td>
+<td><code>WMS</code></td>
+</tr>
+<tr>
+<td><code>VERSION</code></td>
+<td>Protocol version</td>
+<td><code>1.3.0</code> (or <code>1.1.1</code>)</td>
+</tr>
+<tr>
+<td><code>REQUEST</code></td>
+<td>OGC operation name</td>
+<td><code>GetMap</code></td>
+</tr>
+<tr>
+<td><code>LAYERS</code></td>
+<td>Qualified layer or layer group identifier</td>
+<td><code>training:districts</code></td>
+</tr>
+<tr>
+<td><code>STYLES</code></td>
+<td>Named SLD style on server (empty uses default)</td>
+<td><code>''</code></td>
+</tr>
+<tr>
+<td><code>CRS</code> / <code>SRS</code></td>
+<td>Coordinate Reference System (<code>CRS</code> in 1.3.0, <code>SRS</code> in 1.1.1)</td>
+<td><code>EPSG:3857</code></td>
+</tr>
+<tr>
+<td><code>BBOX</code></td>
+<td>Bounding box coordinates</td>
+<td><code>minX,minY,maxX,maxY</code></td>
+</tr>
+<tr>
+<td><code>WIDTH</code> / <code>HEIGHT</code></td>
+<td>Requested image dimensions in pixels</td>
+<td><code>800, 600</code></td>
+</tr>
+<tr>
+<td><code>FORMAT</code></td>
+<td>Returned MIME format</td>
+<td><code>image/png</code></td>
+</tr>
+<tr>
+<td><code>TRANSPARENT</code></td>
+<td>Enables alpha transparency for background</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">ImageLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Image.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ImageWMS</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/ImageWMS.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">wmsLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ImageLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ImageWMS</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://demo.geoserver.org/geoserver/wms&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s1">&#39;LAYERS&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ne:ne_10m_admin_0_countries&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;TRANSPARENT&#39;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;FORMAT&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;image/png&#39;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">serverType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;geoserver&#39;</span><span class="w"> </span><span class="c1">// Optimizes error parsing and vendor parameters</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="p">});</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">wmsLayer</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="6-xyz-tiled-raster-services">6. XYZ &amp; Tiled Raster Services</h2>
+<h3 id="61-why-tiled-maps-are-fast">6.1 Why Tiled Maps Are Fast</h3>
+<p>Instead of rendering custom images on demand for arbitrary extents, tile services slice the world into fixed, pre-rendered <span class="arithmatex">\(256 \times 256\)</span> pixel image squares across standardized zoom levels.</p>
+<ul>
+<li><strong>Aggressive Caching:</strong> Tiles are immutable static image files. Web browsers and Content Delivery Networks (CDNs) cache them globally with long HTTP <code>Cache-Control</code> headers.</li>
+<li><strong>Progressive Loading:</strong> As a user pans, only newly revealed grid tiles are fetched over the network; existing tiles remain visible on screen.</li>
+</ul>
+<h3 id="62-the-slippy-map-zxy-coordinate-scheme">6.2 The Slippy Map <code>{z}/{x}/{y}</code> Coordinate Scheme</h3>
+<p>Tiles are addressed by three integers:</p>
+<ul>
+<li><strong><code>z</code> (Zoom level):</strong> Pyramid depth (<span class="arithmatex">\(0\)</span> = whole world in one tile; <span class="arithmatex">\(18\)</span> = building level).</li>
+<li><strong><code>x</code> (Column index):</strong> Horizontal index from West to East (<span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(2^z - 1\)</span>).</li>
+<li><strong><code>y</code> (Row index):</strong> Vertical index from North to South (<span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(2^z - 1\)</span>).</li>
+</ul>
+<div class="highlight"><pre><span></span><code>SLIPPY MAP QUAD-TREE PYRAMID:
+Zoom 0:  1 tile  (256 x 256 px)  ── Whole Earth
+Zoom 1:  4 tiles (512 x 512 px)
+Zoom 2:  16 tiles (1024 x 1024 px)
+...
+Zoom z:  4^z tiles
+</code></pre></div>
+<h4 id="the-slippy-map-math">The Slippy Map Math:</h4>
+<p>Given a longitude <span class="arithmatex">\(\lambda\)</span> and latitude <span class="arithmatex">\(\phi\)</span> in degrees, the tile coordinates at zoom <span class="arithmatex">\(z\)</span> are:</p>
+<div class="arithmatex">\[x = \left\lfloor \frac{\lambda + 180}{360} \cdot 2^z \right\rfloor\]</div>
+<div class="arithmatex">\[y = \left\lfloor \left(1 - \frac{\ln(\tan(\phi \cdot \frac{\pi}{180}) + \sec(\phi \cdot \frac{\pi}{180}))}{\pi}\right) \cdot 2^{z-1} \right\rfloor\]</div>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">TileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Tile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">XYZ</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/XYZ.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">osmBaseLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">XYZ</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://tile.openstreetmap.org/{z}/{x}/{y}.png&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">attributions</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;© OpenStreetMap contributors&#39;</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="7-web-map-tile-service-wmts">7. Web Map Tile Service (WMTS)</h2>
+<h3 id="71-xyz-vs-wmts">7.1 XYZ vs. WMTS</h3>
+<ul>
+<li><strong>XYZ:</strong> An informal, de facto convention popularized by Google Maps. Relies entirely on a URL string pattern (<code>{z}/{x}/{y}.png</code>). Fast and universally supported, but lacks formal metadata definitions.</li>
+<li><strong>WMTS (Web Map Tile Service):</strong> The official <strong>OGC standard</strong> (OGC 07-057r7) for serving pre-rendered tile pyramids. Includes a formal XML metadata document (<code>GetCapabilities</code>) defining explicit coordinate reference systems, bounding boxes, matrix dimensions, and scale denominators.</li>
+</ul>
+<h3 id="72-core-wmts-concepts">7.2 Core WMTS Concepts</h3>
+<ul>
+<li><strong><code>TileMatrixSet</code>:</strong> Defines the coordinate reference system and scale levels.</li>
+<li><strong>Standardized Scale Denominator:</strong> WMTS standardizes screen display pixel size at exactly <strong><span class="arithmatex">\(0.28\text{ mm} \times 0.28\text{ mm}\)</span></strong> (<span class="arithmatex">\(1 / 0.00028 \approx 3,571.43\text{ pixels/meter}\)</span>). This allows precise cartographic scale calculation across different client devices.</li>
+</ul>
+<hr />
+<h2 id="8-vector-tiles-mvt">8. Vector Tiles (MVT)</h2>
+<p><strong>Vector Tiles</strong> represent the modern evolution of tiled mapping, combining the performance benefits of tile pyramids with the dynamic styling flexibility of raw vector data.</p>
+<div class="highlight"><pre><span></span><code>Raster Tiles:  [ Fixed Bitmap Pixels ] ──▶ Displayed Directly on Canvas (No Styling / Hover)
+Vector Tiles:  [ Binary Geometries &amp; Attributes ] ──▶ Styled Dynamically by OpenLayers in Browser
+</code></pre></div>
+<h3 id="81-the-mapbox-vector-tile-mvt-standard">8.1 The Mapbox Vector Tile (MVT) Standard</h3>
+<ul>
+<li><strong>Binary Encoding:</strong> Vector tiles are encoded using <strong>Google Protocol Buffers (Protobuf)</strong> (<code>.mvt</code> or <code>.pbf</code>). Binary encoding reduces payload sizes by 80% compared to equivalent GeoJSON files.</li>
+<li><strong>Local Coordinate Quantization:</strong> Geometries within each tile are transformed from global coordinates into local integer coordinates on a fixed grid (typically <span class="arithmatex">\(4096 \times 4096\)</span> units). This eliminates floating-point coordinate bloat.</li>
+<li><strong>Feature Slicing &amp; Simplification:</strong> Polygons and lines extending across tile boundaries are pre-clipped at tile edges. Low zoom levels feature automatically simplified geometries, preventing browser overdraw.</li>
+</ul>
+<h3 id="82-rendering-vector-tiles-in-openlayers">8.2 Rendering Vector Tiles in OpenLayers</h3>
+<p>OpenLayers uses <code>ol/layer/VectorTile</code> and <code>ol/source/VectorTile</code> with <code>ol/format/MVT</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">VectorTileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/VectorTile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorTileSource</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/VectorTile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">MVT</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/format/MVT.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Style</span><span class="p">,</span><span class="w"> </span><span class="nx">Fill</span><span class="p">,</span><span class="w"> </span><span class="nx">Stroke</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/style.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">vectorTileLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorTileLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorTileSource</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MVT</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/{z}/{y}/{x}.pbf&#39;</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#f0f0f0&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#cccccc&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="9-inspecting-debugging-web-gis-requests">9. Inspecting &amp; Debugging Web GIS Requests</h2>
+<p>Mastering browser Developer Tools (<strong>F12</strong> <span class="arithmatex">\(\rightarrow\)</span> <strong>Network Tab</strong>) is critical for diagnosing Web GIS issues.</p>
+<div class="highlight"><pre><span></span><code>Network Inspection Workflow:
+1. Open DevTools (F12) ──▶ Select Network Tab ──▶ Filter by &quot;Fetch/XHR&quot; or &quot;Img&quot;
+2. Pan the map ──▶ Observe outgoing requests
+3. Click request ──▶ Inspect Request URL, Query Parameters, Headers &amp; Response Payload
+</code></pre></div>
+<h3 id="91-common-http-status-codes-in-web-gis">9.1 Common HTTP Status Codes in Web GIS</h3>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Meaning</th>
+<th>Common Cause in OpenLayers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>200 OK</code></strong></td>
+<td>Request Successful</td>
+<td>Image or vector data returned properly.</td>
+</tr>
+<tr>
+<td><strong><code>400 Bad Request</code></strong></td>
+<td>Invalid Parameters</td>
+<td>Misspelled parameter, unsupported CRS, or missing <code>LAYERS</code> argument. GeoServer returns an XML <code>ServiceExceptionReport</code>.</td>
+</tr>
+<tr>
+<td><strong><code>401 / 403 Forbidden</code></strong></td>
+<td>Unauthorized</td>
+<td>Restricted GeoServer workspace or missing authentication token.</td>
+</tr>
+<tr>
+<td><strong><code>404 Not Found</code></strong></td>
+<td>Missing Endpoint</td>
+<td>Misspelled base URL path (<code>/geoserver/wms</code>) or incorrect layer name.</td>
+</tr>
+<tr>
+<td><strong><code>500 Server Error</code></strong></td>
+<td>Server Exception</td>
+<td>Database connection failure, out-of-memory error, or broken SLD style file on the server.</td>
+</tr>
+<tr>
+<td><strong><code>CORS Error</code></strong></td>
+<td>Cross-Origin Blocked</td>
+<td>The remote server lacks <code>Access-Control-Allow-Origin: *</code> HTTP response headers.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-choosing-the-right-data-source">10. Choosing the Right Data Source</h2>
+<p>Use this decision matrix when architecting Web GIS systems:</p>
+<table>
+<thead>
+<tr>
+<th>Requirement / Scenario</th>
+<th>Recommended Solution</th>
+<th>Architectural Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small vector dataset (&lt; 5,000 features)</td>
+<td><strong>GeoJSON</strong></td>
+<td>Simple, text-based, instant client-side interaction</td>
+</tr>
+<tr>
+<td>Large vector dataset (&gt; 20,000 features)</td>
+<td><strong>Vector Tiles (MVT)</strong></td>
+<td>High performance, crisp vector rendering, low bandwidth</td>
+</tr>
+<tr>
+<td>Enterprise cartography / millions of polygons</td>
+<td><strong>WMS (<code>ImageWMS</code> or <code>TileWMS</code>)</strong></td>
+<td>Server handles heavy polygon clipping and label collision</td>
+</tr>
+<tr>
+<td>Public world base map</td>
+<td><strong>XYZ (OSM / Carto)</strong></td>
+<td>Globally cached on CDNs, fast, zero server infrastructure</td>
+</tr>
+<tr>
+<td>Direct raster analysis (elevation, NDVI)</td>
+<td><strong>GeoTIFF + WebGL</strong></td>
+<td>GPU shader calculations in browser, no server required</td>
+</tr>
+<tr>
+<td>Dynamic client-side thematic styling</td>
+<td><strong>Vector / Vector Tiles</strong></td>
+<td>Full color, stroke, and visibility control in JavaScript</td>
+</tr>
+<tr>
+<td>Formal enterprise / government compliance</td>
+<td><strong>WMTS</strong></td>
+<td>Standardized OGC metadata and explicit scale matrices</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="reference-resources">Reference resources</h3>
+<ul>
+<li><strong>OGC Standards Overview:</strong> <a href="https://www.ogc.org/standards/">https://www.ogc.org/standards/</a></li>
+<li><strong>GeoJSON Specification (RFC 7946):</strong> <a href="https://geojson.org/">https://geojson.org/</a></li>
+<li><strong>Mapbox Vector Tile Specification:</strong> <a href="https://github.com/mapbox/vector-tile-spec">https://github.com/mapbox/vector-tile-spec</a></li>
+<li><strong>OpenLayers Sources API:</strong> <a href="https://openlayers.org/en/latest/apidoc/module-ol_source.html">https://openlayers.org/en/latest/apidoc/module-ol_source.html</a></li>
+<li><strong>EPSG Coordinate Reference System Lookup:</strong> <a href="https://epsg.io/">https://epsg.io/</a></li>
+</ul>
+<h3 id="practical-activity">Practical activity</h3>
+<p><strong>Your Task:</strong></p>
+<ol>
+<li><strong>Create Local GeoJSON:</strong> In your project directory, create <code>my_data.geojson</code> containing the polygon FeatureCollection from Section 2.1.</li>
+<li><strong>Setup Base Map:</strong> Create a minimal OpenLayers project with an OpenStreetMap <code>TileLayer</code> (<code>XYZ</code> source).</li>
+<li><strong>Add Local Vector Layer:</strong> Add a <code>VectorLayer</code> consuming <code>./my_data.geojson</code> using <code>VectorSource</code> and <code>GeoJSON</code> format.</li>
+<li><strong>Style the Vector Features:</strong> Apply custom <code>Fill</code> and <code>Stroke</code> styles to your GeoJSON layer.</li>
+<li><strong>Add a WMS Layer:</strong> Add an <code>ImageLayer</code> using <code>ImageWMS</code> connected to <code>https://demo.geoserver.org/geoserver/wms</code> with parameter <code>LAYERS: 'ne:ne_10m_admin_0_countries'</code>.</li>
+<li><strong>Configure WMS Transparency:</strong> Set <code>TRANSPARENT: true</code> so the underlying OSM base map remains visible.</li>
+<li><strong>Inspect the Network:</strong> Open your browser's Developer Tools (<code>F12</code>) and select the <strong>Network</strong> tab.</li>
+<li><strong>Analyze Requests:</strong> Pan and zoom the map, then filter and observe:</li>
+<li>The initial <strong>GeoJSON</strong> request (loaded once via Fetch/XHR).</li>
+<li>The <strong>WMS</strong> image request (re-requested on pan/zoom with an updated bounding box).</li>
+<li>The <strong>XYZ</strong> tile requests (loading individual 256x256 image squares).</li>
+<li><strong>Optional Bonus:</strong> Add a local GeoTIFF file using <code>GeoTIFF</code> source and <code>WebGLTileLayer</code>.</li>
+</ol>
+<hr />
+<h4 id="example-implementation-mainjs">Example Implementation (<code>main.js</code>):</h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nb">Map</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Map.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/View.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">TileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Tile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ImageLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Image.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OSM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/OSM.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ImageWMS</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/ImageWMS.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorSource</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/format/GeoJSON.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Style</span><span class="p">,</span><span class="w"> </span><span class="nx">Fill</span><span class="p">,</span><span class="w"> </span><span class="nx">Stroke</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/style.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/proj.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;ol/ol.css&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. Base Layer: OpenStreetMap (XYZ Raster Tiles)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">osmLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OSM</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. WMS Layer: Countries from GeoServer</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">wmsLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ImageLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ImageWMS</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://demo.geoserver.org/geoserver/wms&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s1">&#39;LAYERS&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ne:ne_10m_admin_0_countries&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;TRANSPARENT&#39;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;FORMAT&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;image/png&#39;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">serverType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;geoserver&#39;</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="p">});</span>
+
+<span class="c1">// 3. Vector Layer: Local GeoJSON</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">vectorLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorSource</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">features</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="p">().</span><span class="nx">readFeatures</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;FeatureCollection&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">features</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Sample Region&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">category</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Zone A&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">          </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Polygon&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">coordinates</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">[</span>
+<span class="w">                </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.85</span><span class="p">,</span><span class="w"> </span><span class="mf">18.52</span><span class="p">]),</span>
+<span class="w">                </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.86</span><span class="p">,</span><span class="w"> </span><span class="mf">18.52</span><span class="p">]),</span>
+<span class="w">                </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.86</span><span class="p">,</span><span class="w"> </span><span class="mf">18.53</span><span class="p">]),</span>
+<span class="w">                </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.85</span><span class="p">,</span><span class="w"> </span><span class="mf">18.53</span><span class="p">]),</span>
+<span class="w">                </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.85</span><span class="p">,</span><span class="w"> </span><span class="mf">18.52</span><span class="p">])</span>
+<span class="w">              </span><span class="p">]</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;rgba(255, 152, 0, 0.4)&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#E65100&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">zIndex</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span>
+<span class="p">});</span>
+
+<span class="c1">// 4. Initialize Map</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">osmLayer</span><span class="p">,</span><span class="w"> </span><span class="nx">wmsLayer</span><span class="p">,</span><span class="w"> </span><span class="nx">vectorLayer</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">View</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.8567</span><span class="p">,</span><span class="w"> </span><span class="mf">18.5204</span><span class="p">]),</span>
+<span class="w">    </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

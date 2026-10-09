@@ -1,0 +1,2285 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../module-5/">
+      
+      
+        <link rel="next" href="../module-7/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Module 6 - CesiumJS Integration - OpenLayers Training</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-6-cesiumjs-openlayers-integration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OpenLayers Training" class="md-header__button md-logo" aria-label="OpenLayers Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OpenLayers Training
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module 6 - CesiumJS Integration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OpenLayers Training" class="md-nav__button md-logo" aria-label="OpenLayers Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    OpenLayers Training
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1 - Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2 - GIS Data & Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 3 - GeoServer & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 4 - PostGIS & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 5 - Vector Styling & Interaction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 6 - CesiumJS Integration
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 6 - CesiumJS Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-3d-web-gis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction to 3D Web GIS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to 3D Web GIS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-why-3d-gis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Why 3D GIS?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-when-3d-provides-distinct-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 When 3D Provides Distinct Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-typical-3d-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Typical 3D Datasets
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-cesiumjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. What is CesiumJS?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. What is CesiumJS?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-key-cesiumjs-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Key CesiumJS Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-openlayers-vs-cesiumjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. OpenLayers vs. CesiumJS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-is-ol-cesium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. What is ol-cesium?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. What is ol-cesium?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 How It Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-setting-up-ol-cesium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Setting Up ol-cesium
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Setting Up ol-cesium">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-cesium-static-assets-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Cesium Static Assets Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-initializing-the-3d-globe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Initializing the 3D Globe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-2d-view-vs-3d-camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 2D View vs. 3D Camera
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 2D View vs. 3D Camera">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-understanding-camera-orientation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Understanding Camera Orientation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-flying-the-3d-camera-programmatically" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Flying the 3D Camera Programmatically
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-terrain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Terrain
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Terrain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-enabling-global-3d-terrain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Enabling Global 3D Terrain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-terrain-exaggeration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Terrain Exaggeration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-imagery-in-cesium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Imagery in Cesium
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Imagery in Cesium">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Considerations:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-vector-data-in-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Vector Data in 3D
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Vector Data in 3D">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-draped-2d-vectors-vs-true-3d-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Draped 2D Vectors vs. True 3D Geometry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-limitations-of-2d-vectors-in-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Limitations of 2D Vectors in 3D
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-3d-tiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 3D Tiles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 3D Tiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-key-benefits-of-3d-tiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Key Benefits of 3D Tiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-adding-a-3d-tileset-to-the-cesium-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Adding a 3D Tileset to the Cesium Scene
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-openlayers-cesium-layer-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. OpenLayers + Cesium Layer Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-switching-between-2d-and-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Switching Between 2D and 3D
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Switching Between 2D and 3D">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-building-the-toggle-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Building the Toggle Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-viewpoint-continuity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Viewpoint Continuity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-debugging-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Debugging &amp; Performance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Debugging &amp; Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-common-issues-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Common Issues &amp; Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-3d-performance-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 3D Performance Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical activity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-setup-openlayers-2d-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Setup OpenLayers 2D Map
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-integrate-ol-cesium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Integrate ol-cesium
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-add-2d-3d-toggle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Add 2D / 3D Toggle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-manipulate-the-3d-camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Manipulate the 3D Camera
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-enable-3d-terrain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Enable 3D Terrain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-bonus-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional Bonus Challenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-implementation-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation (main.js):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 7 - MBTiles & Wrap-up
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 8 - Integrated Exercise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instructor-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructor Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-3d-web-gis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction to 3D Web GIS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to 3D Web GIS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-why-3d-gis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Why 3D GIS?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-when-3d-provides-distinct-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 When 3D Provides Distinct Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-typical-3d-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Typical 3D Datasets
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-is-cesiumjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. What is CesiumJS?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. What is CesiumJS?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-key-cesiumjs-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Key CesiumJS Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-openlayers-vs-cesiumjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. OpenLayers vs. CesiumJS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-what-is-ol-cesium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. What is ol-cesium?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. What is ol-cesium?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 How It Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-setting-up-ol-cesium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Setting Up ol-cesium
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Setting Up ol-cesium">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-cesium-static-assets-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Cesium Static Assets Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-initializing-the-3d-globe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Initializing the 3D Globe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-2d-view-vs-3d-camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 2D View vs. 3D Camera
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 2D View vs. 3D Camera">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-understanding-camera-orientation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Understanding Camera Orientation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-flying-the-3d-camera-programmatically" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Flying the 3D Camera Programmatically
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-terrain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Terrain
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Terrain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-enabling-global-3d-terrain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Enabling Global 3D Terrain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-terrain-exaggeration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Terrain Exaggeration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-imagery-in-cesium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Imagery in Cesium
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Imagery in Cesium">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Considerations:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-vector-data-in-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Vector Data in 3D
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Vector Data in 3D">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-draped-2d-vectors-vs-true-3d-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Draped 2D Vectors vs. True 3D Geometry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-limitations-of-2d-vectors-in-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Limitations of 2D Vectors in 3D
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-3d-tiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 3D Tiles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 3D Tiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-key-benefits-of-3d-tiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Key Benefits of 3D Tiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-adding-a-3d-tileset-to-the-cesium-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Adding a 3D Tileset to the Cesium Scene
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-openlayers-cesium-layer-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. OpenLayers + Cesium Layer Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-switching-between-2d-and-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Switching Between 2D and 3D
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Switching Between 2D and 3D">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-building-the-toggle-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Building the Toggle Workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-viewpoint-continuity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Viewpoint Continuity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-debugging-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Debugging &amp; Performance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Debugging &amp; Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-common-issues-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Common Issues &amp; Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-3d-performance-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 3D Performance Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical activity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-setup-openlayers-2d-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Setup OpenLayers 2D Map
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-integrate-ol-cesium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Integrate ol-cesium
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-add-2d-3d-toggle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Add 2D / 3D Toggle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-manipulate-the-3d-camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Manipulate the 3D Camera
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-enable-3d-terrain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Enable 3D Terrain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-bonus-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional Bonus Challenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-implementation-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation (main.js):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="module-6-cesiumjs-openlayers-integration">Module 6 - CesiumJS &amp; OpenLayers Integration</h1>
+<p>Welcome to Module 6! In modern spatial applications, 2D flat maps are often complemented by immersive 3D globes. This module explores how to bridge <strong>OpenLayers</strong> with <strong>CesiumJS</strong> using <strong><code>ol-cesium</code></strong>, allowing you to reuse your existing 2D layers, projections, and vector styles while unlocking 3D terrain, camera pitch, and 3D Tiles.</p>
+<hr />
+<h2 id="1-introduction-to-3d-web-gis">1. Introduction to 3D Web GIS</h2>
+<h3 id="11-why-3d-gis">1.1 Why 3D GIS?</h3>
+<p>While 2D maps excel at planimetric measurements, thematic overlays, and spatial queries, real-world geospatial features possess elevation, volume, and vertical structure. 3D Web GIS brings height, depth, and spatial perspective directly to the browser.</p>
+<div class="highlight"><pre><span></span><code>2D Planar Map (X, Y)
+       ↓  Add Elevation, Pitch &amp; Volumetric Geometry
+3D Digital Twin (X, Y, Z + Heading/Pitch/Roll)
+</code></pre></div>
+<h3 id="12-when-3d-provides-distinct-value">1.2 When 3D Provides Distinct Value</h3>
+<ul>
+<li><strong>Urban Planning &amp; Architecture:</strong> Sunlight shadow analysis, zoning heights, and line-of-sight viewshed calculations.</li>
+<li><strong>Topographic &amp; Environmental Analysis:</strong> Flood risk inundation across valley terrain, landslide monitoring, and mountain watershed modeling.</li>
+<li><strong>Infrastructure &amp; Utilities:</strong> Multi-level subterranean utilities, bridge spans, and transmission corridors.</li>
+<li><strong>Aviation &amp; Defense:</strong> Flight paths, drone corridors, radar coverage domes, and situational awareness.</li>
+</ul>
+<h3 id="13-typical-3d-datasets">1.3 Typical 3D Datasets</h3>
+<ul>
+<li><strong>Digital Elevation Models (DEM/DTM):</strong> Terrain surfaces defining the physical shape of the Earth.</li>
+<li><strong>3D Buildings:</strong> LOD (Level of Detail) volumetric building envelopes (CityGML, 3D Tiles).</li>
+<li><strong>Drone Photogrammetry:</strong> High-resolution 3D textured mesh models derived from aerial photography.</li>
+<li><strong>LiDAR Point Clouds:</strong> Massive collections of XYZ laser returns representing vegetation and structures.</li>
+<li><strong>3D Tiles:</strong> OGC open standard for streaming massive heterogeneous 3D geospatial datasets.</li>
+<li><strong>Satellite / Aerial Orthoimagery:</strong> High-resolution rasters draped over the terrain surface.</li>
+</ul>
+<hr />
+<h2 id="2-what-is-cesiumjs">2. What is CesiumJS?</h2>
+<p><strong>CesiumJS</strong> is the leading open-source JavaScript library for rendering world-class 3D globes and maps directly in the web browser using WebGL without browser plugins.</p>
+<h3 id="21-key-cesiumjs-concepts">2.1 Key CesiumJS Concepts</h3>
+<ul>
+<li><strong>WebGL Rendering Engine:</strong> Hardware-accelerated graphics engine delivering 60 FPS performance across desktop and mobile browsers.</li>
+<li><strong>Virtual Globe:</strong> Renders the Earth as a realistic WGS 84 ellipsoid (<code>EPSG:4326</code>) in an Earth-Centered, Earth-Fixed (ECEF) Cartesian coordinate system rather than a flat 2D projection.</li>
+<li><strong><code>Viewer</code> &amp; <code>Scene</code>:</strong> The core rendering context. The <code>Scene</code> manages all 3D graphical objects, lights, shadows, cameras, and atmospheric scattering.</li>
+<li><strong><code>Camera</code>:</strong> Governs the viewpoint in 3D Cartesian coordinates (<code>Cartesian3</code>) with 6 degrees of freedom (position, heading, pitch, and roll).</li>
+<li><strong>Imagery Providers:</strong> Streams raster imagery tiles (Bing, OSM, WMS, WMTS) draped over the globe surface.</li>
+<li><strong>Terrain Providers:</strong> Streams quantized-mesh or heightmap elevation data to deform the flat ellipsoid into realistic mountains and valleys.</li>
+<li><strong>Entities &amp; Primitives:</strong> Cesium’s data visualizers. Entities provide high-level dynamic data modeling (GeoJSON, CZML), while Primitives provide low-level, high-performance WebGL geometry rendering.</li>
+</ul>
+<hr />
+<h2 id="3-openlayers-vs-cesiumjs">3. OpenLayers vs. CesiumJS</h2>
+<p>Rather than choosing one library over the other, enterprise applications increasingly combine both:</p>
+<table>
+<thead>
+<tr>
+<th>Architectural Aspect</th>
+<th>OpenLayers</th>
+<th>CesiumJS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Dimension</strong></td>
+<td>2D / 2.5D planar mapping</td>
+<td>Full 3D Cartesian globe &amp; space</td>
+</tr>
+<tr>
+<td><strong>Core Abstraction</strong></td>
+<td><code>Map</code> and <code>View</code></td>
+<td><code>Viewer</code> and <code>Scene</code></td>
+</tr>
+<tr>
+<td><strong>Coordinate System</strong></td>
+<td>Projected Cartesian (<code>EPSG:3857</code>, UTM, etc.)</td>
+<td>Earth-Centered, Earth-Fixed (<code>ECEF</code> Cartesian3)</td>
+</tr>
+<tr>
+<td><strong>Vector Geometry</strong></td>
+<td><code>ol/Feature</code> (SVG/Canvas vector paths)</td>
+<td><code>Entity</code> / <code>Primitive</code> (WebGL shaders &amp; meshes)</td>
+</tr>
+<tr>
+<td><strong>Raster Data</strong></td>
+<td><code>TileLayer</code>, <code>ImageLayer</code> (WMS, WMTS, XYZ)</td>
+<td><code>ImageryProvider</code> draped onto terrain</td>
+</tr>
+<tr>
+<td><strong>Camera Control</strong></td>
+<td>Center <code>[x, y]</code>, Zoom, 2D Rotation</td>
+<td>Position <code>(x, y, z)</code>, Heading, Pitch, Roll</td>
+</tr>
+<tr>
+<td><strong>3D Data Support</strong></td>
+<td>None (limited to flat 2D geometries)</td>
+<td>Native 3D Tiles, glTF models, point clouds</td>
+</tr>
+<tr>
+<td><strong>Bundle Size</strong></td>
+<td>Lightweight (~150 KB gzipped)</td>
+<td>Substantial (~1.5 MB+ gzipped + WebGL assets)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Why Combine Both?</strong> OpenLayers provides unmatched 2D performance, projection handling, drawing tools, and OGC compatibility. Cesium provides state-of-the-art 3D rendering. Combining them lets you serve fast 2D maps for navigation while toggling into 3D for terrain and volumetric inspection.</p>
+</blockquote>
+<hr />
+<h2 id="4-what-is-ol-cesium">4. What is <code>ol-cesium</code>?</h2>
+<p><strong><code>ol-cesium</code></strong> is an open-source JavaScript library that acts as a bidirectional synchronization bridge between OpenLayers and CesiumJS.</p>
+<div class="highlight"><pre><span></span><code>OpenLayers Map (Layers, Sources, View)
+                 ↓
+             ol-cesium (Synchronization Bridge)
+                 ↓
+       Cesium Scene / 3D Globe Viewport
+</code></pre></div>
+<h3 id="41-how-it-works">4.1 How It Works</h3>
+<ul>
+<li><strong>Reuse Existing Code:</strong> You build your map using standard OpenLayers classes (<code>Map</code>, <code>TileLayer</code>, <code>VectorLayer</code>, <code>WMS</code>, <code>GeoJSON</code>).</li>
+<li><strong>Automatic Translation:</strong> <code>ol-cesium</code> reads the OpenLayers layer stack and view properties, automatically translating them into Cesium imagery providers, terrain drapes, and 3D primitives.</li>
+<li><strong>Bidirectional Synchronization:</strong> When you zoom or pan in 2D, the 3D camera moves. When you tilt, orbit, and rotate in 3D, the underlying 2D view extent stays synchronized.</li>
+<li><strong>Simple Lifecycle:</strong> Toggle between 2D and 3D with a single call: <code>ol3d.setEnabled(true)</code>.</li>
+</ul>
+<hr />
+<h2 id="5-setting-up-ol-cesium">5. Setting Up <code>ol-cesium</code></h2>
+<h3 id="51-installation">5.1 Installation</h3>
+<p>Install both <code>ol-cesium</code> and <code>cesium</code> into your project:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>ol<span class="w"> </span>ol-cesium<span class="w"> </span>cesium
+</code></pre></div>
+<h3 id="52-cesium-static-assets-configuration">5.2 Cesium Static Assets Configuration</h3>
+<p>Cesium requires static assets (Workers, WebAssembly, third-party libraries, and imagery) available via HTTP. In modern bundlers (Vite, Webpack), define <code>CESIUM_BASE_URL</code> before initializing Cesium:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Vite configuration or early in main.js:</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">CESIUM_BASE_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;/node_modules/cesium/Build/Cesium/&#39;</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="53-initializing-the-3d-globe">5.3 Initializing the 3D Globe</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nb">Map</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Map.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/View.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">TileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Tile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OSM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/OSM.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OLCesium</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol-cesium&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;ol/ol.css&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. Create standard OpenLayers 2D map</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OSM</span><span class="p">()</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">View</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">],</span>
+<span class="w">    </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. Initialize ol-cesium bridge</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ol3d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OLCesium</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">map</span><span class="o">:</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="c1">// Pass OpenLayers map instance</span>
+<span class="p">});</span>
+
+<span class="c1">// 3. Enable 3D globe rendering</span>
+<span class="nx">ol3d</span><span class="p">.</span><span class="nx">setEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="6-2d-view-vs-3d-camera">6. 2D View vs. 3D Camera</h2>
+<p>Managing viewpoint perspective is fundamentally different in 2D and 3D:</p>
+<div class="highlight"><pre><span></span><code>OpenLayers 2D View           Cesium 3D Camera
+ ├── center [x, y]            ├── position (x, y, z / height)
+ ├── zoom                     ├── heading (compass direction)
+ ├── rotation                 ├── pitch (look up/down tilt)
+ └── resolution               └── roll (tilt left/right)
+</code></pre></div>
+<h3 id="61-understanding-camera-orientation">6.1 Understanding Camera Orientation</h3>
+<ul>
+<li><strong>Position:</strong> The 3D coordinate of the camera eye in space (Longitude, Latitude, Altitude in meters).</li>
+<li><strong>Heading:</strong> The horizontal compass heading in radians (<span class="arithmatex">\(0 = \text{North}\)</span>, <span class="arithmatex">\(\frac{\pi}{2} = \text{East}\)</span>, <span class="arithmatex">\(\pi = \text{South}\)</span>, <span class="arithmatex">\(\frac{3\pi}{2} = \text{West}\)</span>).</li>
+<li><strong>Pitch:</strong> The vertical tilt angle in radians (<span class="arithmatex">\(-\frac{\pi}{2} = \text{looking straight down / nadir}\)</span>, <span class="arithmatex">\(0 = \text{looking horizontal at horizon}\)</span>).</li>
+<li><strong>Roll:</strong> The lateral tilt of the camera lens along its viewing axis.</li>
+</ul>
+<h3 id="62-flying-the-3d-camera-programmatically">6.2 Flying the 3D Camera Programmatically</h3>
+<p>You can access the native Cesium scene and camera directly from <code>ol-cesium</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Cesium</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;cesium&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">scene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ol3d</span><span class="p">.</span><span class="nx">getCesiumScene</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">camera</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">scene</span><span class="p">.</span><span class="nx">camera</span><span class="p">;</span>
+
+<span class="c1">// Smoothly fly to a targeted landmark with tilt and heading</span>
+<span class="nx">camera</span><span class="p">.</span><span class="nx">flyTo</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">destination</span><span class="o">:</span><span class="w"> </span><span class="nx">Cesium</span><span class="p">.</span><span class="nx">Cartesian3</span><span class="p">.</span><span class="nx">fromDegrees</span><span class="p">(</span><span class="mf">73.8567</span><span class="p">,</span><span class="w"> </span><span class="mf">18.5204</span><span class="p">,</span><span class="w"> </span><span class="mf">3500</span><span class="p">),</span><span class="w"> </span><span class="c1">// Lon, Lat, Altitude (meters)</span>
+<span class="w">  </span><span class="nx">orientation</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">heading</span><span class="o">:</span><span class="w"> </span><span class="nx">Cesium</span><span class="p">.</span><span class="nb">Math</span><span class="p">.</span><span class="nx">toRadians</span><span class="p">(</span><span class="mf">45.0</span><span class="p">),</span><span class="w">  </span><span class="c1">// 45 degrees North-East</span>
+<span class="w">    </span><span class="nx">pitch</span><span class="o">:</span><span class="w"> </span><span class="nx">Cesium</span><span class="p">.</span><span class="nb">Math</span><span class="p">.</span><span class="nx">toRadians</span><span class="p">(</span><span class="o">-</span><span class="mf">35.0</span><span class="p">),</span><span class="w">   </span><span class="c1">// Tilted 35 degrees below horizon</span>
+<span class="w">    </span><span class="nx">roll</span><span class="o">:</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">2.5</span><span class="w"> </span><span class="c1">// Flight duration in seconds</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="7-terrain">7. Terrain</h2>
+<p>By default, Cesium renders an idealized, perfectly smooth WGS 84 ellipsoid (a flat digital marble). Real-world applications require realistic 3D topography.</p>
+<div class="highlight"><pre><span></span><code>Flat Ellipsoid Globe               Quantized-Mesh Terrain Globe
+ ┌─────────────────┐                ┌───/\──/\───/\───┐
+ │                 │       →        │  /  \/  \ /  \  │
+ └─────────────────┘                └──┴───────┴────┴─┘
+</code></pre></div>
+<h3 id="71-enabling-global-3d-terrain">7.1 Enabling Global 3D Terrain</h3>
+<p>Cesium provides high-resolution worldwide digital elevation models:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Cesium</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;cesium&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">scene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ol3d</span><span class="p">.</span><span class="nx">getCesiumScene</span><span class="p">();</span>
+
+<span class="c1">// Enable worldwide 3D elevation terrain</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">enableTerrain</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">scene</span><span class="p">.</span><span class="nx">terrainProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Cesium</span><span class="p">.</span><span class="nx">createWorldTerrainAsync</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">requestWaterMask</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">      </span><span class="c1">// Realistic water surface reflections</span>
+<span class="w">      </span><span class="nx">requestVertexNormals</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w">   </span><span class="c1">// Dynamic sun lighting &amp; mountain shadows</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Failed to load Cesium terrain:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">enableTerrain</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="72-terrain-exaggeration">7.2 Terrain Exaggeration</h3>
+<p>For regional maps with subtle elevation changes, accentuate vertical features:
+<div class="highlight"><pre><span></span><code><span class="c1">// Exaggerate vertical elevation by 2.0x</span>
+<span class="nx">scene</span><span class="p">.</span><span class="nx">verticalExaggeration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+</code></pre></div></p>
+<hr />
+<h2 id="8-imagery-in-cesium">8. Imagery in Cesium</h2>
+<p>When 3D mode is activated, <code>ol-cesium</code> automatically extracts your OpenLayers raster layers (<code>TileLayer</code>, <code>ImageLayer</code>, <code>XYZ</code>, <code>WMS</code>, <code>WMTS</code>) and converts them into <strong>Cesium Imagery Layers</strong> draped over the terrain surface.</p>
+<div class="highlight"><pre><span></span><code>Satellite / Orthophoto Image
+            ↓
+  Draped over 3D Terrain Surface
+            ↓
+Photorealistic 3D Landscape
+</code></pre></div>
+<h3 id="key-considerations">Key Considerations:</h3>
+<ul>
+<li><strong>Layer Stacking Order:</strong> Lower layers in the OpenLayers layer array render underneath higher layers in 3D.</li>
+<li><strong>Layer Visibility:</strong> Toggling <code>layer.setVisible(false)</code> in OpenLayers instantly hides the corresponding imagery in the 3D globe.</li>
+<li><strong>Opacity:</strong> Changes to <code>layer.setOpacity(0.5)</code> propagate automatically to Cesium's WebGL fragment shader.</li>
+</ul>
+<hr />
+<h2 id="9-vector-data-in-3d">9. Vector Data in 3D</h2>
+<p>Vector features from OpenLayers <code>VectorLayer</code> (points, lines, polygons) are automatically mapped into the 3D scene.</p>
+<h3 id="91-draped-2d-vectors-vs-true-3d-geometry">9.1 Draped 2D Vectors vs. True 3D Geometry</h3>
+<div class="highlight"><pre><span></span><code>2D Polygon (OpenLayers)               3D Building (Cesium / 3D Tiles)
+           ↓                                         ↓
+Draped flat along mountain terrain          True vertical 3D geometry with height,
+(Like paint on the ground surface)          walls, roof facets, and volumetric data
+</code></pre></div>
+<ul>
+<li><strong>Point Geometries:</strong> Rendered as 3D billboards (pins/icons) or colored point primitives anchored to the terrain surface.</li>
+<li><strong>LineStrings &amp; Polygons:</strong> OpenLayers 2D vector coordinates have no height (<span class="arithmatex">\(Z\)</span>) coordinate. <code>ol-cesium</code> drapes them directly onto the elevation mesh as <strong>Corridor</strong> or <strong>GroundPrimitive</strong> geometries.</li>
+</ul>
+<h3 id="92-limitations-of-2d-vectors-in-3d">9.2 Limitations of 2D Vectors in 3D</h3>
+<ul>
+<li>Complex polygon hatching or custom HTML canvas patterns used in OpenLayers cannot always be translated by Cesium's WebGL shaders.</li>
+<li>Massive vector layers with tens of thousands of complex vertices can reduce 3D framerates during camera rotation.</li>
+</ul>
+<hr />
+<h2 id="10-3d-tiles">10. 3D Tiles</h2>
+<p>For large-scale 3D models (citywide 3D buildings, photogrammetric meshes, or massive LiDAR point clouds), 2D vector layers are inadequate. Cesium created the <strong>OGC 3D Tiles</strong> standard.</p>
+<div class="highlight"><pre><span></span><code>Citywide 3D Buildings / Point Clouds (Gigabytes of data)
+                      ↓
+           Hierarchical LOD (3D Tiles)
+                      ↓
+ Cesium Streams ONLY What is Visible in Camera Frustum
+                      ↓
+         Smooth 60 FPS Browser Experience
+</code></pre></div>
+<h3 id="101-key-benefits-of-3d-tiles">10.1 Key Benefits of 3D Tiles</h3>
+<ul>
+<li><strong>Hierarchical Level of Detail (HLOD):</strong> Features far away render as simplified bounding boxes; features close to the camera stream full, high-polygon textures.</li>
+<li><strong>Dynamic Streaming:</strong> Only visible tiles within the camera's field of view (frustum) are fetched over the network.</li>
+<li><strong>Heterogeneous Formats:</strong> Supports batched 3D models (<code>.b3dm</code>), instanced models (<code>.i3dm</code>), point clouds (<code>.pnts</code>), and glTF models.</li>
+</ul>
+<h3 id="102-adding-a-3d-tileset-to-the-cesium-scene">10.2 Adding a 3D Tileset to the Cesium Scene</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Cesium</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;cesium&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">scene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ol3d</span><span class="p">.</span><span class="nx">getCesiumScene</span><span class="p">();</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">load3DBuildings</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tileset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Cesium</span><span class="p">.</span><span class="nx">Cesium3DTileset</span><span class="p">.</span><span class="nx">fromUrl</span><span class="p">(</span>
+<span class="w">    </span><span class="s1">&#39;https://assets.ion.cesium.com/12345/tileset.json&#39;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="nx">scene</span><span class="p">.</span><span class="nx">primitives</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">tileset</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">load3DBuildings</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="11-openlayers-cesium-layer-compatibility">11. OpenLayers + Cesium Layer Compatibility</h2>
+<p><code>ol-cesium</code> bridges most standard Web GIS layers, but understanding where differences arise prevents runtime errors:</p>
+<table>
+<thead>
+<tr>
+<th>Layer / Source Type</th>
+<th style="text-align: center;">Supported by <code>ol-cesium</code></th>
+<th>Compatibility Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OSM / XYZ (<code>TileLayer</code>)</strong></td>
+<td style="text-align: center;">✅ Fully Supported</td>
+<td>Converts directly to <code>UrlTemplateImageryProvider</code></td>
+</tr>
+<tr>
+<td><strong>WMS (<code>TileWMS</code> / <code>ImageWMS</code>)</strong></td>
+<td style="text-align: center;">✅ Fully Supported</td>
+<td>Converts to <code>WebMapServiceImageryProvider</code></td>
+</tr>
+<tr>
+<td><strong>WMTS (<code>TileLayer</code>)</strong></td>
+<td style="text-align: center;">✅ Fully Supported</td>
+<td>Full scale-matrix support in 3D</td>
+</tr>
+<tr>
+<td><strong>GeoJSON / Vector (<code>VectorLayer</code>)</strong></td>
+<td style="text-align: center;">✅ Supported</td>
+<td>Rendered as 2D ground primitives or billboards</td>
+</tr>
+<tr>
+<td><strong>Vector Tiles (<code>VectorTileLayer</code>)</strong></td>
+<td style="text-align: center;">⚠️ Partial / Limited</td>
+<td>Often rendered as rasterized tile snapshots</td>
+</tr>
+<tr>
+<td><strong>Custom Canvas / HTML Overlays</strong></td>
+<td style="text-align: center;">❌ Not Supported</td>
+<td>DOM-based elements must be handled via Cesium DOM</td>
+</tr>
+<tr>
+<td><strong>OpenLayers Drawing Interactions</strong></td>
+<td style="text-align: center;">❌ 2D Only</td>
+<td>Switch to 2D mode for interactive geometry editing</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Best Practice:</strong> Use OpenLayers for 2D digitizing, attribute editing, and complex vector styling. Use Cesium for elevation visualization, flight paths, and 3D architectural exploration.</p>
+</blockquote>
+<hr />
+<h2 id="12-switching-between-2d-and-3d">12. Switching Between 2D and 3D</h2>
+<p>Providing a seamless toggle between 2D and 3D is a standard design pattern in Web GIS applications:</p>
+<div class="highlight"><pre><span></span><code>              ┌─── ol3d.setEnabled(false) ───▶ 2D OpenLayers Canvas
+User Toggle ──┤
+              └─── ol3d.setEnabled(true)  ───▶ 3D Cesium WebGL Globe
+</code></pre></div>
+<h3 id="121-building-the-toggle-workflow">12.1 Building the Toggle Workflow</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">toggleButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;toggle-3d&#39;</span><span class="p">);</span>
+
+<span class="nx">toggleButton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">is3D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ol3d</span><span class="p">.</span><span class="nx">getEnabled</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// Toggle state</span>
+<span class="w">  </span><span class="nx">ol3d</span><span class="p">.</span><span class="nx">setEnabled</span><span class="p">(</span><span class="o">!</span><span class="nx">is3D</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Update button label</span>
+<span class="w">  </span><span class="nx">toggleButton</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">is3D</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;Switch to 3D&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Switch to 2D&#39;</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="122-viewpoint-continuity">12.2 Viewpoint Continuity</h3>
+<p>When toggling from 2D to 3D, <code>ol-cesium</code> automatically positions the 3D camera over the current 2D view center and zoom level. Conversely, when returning to 2D, the 2D view re-centers on the ground coordinate where the 3D camera was looking.</p>
+<hr />
+<h2 id="13-debugging-performance">13. Debugging &amp; Performance</h2>
+<h3 id="131-common-issues-solutions">13.1 Common Issues &amp; Solutions</h3>
+<ul>
+<li><strong>Blank Screen / Cesium Assets Error:</strong> Verify that <code>CESIUM_BASE_URL</code> is configured correctly so Cesium can locate its Web Workers and shaders.</li>
+<li><strong>WebGL Context Lost:</strong> Occurs when graphics hardware runs out of memory. Reduce texture resolutions or limit the number of active 3D Tilesets.</li>
+<li><strong>Vectors Not Showing on Mountains:</strong> Ensure vector geometries are configured with <code>clampToGround: true</code> so geometries adhere to 3D terrain slopes.</li>
+<li><strong>CORS Issues on Terrain / Imagery:</strong> Remote elevation and imagery servers must supply valid <code>Access-Control-Allow-Origin: *</code> HTTP headers.</li>
+</ul>
+<h3 id="132-3d-performance-principles">13.2 3D Performance Principles</h3>
+<ul>
+<li><strong>Stream Large Datasets via 3D Tiles:</strong> Never load raw 200 MB GeoJSON files into browser memory; stream them using 3D Tiles or Vector Tiles.</li>
+<li><strong>Limit Active Billboards &amp; Labels:</strong> Drawing 10,000 text labels in 3D WebGL requires significant vertex calculation per frame.</li>
+<li><strong>Use Level of Detail (LOD):</strong> Leverage simplified geometries at high camera altitudes.</li>
+<li><strong>Pause 3D Rendering When Idle:</strong> <code>ol-cesium</code> optimizes frame rendering, but explicitly stopping unnecessary animations extends laptop battery life and reduces GPU load.</li>
+</ul>
+<hr />
+<h3 id="reference-resources">Reference resources</h3>
+<ul>
+<li><strong>ol-cesium GitHub &amp; Documentation:</strong> <a href="https://github.com/openlayers/ol-cesium">https://github.com/openlayers/ol-cesium</a></li>
+<li><strong>CesiumJS Official Documentation:</strong> <a href="https://cesium.com/learn/cesiumjs-learn/">https://cesium.com/learn/cesiumjs-learn/</a></li>
+<li><strong>Cesium Sandcastle Interactive Examples:</strong> <a href="https://sandcastle.cesium.com/">https://sandcastle.cesium.com/</a></li>
+<li><strong>OGC 3D Tiles Community Standard:</strong> <a href="https://www.ogc.org/standards/3DTiles">https://www.ogc.org/standards/3DTiles</a></li>
+</ul>
+<h3 id="practical-activity">Practical activity</h3>
+<p><strong>Your Task:</strong></p>
+<h4 id="step-1-setup-openlayers-2d-map">Step 1 — Setup OpenLayers 2D Map</h4>
+<ol>
+<li>Create a standard OpenLayers project with an OpenStreetMap base layer and a vector point layer representing points of interest.</li>
+</ol>
+<h4 id="step-2-integrate-ol-cesium">Step 2 — Integrate <code>ol-cesium</code></h4>
+<ol>
+<li>Install <code>ol-cesium</code> and initialize an <code>OLCesium</code> instance attached to your OpenLayers map object:
+   <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">ol3d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OLCesium</span><span class="p">({</span><span class="w"> </span><span class="nx">map</span><span class="o">:</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div></li>
+</ol>
+<h4 id="step-3-add-2d-3d-toggle">Step 3 — Add 2D / 3D Toggle</h4>
+<ol>
+<li>Add a floating button (<code>&lt;button id="toggle-btn"&gt;Switch to 3D&lt;/button&gt;</code>) to dynamically switch between 2D and 3D modes:
+   <div class="highlight"><pre><span></span><code><span class="nx">ol3d</span><span class="p">.</span><span class="nx">setEnabled</span><span class="p">(</span><span class="o">!</span><span class="nx">ol3d</span><span class="p">.</span><span class="nx">getEnabled</span><span class="p">());</span>
+</code></pre></div></li>
+</ol>
+<h4 id="step-4-manipulate-the-3d-camera">Step 4 — Manipulate the 3D Camera</h4>
+<ol>
+<li>Once in 3D mode, explore 3D navigation:</li>
+<li><strong>Left Click + Drag:</strong> Rotate / orbit around the globe.</li>
+<li><strong>Right Click + Drag (or Scroll Wheel):</strong> Zoom in and out.</li>
+<li><strong>Middle Click + Drag (or Ctrl + Left Click):</strong> Tilt camera pitch and adjust compass heading.</li>
+</ol>
+<h4 id="step-5-enable-3d-terrain">Step 5 — Enable 3D Terrain</h4>
+<ol>
+<li>If internet access and a Cesium ion token are available, load Cesium World Terrain using <code>Cesium.createWorldTerrainAsync()</code> and inspect mountainous topography.</li>
+</ol>
+<h4 id="optional-bonus-challenge">Optional Bonus Challenge</h4>
+<p>Program a "Fly to Landmark" button that triggers <code>scene.camera.flyTo()</code> with custom heading, pitch, and altitude over a mountain range or landmark city.</p>
+<hr />
+<h4 id="example-implementation-mainjs">Example Implementation (<code>main.js</code>):</h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nb">Map</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Map.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/View.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">TileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Tile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OSM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/OSM.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorSource</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/format/GeoJSON.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Style</span><span class="p">,</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">,</span><span class="w"> </span><span class="nx">Fill</span><span class="p">,</span><span class="w"> </span><span class="nx">Stroke</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/style.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/proj.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OLCesium</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol-cesium&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Cesium</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;cesium&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;ol/ol.css&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. Setup Base Layer</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">baseLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OSM</span><span class="p">()</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. Setup Vector Layer with Sample POI Markers</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">vectorLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorSource</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">features</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="p">().</span><span class="nx">readFeatures</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;FeatureCollection&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">features</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Mont Blanc Summit&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">          </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">coordinates</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">6.8644</span><span class="p">,</span><span class="w"> </span><span class="mf">45.8326</span><span class="p">])</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Mount Everest Summit&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">          </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">coordinates</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">86.9250</span><span class="p">,</span><span class="w"> </span><span class="mf">27.9881</span><span class="p">])</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#E53935&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="c1">// 3. Initialize OpenLayers 2D Map</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">baseLayer</span><span class="p">,</span><span class="w"> </span><span class="nx">vectorLayer</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">View</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">6.8644</span><span class="p">,</span><span class="w"> </span><span class="mf">45.8326</span><span class="p">]),</span><span class="w"> </span><span class="c1">// Centered near the Alps</span>
+<span class="w">    </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="c1">// 4. Initialize ol-cesium Bridge</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ol3d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OLCesium</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">map</span><span class="o">:</span><span class="w"> </span><span class="nx">map</span>
+<span class="p">});</span>
+
+<span class="c1">// 5. 2D / 3D Toggle Button Handler</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">toggleBtn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;toggle-btn&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">toggleBtn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">toggleBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">isCurrently3D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ol3d</span><span class="p">.</span><span class="nx">getEnabled</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Toggle 3D mode</span>
+<span class="w">    </span><span class="nx">ol3d</span><span class="p">.</span><span class="nx">setEnabled</span><span class="p">(</span><span class="o">!</span><span class="nx">isCurrently3D</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">toggleBtn</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">isCurrently3D</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;Switch to 3D&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Switch to 2D&#39;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// When enabling 3D for the first time, configure terrain and camera</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">isCurrently3D</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">scene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ol3d</span><span class="p">.</span><span class="nx">getCesiumScene</span><span class="p">();</span>
+
+<span class="w">      </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Enable worldwide 3D elevation terrain</span>
+<span class="w">        </span><span class="nx">scene</span><span class="p">.</span><span class="nx">terrainProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Cesium</span><span class="p">.</span><span class="nx">createWorldTerrainAsync</span><span class="p">();</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">&#39;World terrain could not be loaded; falling back to flat ellipsoid:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="c1">// Fly camera to tilted 3D perspective</span>
+<span class="w">      </span><span class="nx">scene</span><span class="p">.</span><span class="nx">camera</span><span class="p">.</span><span class="nx">flyTo</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">destination</span><span class="o">:</span><span class="w"> </span><span class="nx">Cesium</span><span class="p">.</span><span class="nx">Cartesian3</span><span class="p">.</span><span class="nx">fromDegrees</span><span class="p">(</span><span class="mf">6.8644</span><span class="p">,</span><span class="w"> </span><span class="mf">45.75</span><span class="p">,</span><span class="w"> </span><span class="mf">12000</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">orientation</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">heading</span><span class="o">:</span><span class="w"> </span><span class="nx">Cesium</span><span class="p">.</span><span class="nb">Math</span><span class="p">.</span><span class="nx">toRadians</span><span class="p">(</span><span class="mf">0</span><span class="p">),</span><span class="w">     </span><span class="c1">// Facing North</span>
+<span class="w">          </span><span class="nx">pitch</span><span class="o">:</span><span class="w"> </span><span class="nx">Cesium</span><span class="p">.</span><span class="nb">Math</span><span class="p">.</span><span class="nx">toRadians</span><span class="p">(</span><span class="o">-</span><span class="mf">30</span><span class="p">),</span><span class="w">    </span><span class="c1">// 30 degree tilt looking at peaks</span>
+<span class="w">          </span><span class="nx">roll</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">2.0</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
