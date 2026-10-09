@@ -1,0 +1,2483 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../module-4/">
+      
+      
+        <link rel="next" href="../module-6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Module 5 - Vector Styling & Interaction - OpenLayers Training</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-5-vector-styling-feature-interaction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OpenLayers Training" class="md-header__button md-logo" aria-label="OpenLayers Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OpenLayers Training
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module 5 - Vector Styling & Interaction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OpenLayers Training" class="md-nav__button md-logo" aria-label="OpenLayers Training" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    OpenLayers Training
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 1 - Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 2 - GIS Data & Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 3 - GeoServer & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 4 - PostGIS & OpenLayers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 5 - Vector Styling & Interaction
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 5 - Vector Styling & Interaction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-vector-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction to Vector Styling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to Vector Styling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-why-vector-styling-is-different-from-wms-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Why Vector Styling is Different from WMS Styling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-client-side-styling-in-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Client-Side Styling in OpenLayers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-static-vs-dynamic-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Static vs. Dynamic Styling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-geometry-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Geometry Targets
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-openlayers-style-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. OpenLayers Style Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. OpenLayers Style Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-core-style-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Core Style Classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-core-style-properties-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Core Style Properties Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-static-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Static Styling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Static Styling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-applying-styles-to-points-lines-and-polygons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Applying Styles to Points, Lines, and Polygons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-the-importance-of-reusable-style-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 The Importance of Reusable Style Objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-attribute-based-dynamic-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Attribute-Based Dynamic Styling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Attribute-Based Dynamic Styling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-reading-feature-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Reading Feature Attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-dynamic-style-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Dynamic Style Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-categorized-thematic-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Categorized Thematic Styling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-basic-graduated-styling-numeric-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Basic Graduated Styling (Numeric Ranges)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-text-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Text Labels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Text Labels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-label-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Label Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-scale-visibility-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Scale &amp; Visibility Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-automated-label-decluttering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Automated Label Decluttering
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-icons-custom-symbols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Icons &amp; Custom Symbols
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Icons &amp; Custom Symbols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-creating-an-icon-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Creating an Icon Style
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-anchor-positioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Anchor Positioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-feature-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Feature Selection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Feature Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-selection-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Selection Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-hover-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Hover Interaction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Hover Interaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-changing-the-mouse-cursor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Changing the Mouse Cursor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-highlighting-features-on-hover" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Highlighting Features on Hover
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-feature-information-popup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Feature Information / Popup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Feature Information / Popup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-popup-setup-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Popup Setup (main.js)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-layer-level-vs-feature-level-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Layer-Level vs. Feature-Level Styling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-styling-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Styling Performance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Styling Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical activity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-dynamic-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Dynamic Styling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-select-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Select Interaction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-bonus-hover-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Bonus (Hover Effect)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-implementation-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation (main.js):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 6 - CesiumJS Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 7 - MBTiles & Wrap-up
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module 8 - Integrated Exercise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instructor-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructor Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-vector-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction to Vector Styling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to Vector Styling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-why-vector-styling-is-different-from-wms-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Why Vector Styling is Different from WMS Styling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-client-side-styling-in-openlayers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Client-Side Styling in OpenLayers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-static-vs-dynamic-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Static vs. Dynamic Styling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-geometry-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Geometry Targets
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-openlayers-style-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. OpenLayers Style Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. OpenLayers Style Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-core-style-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Core Style Classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-core-style-properties-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Core Style Properties Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-static-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Static Styling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Static Styling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-applying-styles-to-points-lines-and-polygons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Applying Styles to Points, Lines, and Polygons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-the-importance-of-reusable-style-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 The Importance of Reusable Style Objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-attribute-based-dynamic-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Attribute-Based Dynamic Styling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Attribute-Based Dynamic Styling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-reading-feature-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Reading Feature Attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-dynamic-style-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Dynamic Style Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-categorized-thematic-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Categorized Thematic Styling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-basic-graduated-styling-numeric-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Basic Graduated Styling (Numeric Ranges)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-text-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Text Labels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Text Labels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-label-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Label Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-scale-visibility-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Scale &amp; Visibility Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-automated-label-decluttering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Automated Label Decluttering
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-icons-custom-symbols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Icons &amp; Custom Symbols
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Icons &amp; Custom Symbols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-creating-an-icon-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Creating an Icon Style
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-anchor-positioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Anchor Positioning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-feature-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Feature Selection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Feature Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-selection-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Selection Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-hover-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Hover Interaction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Hover Interaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-changing-the-mouse-cursor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Changing the Mouse Cursor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-highlighting-features-on-hover" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Highlighting Features on Hover
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-feature-information-popup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Feature Information / Popup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Feature Information / Popup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-popup-setup-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Popup Setup (main.js)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-layer-level-vs-feature-level-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Layer-Level vs. Feature-Level Styling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-styling-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Styling Performance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Styling Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical activity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-dynamic-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Dynamic Styling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-select-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Select Interaction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-bonus-hover-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Bonus (Hover Effect)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-implementation-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Implementation (main.js):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="module-5-vector-styling-feature-interaction">Module 5 - Vector Styling &amp; Feature Interaction</h1>
+<p>Welcome to Module 5! In this module, we transition from merely loading raw vector coordinates to crafting expressive, responsive, and interactive Web GIS interfaces. We will follow the complete production engineering workflow:</p>
+<div class="highlight"><pre><span></span><code>Feature Data &amp; Geometry
+          ↓
+Dynamic Style Function (with Caching &amp; Decluttering)
+          ↓
+Symbology, Halo Labels &amp; Custom Icons
+          ↓
+Canvas Pointer Detection (Hover Highlight &amp; Cursor State)
+          ↓
+Selection Interaction &amp; Coordinate-Anchored Popups
+</code></pre></div>
+<hr />
+<h2 id="1-introduction-to-vector-styling">1. Introduction to Vector Styling</h2>
+<h3 id="11-why-vector-styling-is-different-from-wms-styling">1.1 Why Vector Styling is Different from WMS Styling</h3>
+<p>In Module 3, we explored server-side WMS styling via GeoServer SLD, where the server renders features into static pixels before sending them across the network. Vector styling in OpenLayers is fundamentally different:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Server-Side WMS Styling (GeoServer / SLD)</th>
+<th>Client-Side Vector Styling (OpenLayers)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rendering Engine</strong></td>
+<td>Server CPU / GPU (GeoServer)</td>
+<td>Browser HTML5 Canvas / WebGL</td>
+</tr>
+<tr>
+<td><strong>Output Type</strong></td>
+<td>Pre-rendered raster image (PNG, JPEG)</td>
+<td>Live DOM / Canvas vector paths</td>
+</tr>
+<tr>
+<td><strong>Interactivity</strong></td>
+<td>Requires server roundtrips (<code>GetFeatureInfo</code>)</td>
+<td>Instant client-side inspection, selection &amp; hover</td>
+</tr>
+<tr>
+<td><strong>Styling Flexibility</strong></td>
+<td>Static XML rules on the server</td>
+<td>Full JavaScript logic (conditional, dynamic, animated)</td>
+</tr>
+<tr>
+<td><strong>Styling Speed</strong></td>
+<td>Re-requests images on style changes</td>
+<td>Updates instantly in browser memory</td>
+</tr>
+<tr>
+<td><strong>Data Payload</strong></td>
+<td>Map image pixels</td>
+<td>Raw coordinates and attributes (GeoJSON/WFS)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-client-side-styling-in-openlayers">1.2 Client-Side Styling in OpenLayers</h3>
+<p>In OpenLayers, vector layers use the <code>setStyle()</code> method to apply visual symbology. Styling can be assigned at two distinct scopes:</p>
+<ul>
+<li><strong><code>VectorLayer</code></strong>: <code>vectorLayer.setStyle(...)</code> sets the default appearance for all features on the layer.</li>
+<li><strong>Individual <code>Feature</code></strong>: <code>feature.setStyle(...)</code> overrides the layer style for a specific feature instance (ideal for selection flags, hover highlights, or custom status indicators).</li>
+</ul>
+<h3 id="13-static-vs-dynamic-styling">1.3 Static vs. Dynamic Styling</h3>
+<ul>
+<li><strong>Static Styling:</strong> A fixed <code>Style</code> object applied uniformly to every feature across all zoom levels.</li>
+<li><strong>Dynamic Styling:</strong> A JavaScript <strong>Style Function</strong> that inspects each feature's attributes (<code>feature.get('type')</code>) or the map's current zoom resolution to return tailored styles dynamically.</li>
+</ul>
+<h3 id="14-geometry-targets">1.4 Geometry Targets</h3>
+<p>Styles apply across the three core vector geometry categories:</p>
+<ul>
+<li><strong>Point / MultiPoint:</strong> Styled with circular vector symbols (<code>Circle</code>) or external bitmap/SVG graphics (<code>Icon</code>).</li>
+<li><strong>LineString / MultiLineString:</strong> Styled with strokes (<code>Stroke</code>).</li>
+<li><strong>Polygon / MultiPolygon:</strong> Styled with interior fills (<code>Fill</code>) and outer boundary strokes (<code>Stroke</code>).</li>
+</ul>
+<hr />
+<h2 id="2-openlayers-style-components">2. OpenLayers Style Components</h2>
+<p>OpenLayers builds symbology using specialized building blocks imported from <code>ol/style.js</code>:</p>
+<div class="highlight"><pre><span></span><code>Point Feature
+ ├── image: Circle / Icon
+ └── text:  Text (Label)
+
+LineString Feature
+ ├── stroke: Stroke (Color, Width, Dash)
+ └── text:   Text (Label)
+
+Polygon Feature
+ ├── fill:   Fill (Color, Opacity)
+ ├── stroke: Stroke (Boundary)
+ └── text:   Text (Centroid Label)
+</code></pre></div>
+<h3 id="21-core-style-classes">2.1 Core Style Classes</h3>
+<ul>
+<li><strong><code>Style</code>:</strong> The root container that groups together fill, stroke, image, and text symbolizers.</li>
+<li><strong><code>Fill</code>:</strong> Defines interior colors and transparencies for polygons, circles, and text backgrounds. Supports HEX, RGB, RGBA, and HSL strings.</li>
+<li><strong><code>Stroke</code>:</strong> Defines boundary lines, road paths, and outlines with width, color, and dash patterns.</li>
+<li><strong><code>Circle</code> (<code>CircleStyle</code>):</strong> Vector circular marker designed specifically for Point geometries.</li>
+<li><strong><code>Icon</code>:</strong> External raster (PNG/JPEG) or vector (SVG) image symbol for Point geometries.</li>
+<li><strong><code>Text</code>:</strong> Renders dynamic typographic labels anchored to feature geometries.</li>
+</ul>
+<h3 id="22-core-style-properties-reference">2.2 Core Style Properties Reference</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Property</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fill</strong></td>
+<td>Fill color</td>
+<td>HEX, RGB, RGBA, or HSL color string</td>
+<td><code>color: 'rgba(33, 150, 243, 0.5)'</code></td>
+</tr>
+<tr>
+<td><strong>Stroke</strong></td>
+<td>Stroke color</td>
+<td>Outline line color</td>
+<td><code>color: '#1565C0'</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Stroke width</td>
+<td>Line thickness in pixels</td>
+<td><code>width: 2.5</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Line dash</td>
+<td>Dash-gap array pattern</td>
+<td><code>lineDash: [6, 6]</code> (6px dash, 6px space)</td>
+</tr>
+<tr>
+<td><strong>Circle</strong></td>
+<td>Point radius</td>
+<td>Radius of circle marker in pixels</td>
+<td><code>radius: 8</code></td>
+</tr>
+<tr>
+<td><strong>Icon</strong></td>
+<td>Icon image</td>
+<td>URL or path to image file</td>
+<td><code>src: '/icons/hospital.svg'</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Scale</td>
+<td>Scaling factor</td>
+<td><code>scale: 0.8</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Anchor</td>
+<td>Alignment point coordinates</td>
+<td><code>anchor: [0.5, 1]</code> (Bottom-center pin)</td>
+</tr>
+<tr>
+<td></td>
+<td>Rotation</td>
+<td>Rotation angle in radians</td>
+<td><code>rotation: Math.PI / 4</code></td>
+</tr>
+<tr>
+<td><strong>Text</strong></td>
+<td>Text font</td>
+<td>Font style, size, and family</td>
+<td><code>font: 'bold 13px Inter, sans-serif'</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Text color</td>
+<td>Color of the text characters</td>
+<td><code>fill: new Fill({ color: '#212121' })</code></td>
+</tr>
+<tr>
+<td></td>
+<td>Text offset</td>
+<td>Pixel displacement (X, Y)</td>
+<td><code>offsetY: -15</code> (Places text above marker)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-static-styling">3. Static Styling</h2>
+<p>When all features in a layer share identical cartography, apply a single reusable <code>Style</code> object to the <code>VectorLayer</code>.</p>
+<h3 id="31-applying-styles-to-points-lines-and-polygons">3.1 Applying Styles to Points, Lines, and Polygons</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorSource</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Style</span><span class="p">,</span><span class="w"> </span><span class="nx">Fill</span><span class="p">,</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">,</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/style.js&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. Polygon Style (Fills and Outlines)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">parcelStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;rgba(76, 175, 80, 0.3)&#39;</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#2E7D32&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. LineString Style (Roads / Rivers)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">roadStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FF9800&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">lineDash</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">]</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="c1">// 3. Point Style (Circular Marker)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">pointStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#E91E63&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="c1">// Apply style to VectorLayer</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">vectorLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorSource</span><span class="p">({</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="nx">parcelStyle</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="32-the-importance-of-reusable-style-objects">3.2 The Importance of Reusable Style Objects</h3>
+<p>Always define style objects outside render loops:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">vectorLayer</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">(</span><span class="nx">myStyle</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p><strong>The Mechanics of Reusable Styles:</strong> OpenLayers executes the styling pipeline every time a frame is rendered (during pan, zoom, or animations at 60 FPS). Reusing pre-instantiated style objects prevents allocating thousands of temporary JavaScript objects, avoiding browser garbage-collection pauses and stuttering animations.</p>
+</blockquote>
+<hr />
+<h2 id="4-attribute-based-dynamic-styling">4. Attribute-Based Dynamic Styling</h2>
+<p>Real-world applications require thematic styling where feature appearance reflects underlying attributes.</p>
+<h3 id="41-reading-feature-attributes">4.1 Reading Feature Attributes</h3>
+<p>Feature attributes are accessed using <code>.get()</code>:
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">population</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;population&#39;</span><span class="p">);</span>
+</code></pre></div></p>
+<h3 id="42-dynamic-style-function">4.2 Dynamic Style Function</h3>
+<p>Pass a function to <code>vectorLayer.setStyle()</code>. OpenLayers evaluates the function for each feature:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">styleFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;hospital&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">hospitalStyle</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;school&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">schoolStyle</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">defaultStyle</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">vectorLayer</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">(</span><span class="nx">styleFunction</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="43-categorized-thematic-styling">4.3 Categorized Thematic Styling</h3>
+<p>Pre-define reusable styles in a lookup table for maximum efficiency:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">facilityStyles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">hospital</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#D32F2F&#39;</span><span class="w"> </span><span class="p">}),</span><span class="w"> </span><span class="c1">// Red</span>
+<span class="w">      </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="nx">school</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#1976D2&#39;</span><span class="w"> </span><span class="p">}),</span><span class="w"> </span><span class="c1">// Blue</span>
+<span class="w">      </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">}),</span>
+<span class="w">  </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#757575&#39;</span><span class="w"> </span><span class="p">}),</span><span class="w"> </span><span class="c1">// Gray</span>
+<span class="w">      </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">1.5</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">};</span>
+
+<span class="nx">vectorLayer</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">((</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">facilityStyles</span><span class="p">[</span><span class="nx">category</span><span class="p">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">facilityStyles</span><span class="p">.</span><span class="k">default</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="44-basic-graduated-styling-numeric-ranges">4.4 Basic Graduated Styling (Numeric Ranges)</h3>
+<p>Adjust visual properties (color, size) based on numeric attributes:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">earthquakeStyle</span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;magnitude&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;#4CAF50&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Low &lt; 4.0</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">mag</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">6.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;#D32F2F&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Severe &gt;= 6.0</span>
+<span class="w">    </span><span class="nx">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">12</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">mag</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">4.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;#FB8C00&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Moderate 4.0 - 5.9</span>
+<span class="w">    </span><span class="nx">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="nx">radius</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">1.5</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="5-text-labels">5. Text Labels</h2>
+<p>Labels display contextual information directly on the map.</p>
+<div class="highlight"><pre><span></span><code><span class="ow">new</span><span class="w"> </span><span class="nx">Text</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;14px sans-serif&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">offsetY</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">15</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="51-label-configuration">5.1 Label Configuration</h3>
+<ul>
+<li><strong><code>text</code>:</strong> The string to display, typically retrieved from a feature attribute (<code>feature.get('name')</code>).</li>
+<li><strong><code>font</code>:</strong> Standard CSS font string (e.g., <code>'bold 12px Inter, sans-serif'</code>).</li>
+<li><strong><code>fill</code>:</strong> Font character color (<code>new Fill({ color: '#212121' })</code>).</li>
+<li><strong><code>stroke</code>:</strong> Outer halo around letters (<code>new Stroke({ color: '#FFFFFF', width: 3 })</code>). Critical for legibility over satellite imagery and street maps.</li>
+<li><strong><code>backgroundFill</code> / <code>backgroundStroke</code>:</strong> Optional background pill box behind the text.</li>
+<li><strong><code>offsetY</code> / <code>offsetX</code>:</strong> Pixel displacement relative to the feature geometry center.</li>
+</ul>
+<h3 id="52-scale-visibility-control">5.2 Scale &amp; Visibility Control</h3>
+<p>Displaying thousands of labels when zoomed out causes visual clutter and slows rendering. Use the <code>resolution</code> argument in your style function to display labels only when zoomed in close:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">vectorLayer</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">((</span><span class="nx">feature</span><span class="p">,</span><span class="w"> </span><span class="nx">resolution</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Only show text labels when resolution is less than 30 meters/pixel (zoomed in)</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">showLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resolution</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="nx">pointMarker</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">showLabel</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Text</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bold 12px sans-serif&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#111111&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="nx">offsetY</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">15</span>
+<span class="w">    </span><span class="p">})</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">undefined</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="53-automated-label-decluttering">5.3 Automated Label Decluttering</h3>
+<p>OpenLayers features built-in collision detection to automatically hide overlapping labels and icons. Enable decluttering directly on the <code>VectorLayer</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">declutteredLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="nx">vectorSource</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="nx">featureStyleFunction</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">declutter</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c1">// Automatically hides colliding text labels and icons</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="6-icons-custom-symbols">6. Icons &amp; Custom Symbols</h2>
+<p>Vector points can be styled with custom bitmap (PNG) or vector (SVG) images using <code>ol/style/Icon</code>.</p>
+<div class="highlight"><pre><span></span><code>Common Web GIS Use Cases:
+ Hospital → hospital icon
+ School   → school icon
+ Airport  → airport icon
+</code></pre></div>
+<h3 id="61-creating-an-icon-style">6.1 Creating an Icon Style</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Style</span><span class="p">,</span><span class="w"> </span><span class="nx">Icon</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/style.js&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">hospitalIconStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Icon</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">src</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/assets/icons/hospital.svg&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">anchor</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">],</span><span class="w">          </span><span class="c1">// Bottom-center pin tip aligns with coordinate</span>
+<span class="w">    </span><span class="nx">anchorXUnits</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;fraction&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">anchorYUnits</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;fraction&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">scale</span><span class="o">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">                </span><span class="c1">// Resizes icon</span>
+<span class="w">    </span><span class="nx">rotation</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w">                </span><span class="c1">// Rotation in radians</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="62-anchor-positioning">6.2 Anchor Positioning</h3>
+<p>The <code>anchor</code> property dictates which point of the icon image aligns with the feature's geographic coordinate:</p>
+<ul>
+<li><strong><code>[0.5, 0.5]</code> (Center):</strong> Default. Best for circular badges, POI symbols, and airport markers.</li>
+<li><strong><code>[0.5, 1.0]</code> (Bottom-Center):</strong> Standard for map pin markers so the needle tip points to the location.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>       ┌──────────┐
+       │  HOSPITAL│
+       └────┬─────┘
+            ▼  ← Anchor [0.5, 1.0] aligns with geographic coordinate
+</code></pre></div>
+<hr />
+<h2 id="7-feature-selection">7. Feature Selection</h2>
+<p>OpenLayers provides the <strong><code>Select</code> interaction</strong> (<code>ol/interaction/Select</code>) to capture user clicks, manage selection state, and highlight active features.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">Select</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/interaction/Select.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">click</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/events/condition.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Style</span><span class="p">,</span><span class="w"> </span><span class="nx">Fill</span><span class="p">,</span><span class="w"> </span><span class="nx">Stroke</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/style.js&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. Configure the selection interaction</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Select</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">condition</span><span class="o">:</span><span class="w"> </span><span class="nx">click</span><span class="p">,</span><span class="w"> </span><span class="c1">// Trigger on mouse click</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;rgba(255, 235, 59, 0.5)&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#F57F17&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">3.5</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="nx">addInteraction</span><span class="p">(</span><span class="nx">select</span><span class="p">);</span>
+
+<span class="c1">// 2. Listen to the select event</span>
+<span class="nx">select</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;select&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">selected</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Selected feature properties:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">getProperties</span><span class="p">());</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="71-selection-features">7.1 Selection Features</h3>
+<ul>
+<li><strong>Selection Condition:</strong> <code>condition: click</code> triggers on single clicks; <code>pointerMove</code> triggers on hover.</li>
+<li><strong>Deselection:</strong> Clicking anywhere on the empty map canvas automatically deselects features.</li>
+<li><strong>Selected Array:</strong> <code>event.selected</code> contains features just selected; <code>event.deselected</code> contains features whose selection was cleared.</li>
+</ul>
+<hr />
+<h2 id="8-hover-interaction">8. Hover Interaction</h2>
+<p>Hover effects provide instant visual feedback as the user navigates across the map canvas.</p>
+<div class="highlight"><pre><span></span><code>Mouse moves (pointermove)
+     ↓
+Feature detected?
+     ↓
+    Yes
+     ↓
+Apply highlight style &amp; change cursor to pointer
+</code></pre></div>
+<h3 id="81-changing-the-mouse-cursor">8.1 Changing the Mouse Cursor</h3>
+<p>Inform the user when an element is interactive by updating CSS cursor styling on <code>pointermove</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;pointermove&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">dragging</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">.</span><span class="nx">hasFeatureAtPixel</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">pixel</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">map</span><span class="p">.</span><span class="nx">getTargetElement</span><span class="p">().</span><span class="nx">style</span><span class="p">.</span><span class="nx">cursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hit</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;pointer&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="82-highlighting-features-on-hover">8.2 Highlighting Features on Hover</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">currentHoveredFeature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">hoverHighlightStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#00E5FF&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;pointermove&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">dragging</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// 1. Reset previous hovered feature</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currentHoveredFeature</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">currentHoveredFeature</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w"> </span><span class="c1">// Reverts back to layer style</span>
+<span class="w">    </span><span class="nx">currentHoveredFeature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 2. Highlight new feature under cursor</span>
+<span class="w">  </span><span class="nx">map</span><span class="p">.</span><span class="nx">forEachFeatureAtPixel</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">pixel</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">feature</span><span class="p">,</span><span class="w"> </span><span class="nx">layer</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">layer</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">vectorLayer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">currentHoveredFeature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">feature</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">feature</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">(</span><span class="nx">hoverHighlightStyle</span><span class="p">);</span><span class="w"> </span><span class="c1">// Apply feature-level highlight</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Stop iterating</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="9-feature-information-popup">9. Feature Information / Popup</h2>
+<p>Popups display detailed attributes in an HTML card anchored to the feature's coordinate using <code>ol/Overlay</code>.</p>
+<div class="highlight"><pre><span></span><code>User clicks feature
+        ↓
+Feature selected
+        ↓
+Read properties (feature.getProperties())
+        ↓
+Create popup content
+        ↓
+Display information at coordinate
+</code></pre></div>
+<h3 id="91-popup-setup-mainjs">9.1 Popup Setup (<code>main.js</code>)</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">Overlay</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Overlay.js&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. HTML DOM elements</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;popup&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;popup-content&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">closer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;popup-closer&#39;</span><span class="p">);</span>
+
+<span class="c1">// 2. Instantiate Overlay</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">popupOverlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Overlay</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">element</span><span class="o">:</span><span class="w"> </span><span class="nx">container</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">autoPan</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">animation</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">250</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">addOverlay</span><span class="p">(</span><span class="nx">popupOverlay</span><span class="p">);</span>
+
+<span class="c1">// 3. Close button</span>
+<span class="nx">closer</span><span class="p">.</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">popupOverlay</span><span class="p">.</span><span class="nx">setPosition</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">closer</span><span class="p">.</span><span class="nx">blur</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 4. Click interaction to display popup</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;singleclick&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">.</span><span class="nx">forEachFeatureAtPixel</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">pixel</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">feat</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">feat</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">getProperties</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">content</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">      &lt;h4 style=&quot;margin: 0 0 6px 0;&quot;&gt;</span><span class="si">${</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;Feature&#39;</span><span class="si">}</span><span class="sb">&lt;/h4&gt;</span>
+<span class="sb">      &lt;p style=&quot;margin: 0; font-size: 13px; color: #555;&quot;&gt;&lt;strong&gt;Type:&lt;/strong&gt; </span><span class="si">${</span><span class="nx">props</span><span class="p">.</span><span class="nx">type</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;N/A&#39;</span><span class="si">}</span><span class="sb">&lt;/p&gt;</span>
+<span class="sb">    `</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">popupOverlay</span><span class="p">.</span><span class="nx">setPosition</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">coordinate</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">popupOverlay</span><span class="p">.</span><span class="nx">setPosition</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="10-layer-level-vs-feature-level-styling">10. Layer-Level vs. Feature-Level Styling</h2>
+<p>Understanding how style inheritance operates ensures optimal performance and modular code:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Layer-level styling</span>
+<span class="nx">vectorLayer</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">(...)</span>
+</code></pre></div>
+<p>versus:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Feature-level styling</span>
+<span class="nx">feature</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">(...)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Invocation</th>
+<th>Characteristics</th>
+<th>Primary Use Cases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Layer-Level</strong></td>
+<td><code>vectorLayer.setStyle(...)</code></td>
+<td>- Applied globally across all features<br>- Highest rendering efficiency<br>- Evaluated dynamically with style functions</td>
+<td>Default layer symbology, thematic classification, zoom-dependent scales</td>
+</tr>
+<tr>
+<td><strong>Feature-Level</strong></td>
+<td><code>feature.setStyle(...)</code></td>
+<td>- Overrides the layer style for a specific feature instance<br>- Reverts when set to <code>null</code>: <code>feature.setStyle(null)</code></td>
+<td>Temporary hover highlights, active selection flags, custom pin icons</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-styling-performance">11. Styling Performance</h2>
+<p>When rendering vector layers in production, keep these performance principles in mind:</p>
+<ul>
+<li><strong>Reuse <code>Style</code> Objects:</strong> Maintain a cached object dictionary (<code>styles[category]</code>) rather than constructing <code>new Style()</code> instances inside style functions.</li>
+<li><strong>Avoid Creating Complex Styles Unnecessarily:</strong> Every extra stroke, text shadow, and nested fill increases canvas draw call time.</li>
+<li><strong>Don't Use Huge Numbers of Unique Icons:</strong> Loading 200 distinct icon URLs triggers 200 separate asynchronous image downloads. Prefer SVG icons or standardized icon sheets.</li>
+<li><strong>Avoid Excessive Labels:</strong> Restrict label rendering to close zoom levels using the <code>resolution</code> argument or enable <code>declutter: true</code>.</li>
+<li><strong>Be Careful with Thousands of Client-Side Features:</strong> If your dataset exceeds 5,000 features, pure GeoJSON/WFS rendering can degrade browser frame rates.</li>
+<li><strong>Use Server-Side / Vector Tiles for Very Large Datasets:</strong> As covered in Module 2, switch to <strong>Vector Tiles (MVT)</strong> or server-side <strong>WMS</strong> for datasets with tens of thousands of geometries.</li>
+</ul>
+<hr />
+<h3 id="reference-resources">Reference resources</h3>
+<ul>
+<li><strong>OpenLayers Style API:</strong> <a href="https://openlayers.org/en/latest/apidoc/module-ol_style_Style-Style.html">https://openlayers.org/en/latest/apidoc/module-ol_style_Style-Style.html</a></li>
+<li><strong>OpenLayers Select Interaction:</strong> <a href="https://openlayers.org/en/latest/apidoc/module-ol_interaction_Select-Select.html">https://openlayers.org/en/latest/apidoc/module-ol_interaction_Select-Select.html</a></li>
+<li><strong>OpenLayers Overlay API:</strong> <a href="https://openlayers.org/en/latest/apidoc/module-ol_Overlay-Overlay.html">https://openlayers.org/en/latest/apidoc/module-ol_Overlay-Overlay.html</a></li>
+<li><strong>OpenLayers Vector Labels Example:</strong> <a href="https://openlayers.org/en/latest/examples/vector-labels.html">https://openlayers.org/en/latest/examples/vector-labels.html</a></li>
+</ul>
+<h3 id="practical-activity">Practical activity</h3>
+<p><strong>Your Task:</strong></p>
+<h4 id="step-1-dynamic-styling">Step 1 — Dynamic Styling</h4>
+<ol>
+<li>Take the vector layer (GeoJSON or WFS) and apply a dynamic style function based on the <code>type</code> attribute:
+   <div class="highlight"><pre><span></span><code><span class="nx">vectorLayer</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">((</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;hospital&#39;</span>
+<span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="nx">hospitalStyle</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="nx">defaultStyle</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div></li>
+</ol>
+<h4 id="step-2-labels">Step 2 — Labels</h4>
+<ol>
+<li>Extend the style function to display the feature's <code>name</code> attribute using <code>new Text()</code>:
+   <div class="highlight"><pre><span></span><code><span class="ow">new</span><span class="w"> </span><span class="nx">Text</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bold 12px sans-serif&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">offsetY</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">15</span>
+<span class="p">});</span>
+</code></pre></div></li>
+</ol>
+<h4 id="step-3-select-interaction">Step 3 — Select Interaction</h4>
+<ol>
+<li>Add an OpenLayers <code>Select</code> interaction configured to trigger on click:
+   <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Select</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">condition</span><span class="o">:</span><span class="w"> </span><span class="nx">click</span>
+<span class="p">});</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">addInteraction</span><span class="p">(</span><span class="nx">select</span><span class="p">);</span>
+
+<span class="nx">select</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;select&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">selected</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Selected Properties:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">getProperties</span><span class="p">());</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></li>
+</ol>
+<h4 id="step-4-bonus-hover-effect">Step 4 — Bonus (Hover Effect)</h4>
+<ol>
+<li>Add a hover interaction that changes the mouse cursor to <code>'pointer'</code> and applies a stroke highlight when the mouse moves over a feature.</li>
+</ol>
+<hr />
+<h4 id="example-implementation-mainjs">Example Implementation (<code>main.js</code>):</h4>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nb">Map</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Map.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/View.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">TileLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Tile.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/layer/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">OSM</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/OSM.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">VectorSource</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/source/Vector.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/format/GeoJSON.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Overlay</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/Overlay.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Select</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/interaction/Select.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">click</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/events/condition.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Style</span><span class="p">,</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">,</span><span class="w"> </span><span class="nx">Fill</span><span class="p">,</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">,</span><span class="w"> </span><span class="nx">Text</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/style.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;ol/proj.js&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">&#39;ol/ol.css&#39;</span><span class="p">;</span>
+
+<span class="c1">// 1. Base Map Layer</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">baseLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TileLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OSM</span><span class="p">()</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. Pre-defined Reusable Styles</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">hospitalStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#D32F2F&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">schoolStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#1976D2&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">defaultStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#757575&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">1.5</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="c1">// 3. Dynamic Style Function with Attribute Labels</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">styleFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">feature</span><span class="p">,</span><span class="w"> </span><span class="nx">resolution</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;hospital&#39;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">hospitalStyle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;school&#39;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">schoolStyle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">defaultStyle</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Show text labels only when zoomed in (resolution &lt; 40 meters/pixel)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">resolution</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">40</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="nx">base</span><span class="p">.</span><span class="nx">getImage</span><span class="p">(),</span>
+<span class="w">      </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Text</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bold 12px Inter, sans-serif&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#212121&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">        </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">        </span><span class="nx">offsetY</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">15</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">base</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 4. Vector Dataset</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">vectorSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorSource</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">features</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="p">().</span><span class="nx">readFeatures</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;FeatureCollection&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">features</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;City Hospital&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;hospital&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">beds</span><span class="o">:</span><span class="w"> </span><span class="mf">250</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">coordinates</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.8567</span><span class="p">,</span><span class="w"> </span><span class="mf">18.5204</span><span class="p">])</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Central High School&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;school&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">students</span><span class="o">:</span><span class="w"> </span><span class="mf">1200</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">coordinates</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.865</span><span class="p">,</span><span class="w"> </span><span class="mf">18.525</span><span class="p">])</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">properties</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Public Library&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;other&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">visitors</span><span class="o">:</span><span class="w"> </span><span class="mf">400</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">coordinates</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.845</span><span class="p">,</span><span class="w"> </span><span class="mf">18.515</span><span class="p">])</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">vectorLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VectorLayer</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">source</span><span class="o">:</span><span class="w"> </span><span class="nx">vectorSource</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="nx">styleFunction</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">declutter</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">});</span>
+
+<span class="c1">// 5. Popup Overlay Setup</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">popupContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;popup&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">popupContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;popup-content&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">popupCloser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;popup-closer&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">overlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Overlay</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">element</span><span class="o">:</span><span class="w"> </span><span class="nx">popupContainer</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">autoPan</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">animation</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="mf">250</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">popupCloser</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">popupCloser</span><span class="p">.</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">overlay</span><span class="p">.</span><span class="nx">setPosition</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">popupCloser</span><span class="p">.</span><span class="nx">blur</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// 6. Map Initialization</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;map&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">layers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">baseLayer</span><span class="p">,</span><span class="w"> </span><span class="nx">vectorLayer</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">overlays</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">overlay</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">View</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="nx">fromLonLat</span><span class="p">([</span><span class="mf">73.8567</span><span class="p">,</span><span class="w"> </span><span class="mf">18.5204</span><span class="p">]),</span>
+<span class="w">    </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">14</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="c1">// 7. Select Interaction</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Select</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">condition</span><span class="o">:</span><span class="w"> </span><span class="nx">click</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFD600&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">      </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#000000&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">addInteraction</span><span class="p">(</span><span class="nx">select</span><span class="p">);</span>
+
+<span class="nx">select</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;select&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">selected</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">getProperties</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">popupContent</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">      &lt;h4 style=&quot;margin:0 0 6px 0; font-size:14px;&quot;&gt;</span><span class="si">${</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">&lt;/h4&gt;</span>
+<span class="sb">      &lt;p style=&quot;margin:0; font-size:12px; color:#555;&quot;&gt;&lt;strong&gt;Category:&lt;/strong&gt; </span><span class="si">${</span><span class="nx">props</span><span class="p">.</span><span class="nx">type</span><span class="si">}</span><span class="sb">&lt;/p&gt;</span>
+<span class="sb">    `</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">overlay</span><span class="p">.</span><span class="nx">setPosition</span><span class="p">(</span><span class="nx">feature</span><span class="p">.</span><span class="nx">getGeometry</span><span class="p">().</span><span class="nx">getCoordinates</span><span class="p">());</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">overlay</span><span class="p">.</span><span class="nx">setPosition</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 8. Hover Effect (Cursor &amp; Stroke Highlight)</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">hoveredFeature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">highlightStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Style</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleStyle</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">11</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Fill</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#00E5FF&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Stroke</span><span class="p">({</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="p">})</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="p">});</span>
+
+<span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;pointermove&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">dragging</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hoveredFeature</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">hoveredFeature</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">hoveredFeature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">.</span><span class="nx">forEachFeatureAtPixel</span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">pixel</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">feat</span><span class="p">,</span><span class="w"> </span><span class="nx">layer</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">layer</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">vectorLayer</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nx">select</span><span class="p">.</span><span class="nx">getFeatures</span><span class="p">().</span><span class="nx">getArray</span><span class="p">().</span><span class="nx">includes</span><span class="p">(</span><span class="nx">feat</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">hoveredFeature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">feat</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">feat</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">(</span><span class="nx">highlightStyle</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">map</span><span class="p">.</span><span class="nx">getTargetElement</span><span class="p">().</span><span class="nx">style</span><span class="p">.</span><span class="nx">cursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hit</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;pointer&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
